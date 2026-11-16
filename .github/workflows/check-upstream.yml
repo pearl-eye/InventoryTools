@@ -1,0 +1,24 @@
+name: Check original release version
+
+on:
+  schedule:
+    - cron: '17 1 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    if: github.repository == 'pearl-eye/Allagan-Tools-CN' && (github.event_name == 'schedule' || github.ref == 'refs/heads/zh-CN')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the CN branch
+        uses: actions/checkout@v4
+        with:
+          ref: zh-CN
+          persist-credentials: false
+
+      - name: Verify original release version
+        shell: pwsh
+        run: ./scripts/Verify-UpstreamVersion.ps1

@@ -51,6 +51,9 @@ jobs:
           submodules: recursive
           persist-credentials: false
 
+      - name: Verify original release version
+        run: ./scripts/Verify-UpstreamVersion.ps1
+
       - name: Install .NET SDK
         uses: actions/setup-dotnet@v4
         with:
