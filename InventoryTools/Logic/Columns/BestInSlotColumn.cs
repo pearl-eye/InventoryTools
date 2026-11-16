@@ -23,7 +23,7 @@ namespace InventoryTools.Logic.Columns
 
         public BestInSlotColumn(ILogger<BestInSlotColumn> logger, CharacterColumnSetting.Factory characterColumnSettingFactory, ImGuiService imGuiService, ICharacterMonitor characterMonitor, IInventoryMonitor inventoryMonitor, ClassJobCategorySheet classJobCategorySheet) : base(logger, imGuiService)
         {
-            _characterColumnSetting = characterColumnSettingFactory.Invoke("Comparison Character", "Shows the relative item level of either your items or your retainers items compared to the item shown. This will show a drop down in the filter that lets you pick which character you are comparing against. A negative value indicates it's worse, a positive indicates it's better.", [CharacterType.Character, CharacterType.Retainer], true);
+            _characterColumnSetting = characterColumnSettingFactory.Invoke("比较角色", "比较当前物品与角色或雇员物品的品级。可在筛选器下拉菜单中选择比较角色。负数表示更差，正数表示更好。", [CharacterType.Character, CharacterType.Retainer], true);
             _characterMonitor = characterMonitor;
             _inventoryMonitor = inventoryMonitor;
             _classJobCategorySheet = classJobCategorySheet;
@@ -77,11 +77,11 @@ namespace InventoryTools.Logic.Columns
             return null;
         }
 
-        public override string Name { get; set; } = "Relative Item Level";
+        public override string Name { get; set; } = "相对品级";
         public override float Width { get; set; } = 150;
 
         public override string HelpText { get; set; } =
-            "Shows the relative item level of either your items or your retainers items compared to the item shown. This will show a drop down in the filter that lets you pick which character you are comparing against. A negative value indicates it's worse, a positive indicates it's better.";
+            "比较当前物品与角色或雇员物品的品级。可在筛选器下拉菜单中选择比较角色。负数表示更差，正数表示更好。";
 
         public override bool HasFilter { get; set; } = true;
         public override ColumnFilterType FilterType { get; set; } = ColumnFilterType.Text;

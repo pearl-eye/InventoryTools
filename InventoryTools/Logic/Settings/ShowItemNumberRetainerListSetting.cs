@@ -19,10 +19,10 @@ namespace InventoryTools.Logic.Settings
         }
 
         public override string Key { get; set; } = "ShowItemNumberRetainerList";
-        public override string Name { get; set; } = "Show item number in retainer list?";
+        public override string Name { get; set; } = "在雇员列表中显示物品数量？";
 
         public override string HelpText { get; set; } =
-            "Should the name of the retainer in the summoning bell list have the number of items to be sorted or are available in their inventory?";
+            "是否在传唤铃列表的雇员名字旁显示待整理或持有的相关物品数量？";
         
         public override string Version => "1.7.0.0";
 

@@ -18,10 +18,10 @@ namespace InventoryTools.Logic.Settings
         }
 
         public override string Key { get; set; } = "ShowTooltips";
-        public override string Name { get; set; } = "Enable Tooltip Tweaks?";
+        public override string Name { get; set; } = "启用物品提示增强？";
 
         public override string HelpText { get; set; } =
-            "Disable/enable the entire tooltip modification system for the plugin. If this is off, no changes will be made to your item's tooltips.";
+            "控制插件的全部物品提示修改。关闭后，不会向物品提示添加任何内容。";
         
         public override string Version => "1.7.0.0";
 

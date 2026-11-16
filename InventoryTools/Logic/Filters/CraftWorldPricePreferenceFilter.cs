@@ -38,7 +38,7 @@ public class CraftWorldPricePreference : SortedListFilter<uint, uint>
             }
             else
             {
-                worldName = " (Unknown World)";
+                worldName = "（未知服务器）";
             }
             return (worldName, null);
         }
@@ -59,10 +59,10 @@ public class CraftWorldPricePreference : SortedListFilter<uint, uint>
     }
 
     public override string Key { get; set; } = "CraftWorldPricePreference";
-    public override string Name { get; set; } = "World Price Preference";
+    public override string Name { get; set; } = "价格服务器优先顺序";
 
     public override string HelpText { get; set; } =
-        "Which worlds should prices be sourced from?";
+        "从哪些服务器获取价格？";
 
     public override FilterCategory FilterCategory { get; set; } = FilterCategory.WorldPricePreference;
     public override Dictionary<uint, (string, string?)> DefaultValue { get; set; } = new();
@@ -112,7 +112,7 @@ public class CraftWorldPricePreference : SortedListFilter<uint, uint>
 
         var currentValue = CurrentValue(configuration);
         ImGui.SetNextItemWidth(LabelSize);
-        ImGui.LabelText("##" + Key + "Label", "Add new world: ");
+        ImGui.LabelText("##" + Key + "Label", "添加服务器：");
         ImGui.SameLine();
         var currentAddItem = "";
         using (var combo = ImRaii.Combo("##AddWorld" + Key, currentAddItem, ImGuiComboFlags.HeightLarge))
@@ -129,7 +129,7 @@ public class CraftWorldPricePreference : SortedListFilter<uint, uint>
                 ImGui.Separator();
                 if (_searchString == "")
                 {
-                    ImGui.TextUnformatted("Start typing to search...");
+                    ImGui.TextUnformatted("输入以搜索…");
                 }
                 foreach (var item in SearchWorlds.Where(c => !currentValue.ContainsKey(c.RowId)))
                 {

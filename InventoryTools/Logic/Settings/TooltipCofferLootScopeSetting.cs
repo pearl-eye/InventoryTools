@@ -61,7 +61,7 @@ public class TooltipCofferLootScopeSetting : Setting<List<InventorySearchScope>?
         if (disableReset != true && HasValueSet(configuration))
         {
             ImGui.SameLine();
-            if (ImGui.Button("Reset##" + Key + "Reset"))
+            if (ImGui.Button("重置##" + Key + "Reset"))
             {
                 Reset(configuration);
             }
@@ -74,8 +74,8 @@ public class TooltipCofferLootScopeSetting : Setting<List<InventorySearchScope>?
     }
 
     public override string Key { get; set; } = "TooltipCofferLootScope";
-    public override string Name { get; set; } = "Coffer Loot (Search Locations)";
-    public override string HelpText { get; set; } = "Which inventories should be searched when determining how many coffer loot items you already own?";
+    public override string Name { get; set; } = "宝箱内容（搜索位置）";
+    public override string HelpText { get; set; } = "统计已持有的宝箱奖励时，应搜索哪些背包？";
     
     public override string Version => "1.12.0.0";
 }

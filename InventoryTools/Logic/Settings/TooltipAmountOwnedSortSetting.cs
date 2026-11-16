@@ -23,20 +23,20 @@ public class TooltipAmountOwnedSortSetting : ChoiceSetting<TooltipAmountOwnedSor
     }
 
     public override string Key { get; set; } = "TooltipAmountOwnedSort";
-    public override string Name { get; set; } = "Add Item Locations (Order)";
+    public override string Name { get; set; } = "添加物品位置（排序）";
 
     public override string HelpText { get; set; } =
-        "How should the items displayed in the tooltip that you own be ordered? None is included if you find the sorting to be non-performant.";
+        "在物品提示中如何排列持有物品的位置？若排序影响性能，可选择“不排序”。";
     
     public override string Version { get; } = "1.7.0.17";
 
     public override Dictionary<TooltipAmountOwnedSort, string> Choices { get; } =
         new Dictionary<TooltipAmountOwnedSort, string>()
         {
-            { TooltipAmountOwnedSort.Alphabetically, "Alphabetical Order(Character/Retainer/etc)" },
-            { TooltipAmountOwnedSort.Categorically, "Alphabetical Order(Category)" },
-            { TooltipAmountOwnedSort.Quantity, "Item Quantity" },
-            { TooltipAmountOwnedSort.None, "No Order" },
+            { TooltipAmountOwnedSort.Alphabetically, "名称顺序（角色、雇员等）" },
+            { TooltipAmountOwnedSort.Categorically, "名称顺序（分类）" },
+            { TooltipAmountOwnedSort.Quantity, "物品数量" },
+            { TooltipAmountOwnedSort.None, "不排序" },
         };
 }
 

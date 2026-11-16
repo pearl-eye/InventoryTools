@@ -7,7 +7,7 @@ namespace InventoryTools.Logic.Settings;
 
 public class AcquisitionTrackerLoginDelaySetting : GenericIntegerSetting
 {
-    public AcquisitionTrackerLoginDelaySetting(ILogger<AcquisitionTrackerLoginDelaySetting> logger, ImGuiService imGuiService) : base("AcquisitionTrackerLoginDelay", "Login Delay", "The acquisition tracker perform an initial scan of your characters bags when you login. As the game receives multiple inventory updates, the scanner must wait a set amount of time before it's done. Adjust this to be higher if you are seeing items in your craft list randomly complete when you first login.", 5, "1.12.0.8", logger, imGuiService)
+    public AcquisitionTrackerLoginDelaySetting(ILogger<AcquisitionTrackerLoginDelaySetting> logger, ImGuiService imGuiService) : base("AcquisitionTrackerLoginDelay", "登录后延迟", "物品获取追踪器会在登录时首次扫描角色的背包。游戏会分多次更新背包数据，因此扫描器需要稍作等待。如果刚登录时制作清单中的物品会被误判为已完成，请增大此值。", 5, "1.12.0.8", logger, imGuiService)
     {
     }
 }

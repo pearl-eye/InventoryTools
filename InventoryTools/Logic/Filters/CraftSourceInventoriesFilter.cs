@@ -14,10 +14,10 @@ public class CraftSourceInventoriesFilter : InventoryScopeFilter
     }
 
     public override string Key { get; set; } = "CraftSourceInventories";
-    public override string Name { get; set; } = "Inventories to Retrieve From";
+    public override string Name { get; set; } = "取回来源背包";
 
     public override string HelpText { get; set; } =
-        "Which inventories should the crafting list check for materials to withdraw? Items found in the selected inventories will appear in the 'Items in Retainers/Bags' list and you will need to retrieve them either before gathering or after gathering depending on your craft list's configuration.";
+        "检查哪些背包中的材料？找到的物品会显示在“雇员/背包中的物品”中，并根据清单设置安排取回顺序。";
 
     public override FilterCategory FilterCategory { get; set; } = FilterCategory.Inventories;
 

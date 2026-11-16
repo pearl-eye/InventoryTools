@@ -7,7 +7,7 @@ namespace InventoryTools.Logic.Settings;
 
 public class ShopHighlightingNpcSetting : GenericBooleanSetting
 {
-    public ShopHighlightingNpcSetting(ILogger<ShopHighlightingNpcSetting> logger, ImGuiService imGuiService) : base("ShopHighlightingNpc", "Shop Highlighting - Highlight NPCs", "When highlighting items in a shop, should related NPCs be highlighted in the world?", true, "15.0.4", logger, imGuiService)
+    public ShopHighlightingNpcSetting(ILogger<ShopHighlightingNpcSetting> logger, ImGuiService imGuiService) : base("ShopHighlightingNpc", "商店高亮 - 高亮NPC", "高亮商店物品时，是否同时高亮场景中的相关NPC？", true, "15.0.4", logger, imGuiService)
     {
     }
 }

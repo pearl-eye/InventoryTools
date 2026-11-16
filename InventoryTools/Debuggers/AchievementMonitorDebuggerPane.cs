@@ -24,7 +24,7 @@ public class AchievementDebuggerPane : DebugLogPane
 
     public override void DrawInfo()
     {
-        if (ImGui.CollapsingHeader("Status"))
+        if (ImGui.CollapsingHeader("状态"))
         {
             ImGui.TextUnformatted($"Loaded: {_achievementMonitorService.IsLoaded}");
             ImGui.TextUnformatted($"Completed Achievement Count: {_achievementMonitorService.GetCompletedAchievementIds().Count}");
@@ -48,7 +48,7 @@ public class AchievementDebuggerPane : DebugLogPane
             }
         }
 
-        if (ImGui.CollapsingHeader("Configuration"))
+        if (ImGui.CollapsingHeader("设置"))
         {
             var config = _achievementMonitorService.Configuration;
             if (config == null)

@@ -343,7 +343,7 @@ namespace InventoryTools.Logic
         {
             get
             {
-                var actualName = Name == "" ? "Untitled" : Name;
+                var actualName = Name == "" ? "未命名" : Name;
                 if (IsEphemeralCraftList)
                 {
                     actualName += " (*)";
@@ -1081,27 +1081,27 @@ namespace InventoryTools.Logic
             {
                 if (FilterType.HasFlag(FilterType.SearchFilter))
                 {
-                    return "Search Filter";
+                    return "搜索筛选";
                 }
                 else if (FilterType.HasFlag(FilterType.SortingFilter))
                 {
-                    return "Sort Filter";
+                    return "整理筛选";
                 }
                 else if (FilterType.HasFlag(FilterType.GameItemFilter))
                 {
-                    return "Game Item Filter";
+                    return "游戏物品筛选";
                 }
                 else if (FilterType.HasFlag(FilterType.CraftFilter))
                 {
-                    return "Craft List";
+                    return "制作清单";
                 }
                 else if (FilterType.HasFlag(FilterType.HistoryFilter))
                 {
-                    return "History List";
+                    return "历史记录清单";
                 }
                 else if (FilterType.HasFlag(FilterType.CuratedList))
                 {
-                    return "Curated List";
+                    return "自选清单";
                 }
                 return "";
             }

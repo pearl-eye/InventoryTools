@@ -19,6 +19,6 @@ public static class NotoriousMonsterExtension
             case 3:
                 return "S";
         }
-        return "N/A";
+        return "不适用";
     }
 }

@@ -20,7 +20,7 @@ public class IsGlamourReadySetColumn : CheckboxColumn
         return searchResult.Item.HasUsesByType(ItemInfoType.GlamourReadySet);
     }
 
-    public override string Name { get; set; } = "Is Outfit Glamour Set?";
+    public override string Name { get; set; } = "是否为整套幻化服装？";
     public override float Width { get; set; } = 100;
-    public override string HelpText { get; set; } = "Is this item the combined form of a outfit glamour set?";
+    public override string HelpText { get; set; } = "此物品是否为合并后的整套幻化服装？";
 }

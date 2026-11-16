@@ -363,7 +363,7 @@ public class InventoryScannerDebuggerPane : IDebugPane
             ImGui.TreePop();
         }
 
-        if (ImGui.TreeNode("Armoire##armoire"))
+        if (ImGui.TreeNode("收藏柜##armoire"))
         {
             for (int i = 0; i < _inventoryScanner.Armoire.Length; i++)
             {
@@ -479,11 +479,11 @@ public class InventoryScannerDebuggerPane : IDebugPane
             ImGui.TreePop();
         }
 
-        if (ImGui.TreeNode("Retainer Equipped##retainerEquipped"))
+        if (ImGui.TreeNode("雇员装备##retainerEquipped"))
         {
             foreach (var retainer in _inventoryScanner.RetainerEquipped)
             {
-                if (ImGui.TreeNode("Retainer Equipped" + retainer.Key + "##equipped" + retainer.Key))
+                if (ImGui.TreeNode("雇员装备" + retainer.Key + "##equipped" + retainer.Key))
                 {
                     for (int i = 0; i < retainer.Value.Length; i++)
                     {
@@ -498,11 +498,11 @@ public class InventoryScannerDebuggerPane : IDebugPane
             ImGui.TreePop();
         }
 
-        if (ImGui.TreeNode("Retainer Market##retainerMarket"))
+        if (ImGui.TreeNode("雇员出售栏##retainerMarket"))
         {
             foreach (var retainer in _inventoryScanner.RetainerMarket)
             {
-                if (ImGui.TreeNode("Retainer Market" + retainer.Key + "##market" + retainer.Key))
+                if (ImGui.TreeNode("雇员出售栏" + retainer.Key + "##market" + retainer.Key))
                 {
                     for (int i = 0; i < retainer.Value.Length; i++)
                     {
@@ -521,7 +521,7 @@ public class InventoryScannerDebuggerPane : IDebugPane
         {
             foreach (var retainer in _inventoryScanner.RetainerMarketPrices)
             {
-                if (ImGui.TreeNode("Retainer Market" + retainer.Key + "##market" + retainer.Key))
+                if (ImGui.TreeNode("雇员出售栏" + retainer.Key + "##market" + retainer.Key))
                 {
                     for (int i = 0; i < retainer.Value.Length; i++)
                     {
@@ -536,11 +536,11 @@ public class InventoryScannerDebuggerPane : IDebugPane
             ImGui.TreePop();
         }
 
-        if (ImGui.TreeNode("Retainer Crystals##retainerCrystals"))
+        if (ImGui.TreeNode("雇员水晶##retainerCrystals"))
         {
             foreach (var retainer in _inventoryScanner.RetainerCrystals)
             {
-                if (ImGui.TreeNode("Retainer Crystals" + retainer.Key + "##crystals" + retainer.Key))
+                if (ImGui.TreeNode("雇员水晶" + retainer.Key + "##crystals" + retainer.Key))
                 {
                     for (int i = 0; i < retainer.Value.Length; i++)
                     {
@@ -555,11 +555,11 @@ public class InventoryScannerDebuggerPane : IDebugPane
             ImGui.TreePop();
         }
 
-        if (ImGui.TreeNode("Retainer Gil##retainerGil"))
+        if (ImGui.TreeNode("雇员金币##retainerGil"))
         {
             foreach (var retainer in _inventoryScanner.RetainerGil)
             {
-                if (ImGui.TreeNode("Retainer Gil" + retainer.Key + "##gil" + retainer.Key))
+                if (ImGui.TreeNode("雇员金币" + retainer.Key + "##gil" + retainer.Key))
                 {
                     for (int i = 0; i < retainer.Value.Length; i++)
                     {
@@ -619,7 +619,7 @@ public class InventoryScannerDebuggerPane : IDebugPane
             InventoryType.HousingExteriorStoreroom2,
         };
 
-        if (ImGui.TreeNode("Housing Inventories"))
+        if (ImGui.TreeNode("房屋仓库"))
         {
             foreach (var bagType in bags)
             {

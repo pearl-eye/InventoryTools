@@ -1,19 +1,24 @@
-﻿{
-  "Author": "Critical_Impact",
-  "Name": "Allagan Tools",
-  "Punchline": "Get organized in FFXIV, easily locate/show where to sort items, plan your crafting, and search for mobs, duties, airships, and submarines!",
-  "Description": "Allagan Tool's primary purpose is to keep track of items across your characters/retainers/free company. With it's filter system you'll never lose track of items or not know where they should be sorted.\n\nWhile this is it's primary purpose, it has quite an exhaustive list of other features including:\n\t- Craft planning\n\t- Market board integration\n\t- Item highlighting in inventories when searching/sorting and picking ingredients for crafts\n\t- Item window that includes vendor and source information among other things\n\t- Duty/mob/airship/submarine windows that are fully searchable\n\t- A filtering system that lets you setup complex searches for specific items \n\t- Tooltip integration that'll let you see where the items are on hover",
-  "Tags": ["Inventory", "Sorting", "Filtering"],
+{
+  "Author": "Critical_Impact；汉化维护：pearl-eye",
+  "Name": "Allagan Tools CN（亚拉戈工具）",
+  "Punchline": "跨角色与雇员查找物品、整理背包、规划制作，并查询物品来源与用途。",
+  "Description": "Allagan Tools 国服源码汉化版。\n\n支持角色、雇员和部队物品追踪，物品筛选与整理、制作清单、市场价格、背包高亮，以及物品、怪物、副本、飞空艇和潜水艇图鉴。\n\n本分支由 pearl-eye 维护中文界面，基于国服兼容源码构建。",
+  "Tags": [
+    "背包",
+    "整理",
+    "制作",
+    "汉化"
+  ],
   "InternalName": "InventoryTools",
-  "RepoUrl": "https://github.com/Critical-Impact/InventoryTools",
+  "RepoUrl": "https://github.com/pearl-eye/Allagan-Tools-CN",
   "LoadPriority": 0,
   "CanUnloadAsync": false,
-  "IconUrl": "https://raw.githubusercontent.com/Critical-Impact/InventoryTools/main/InventoryTools/Images/icon.png",
+  "IconUrl": "https://raw.githubusercontent.com/pearl-eye/Allagan-Tools-CN/zh-CN/InventoryTools/Images/icon.png",
   "ImageUrls": [
-    "https://raw.githubusercontent.com/Critical-Impact/InventoryTools/main/InventoryTools/Images/banner1.png",
-    "https://raw.githubusercontent.com/Critical-Impact/InventoryTools/main/InventoryTools/Images/screenshot1.png",
-    "https://raw.githubusercontent.com/Critical-Impact/InventoryTools/main/InventoryTools/Images/screenshot2.png",
-    "https://raw.githubusercontent.com/Critical-Impact/InventoryTools/main/InventoryTools/Images/screenshot3.png",
-    "https://raw.githubusercontent.com/Critical-Impact/InventoryTools/main/InventoryTools/Images/screenshot4.png"
+    "https://raw.githubusercontent.com/pearl-eye/Allagan-Tools-CN/zh-CN/InventoryTools/Images/banner1.png",
+    "https://raw.githubusercontent.com/pearl-eye/Allagan-Tools-CN/zh-CN/InventoryTools/Images/screenshot1.png",
+    "https://raw.githubusercontent.com/pearl-eye/Allagan-Tools-CN/zh-CN/InventoryTools/Images/screenshot2.png",
+    "https://raw.githubusercontent.com/pearl-eye/Allagan-Tools-CN/zh-CN/InventoryTools/Images/screenshot3.png",
+    "https://raw.githubusercontent.com/pearl-eye/Allagan-Tools-CN/zh-CN/InventoryTools/Images/screenshot4.png"
   ]
 }

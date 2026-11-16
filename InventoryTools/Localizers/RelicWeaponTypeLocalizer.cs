@@ -10,97 +10,97 @@ public class RelicWeaponTypeLocalizer : ILocalizer<RelicWeaponType>
         switch (relicWeaponType)
         {
             case RelicWeaponType.Unknown:
-                return "Unknown";
+                return "未知";
             case RelicWeaponType.ZodiacBase:
-                return "Base";
+                return "初始";
             case RelicWeaponType.ZodiacZenith:
-                return "Zenith";
+                return "天极";
             case RelicWeaponType.ZodiacAtma:
-                return "Atma";
+                return "天命";
             case RelicWeaponType.ZodiacAnimus:
-                return "Animus";
+                return "天书";
             case RelicWeaponType.ZodiacNovus:
-                return "Novus";
+                return "新星";
             case RelicWeaponType.ZodiacNexus:
-                return "Nexus";
+                return "镇魂";
             case RelicWeaponType.ZodiacZodiac:
-                return "Zodiac";
+                return "黄道";
             case RelicWeaponType.ZodiacZeta:
-                return "Zeta";
+                return "本我";
             case RelicWeaponType.AnimaAnimated:
-                return "Animated";
+                return "元灵";
             case RelicWeaponType.AnimaAwoken:
-                return "Awoken";
+                return "觉醒";
             case RelicWeaponType.AnimaAnima:
-                return "Anima";
+                return "元灵";
             case RelicWeaponType.AnimaHyperconductive:
-                return "Hyperconductive";
+                return "超导";
             case RelicWeaponType.AnimaReconditioned:
-                return "Reconditioned";
+                return "改良";
             case RelicWeaponType.AnimaSharpened:
-                return "Sharpened";
+                return "锋利";
             case RelicWeaponType.AnimaComplete:
-                return "Complete";
+                return "完成";
             case RelicWeaponType.AnimaLux:
-                return "Lux";
+                return "凝光";
             case RelicWeaponType.EurekanAntiquated:
-                return "Antiquated";
+                return "古旧";
             case RelicWeaponType.EurekanBase:
-                return "Base";
+                return "初始";
             case RelicWeaponType.EurekanBase1:
-                return "Base + 1";
+                return "初始+1";
             case RelicWeaponType.EurekanBase2:
-                return "Base + 2";
+                return "初始+2";
             case RelicWeaponType.EurekanAnemos:
-                return "Anemos";
+                return "常风";
             case RelicWeaponType.EurekanPagos:
-                return "Pagos";
+                return "涌冰";
             case RelicWeaponType.EurekanPagos1:
-                return "Pagos + 1";
+                return "涌冰+1";
             case RelicWeaponType.EurekanElemental:
-                return "Elemental";
+                return "元素";
             case RelicWeaponType.EurekanElemental1:
-                return "Elemental + 1";
+                return "元素+1";
             case RelicWeaponType.EurekanElemental2:
-                return "Elemental + 2";
+                return "元素+2";
             case RelicWeaponType.EurekanPyros:
-                return "Pyros";
+                return "火焰";
             case RelicWeaponType.EurekanHydatos:
-                return "Hydatos";
+                return "丰水";
             case RelicWeaponType.EurekanHydatos1:
-                return "Hydatos + 1";
+                return "丰水+1";
             case RelicWeaponType.EurekanBaseEureka:
-                return "Base";
+                return "初始";
             case RelicWeaponType.EurekanEureka:
-                return "Eureka";
+                return "优雷卡";
             case RelicWeaponType.EurekanPhyseos:
-                return "Physeos";
+                return "最终";
             case RelicWeaponType.ResistanceResistance:
-                return "Resistance";
+                return "义军";
             case RelicWeaponType.ResistanceAugmentedResistance:
-                return "Augmented Resistance";
+                return "改良型义军";
             case RelicWeaponType.ResistanceRecollection:
-                return "Recollection";
+                return "记忆";
             case RelicWeaponType.ResistanceLawsOrder:
-                return "Laws Order";
+                return "裁判";
             case RelicWeaponType.ResistanceAugmentedLawsOrder:
-                return "Augmented Laws Order";
+                return "改良型裁判";
             case RelicWeaponType.ResistanceBlades:
-                return "Blades";
+                return "女王之刃";
             case RelicWeaponType.MandervilleManderville:
-                return "Manderville";
+                return "曼德维尔";
             case RelicWeaponType.MandervilleAmazing:
-                return "Amazing";
+                return "惊异";
             case RelicWeaponType.MandervilleMajestic:
-                return "Majestic";
+                return "威严";
             case RelicWeaponType.MandervilleMandervillous:
-                return  "Mandervillous";
+                return  "盈满";
             case RelicWeaponType.PhantomPenumbrae:
-                return "Penumbrae";
+                return "半影";
             case RelicWeaponType.PhantomUmbrae:
-                return "Umbrae";
+                return "本影";
             case RelicWeaponType.PhantomObscurum:
-                return "Obscurum";
+                return "黯影";
         }
 
         return relicWeaponType.ToString();

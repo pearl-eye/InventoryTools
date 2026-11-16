@@ -9,21 +9,21 @@ public class RoleLocalizer : ILocalizer<RoleType>
         switch (instance)
         {
             case RoleType.Tank:
-                return "Tank";
+                return "防护职业";
             case RoleType.DPSMelee:
-                return "DPS (Melee)";
+                return "近战进攻职业";
             case RoleType.DPSRanged:
-                return "DPS (Ranged)";
+                return "远程进攻职业";
             case RoleType.Healer:
-                return "Healer";
+                return "治疗职业";
             case RoleType.Crafting:
-                return "Crafting";
+                return "制作";
             case RoleType.Gathering:
-                return "Gathering";
+                return "采集";
             case RoleType.Other:
-                return "Other";
+                return "其他";
         }
 
-        return "Unknown";
+        return "未知";
     }
 }

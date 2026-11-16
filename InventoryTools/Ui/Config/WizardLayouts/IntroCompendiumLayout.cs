@@ -7,19 +7,19 @@ public class IntroCompendiumLayout : ContentLayout
 {
     public override PageLayout Build()
     {
-        return Page("intro/compendium", "Compendium",
-            Paragraph("The compendium is a browsable reference for the game's content, built from the same data the plugin uses everywhere else. If you want to know what something is, where it comes from or what drops it, this is where to look."),
-            Section("What's in it",
-                Bullet("Items, quests and achievements."),
-                Bullet("Mounts, minions and glamour sets."),
-                Bullet("Duties, leves, beast tribes and custom deliveries."),
-                Bullet("Relic weapons and tools, master recipe books, folklore tomes and soul crystals."),
-                Bullet("NPCs, territories, and airship and submarine routes."),
-                Bullet("Classes, gearsets, chocobo items and more besides.")),
-            Section("Have a look",
-                Paragraph("Each entry links through to everything related to it, so you can follow a chain from an item to the duty that drops it to the NPC that sells the rest."),
-                OpenWindow<CompendiumTypesWindow>("Open the compendium"),
-                Paragraph("It also lives under the Compendium menu in the items and crafts windows, or the /compendium command."))
+        return Page("intro/compendium", "图鉴",
+            Paragraph("图鉴提供可浏览的游戏内容资料，使用插件其他功能所用的相同数据。想了解某个内容是什么、来自哪里或由谁掉落，都可以在这里查找。"),
+            Section("包含的内容",
+                Bullet("物品、任务和成就。"),
+                Bullet("坐骑、宠物和幻化套装。"),
+                Bullet("副本、理符任务、友好部族和老主顾交易。"),
+                Bullet("古武器及工具、秘籍、传承录和灵魂水晶。"),
+                Bullet("NPC、区域，以及飞空艇和潜水艇航线。"),
+                Bullet("职业、装备方案、陆行鸟物品等。")),
+            Section("开始浏览",
+                Paragraph("每条资料都链接到相关内容，可以从物品找到掉落它的副本，再找到出售相关物品的NPC。"),
+                OpenWindow<CompendiumTypesWindow>("打开图鉴"),
+                Paragraph("也可从物品或制作窗口的“图鉴”菜单打开，或使用 /compendium 指令。"))
         );
     }
 }

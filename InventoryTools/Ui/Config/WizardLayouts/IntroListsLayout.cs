@@ -6,15 +6,15 @@ public class IntroListsLayout : ContentLayout
 {
     public override PageLayout Build()
     {
-        return Page("intro/lists", "Lists",
-            Paragraph("Almost everything in the plugin hangs off a list. A list is a saved search over your items, and once you have one you can highlight its results in game, sort them, or track them."),
-            Section("Three kinds",
-                Bullet("Search list: find items across your inventories."),
-                Bullet("Sort list: find items and work out where they should be moved to."),
-                Bullet("Game item list: search every item in the game, not just the ones you own.")),
-            Section("Have a look",
-                Paragraph("The items window is where lists live. There are sample lists you can install as well."),
-                OpenWindow<FiltersWindow>("Open the items window"))
+        return Page("intro/lists", "清单",
+            Paragraph("插件的多数功能都基于清单。清单是保存下来的物品搜索条件，可用于高亮搜索结果、整理物品或持续追踪。"),
+            Section("三种清单",
+                Bullet("搜索清单：在各背包中查找物品。"),
+                Bullet("整理清单：查找物品，并规划应移至的位置。"),
+                Bullet("游戏物品清单：搜索游戏中的全部物品。")),
+            Section("开始浏览",
+                Paragraph("可在物品窗口管理清单，也可安装示例清单。"),
+                OpenWindow<FiltersWindow>("打开物品窗口"))
         );
     }
 }

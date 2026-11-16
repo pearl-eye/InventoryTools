@@ -10,7 +10,7 @@ namespace InventoryTools.Logic.Settings
     {
         private readonly Dictionary<HighlightWhen, string> _staticChoices = new()
         {
-            {HighlightWhen.Always, "Always"}, {HighlightWhen.WhenSearching, "When Searching"}
+            {HighlightWhen.Always, "始终"}, {HighlightWhen.WhenSearching, "搜索时"}
         };
 
         public override HighlightWhen DefaultValue { get; set; } = HighlightWhen.WhenSearching;
@@ -26,8 +26,8 @@ namespace InventoryTools.Logic.Settings
         }
 
         public override string Key { get; set; } = "HighlightWhen";
-        public override string Name { get; set; } = "Highlight When?";
-        public override string HelpText { get; set; } = "When highlighting is turned on for a list, should it always be active or should it only be active when a column is being searched in";
+        public override string Name { get; set; } = "高亮时机";
+        public override string HelpText { get; set; } = "启用清单高亮后，是始终高亮，还是仅在搜索某列时高亮？";
         
         public override Dictionary<HighlightWhen, string> Choices => _staticChoices;
         public override string Version => "1.7.0.0";

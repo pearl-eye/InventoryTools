@@ -40,7 +40,7 @@ public class AcquisitionDebuggerPane : DebugLogPane
 
     public override void DrawInfo()
     {
-        if (ImGui.CollapsingHeader("Configuration"))
+        if (ImGui.CollapsingHeader("设置"))
         {
             var config = _acquisitionMonitorService.Configuration;
 
@@ -55,7 +55,7 @@ public class AcquisitionDebuggerPane : DebugLogPane
             }
         }
 
-        if (ImGui.CollapsingHeader("Recent Activity"))
+        if (ImGui.CollapsingHeader("最近活动"))
         {
             ImGui.TextUnformatted(
                 "See the log pane below for a chronological list of acquisition events."

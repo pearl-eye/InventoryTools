@@ -9,35 +9,35 @@ public static class CraftGroupTypeExtension
         switch (craftGroupType)
         {
             case CraftGroupType.Crystals:
-                return "Crystals";
+                return "水晶";
             case CraftGroupType.Currency:
-                return "Currency";
+                return "货币";
             case CraftGroupType.Output:
-                return "Output";
+                return "成品";
             case CraftGroupType.Precraft:
-                return "Precraft";
+                return "半成品";
             case CraftGroupType.EverythingElse:
-                return "Gather/Buy";
+                return "采集/购买";
             case CraftGroupType.Retrieve:
-                return "Retrieve";
+                return "取出";
             case CraftGroupType.HouseVendors:
-                return "House Vendor";
+                return "房屋商人";
         }
 
-        return "Unknown";
+        return "未知";
     }
     public static string FormattedName(this PrecraftGroupSetting precraftGroupSetting)
     {
         switch (precraftGroupSetting)
         {
             case PrecraftGroupSetting.ByDepth:
-                return "By Depth";
+                return "按制作层级";
             case PrecraftGroupSetting.Together:
-                return "Together";
+                return "合并";
             case PrecraftGroupSetting.ByClass:
-                return "By Class";
+                return "按职业";
         }
 
-        return "Unknown";
+        return "未知";
     }
 }

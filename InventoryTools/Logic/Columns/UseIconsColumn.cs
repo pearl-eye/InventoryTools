@@ -43,11 +43,11 @@ namespace InventoryTools.Logic.Columns
             _itemInfoRenderService = itemInfoRenderService;
             _stringColumnFactory = stringColumnFactory;
             _useCategorySelectorSetting = useCategorySelectorSetting;
-            this.requirementSetting = _stringColumnFactory.Invoke("requirement", "Requires", "Search for a source that requires a specific item.",
+            this.requirementSetting = _stringColumnFactory.Invoke("requirement", "所需物品", "搜索需要指定物品的来源。",
                 null);
-            this.rewardsSetting = _stringColumnFactory.Invoke("rewards", "Rewards", "Search for a source that rewards a specific item. While this might seem redundant, certain sources provide more than one item.",
+            this.rewardsSetting = _stringColumnFactory.Invoke("rewards", "奖励", "搜索会奖励指定物品的来源。部分来源会同时提供多种物品。",
                 null);
-            this.mapSetting = _stringColumnFactory.Invoke("maps", "Maps", "Search for a source in a specific map.",
+            this.mapSetting = _stringColumnFactory.Invoke("maps", "地图", "搜索位于指定地图的来源。",
                 null);
             _mapSheet = mapSheet;
 
@@ -138,10 +138,10 @@ namespace InventoryTools.Logic.Columns
         }
 
         public override float Width { get; set; } = 250;
-        public override string Name { get; set; } = "Uses";
+        public override string Name { get; set; } = "用途";
 
         public override string HelpText { get; set; } =
-            "Shows icons indicating what the items drop/can be used for";
+            "以图标显示物品可获得什么或可用于哪些用途。";
         public override bool HasFilter { get; set; } = true;
         public override ColumnFilterType FilterType { get; set; } = ColumnFilterType.Text;
 public override IEnumerable<SearchResult> Filter(ColumnConfiguration columnConfiguration,

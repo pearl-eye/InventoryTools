@@ -54,7 +54,7 @@ public class TooltipLocationScopeLimitSetting : Setting<List<InventorySearchScop
         if (disableReset != true && HasValueSet(configuration))
         {
             ImGui.SameLine();
-            if (ImGui.Button("Reset##" + Key + "Reset"))
+            if (ImGui.Button("重置##" + Key + "Reset"))
             {
                 Reset(configuration);
             }
@@ -67,8 +67,8 @@ public class TooltipLocationScopeLimitSetting : Setting<List<InventorySearchScop
     }
 
     public override string Key { get; set; } = "TooltipLocationScopeLimit";
-    public override string Name { get; set; } = "Add Item Locations (Search Locations)";
-    public override string HelpText { get; set; } = "When showing the locations of the items you own in the tooltip, which inventories should be included in the search?";
+    public override string Name { get; set; } = "添加物品位置（搜索位置）";
+    public override string HelpText { get; set; } = "物品提示中显示持有位置时，应搜索哪些背包？";
     
     public override string Version => "1.7.0.11";
 }

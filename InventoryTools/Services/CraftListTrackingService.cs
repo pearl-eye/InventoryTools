@@ -198,15 +198,15 @@ public class CraftListTrackingService : IHostedService
         string? amountText;
         if (IsToggleOn(_completionOnlyFilter, activeCraftList))
         {
-            amountText = complete ? $"completed" : null;
+            amountText = complete ? $"已完成" : null;
         }
         else if (complete)
         {
-            amountText = $"completed";
+            amountText = $"已完成";
         }
         else
         {
-            amountText = $"{remaining} remaining";
+            amountText = $"{remaining} 剩余";
         }
 
         if (amountText == null)

@@ -17,7 +17,7 @@ namespace InventoryTools.Ui
         private readonly IFileDialogManager _fileDialogManager;
         private readonly IChatUtilities _chatUtilities;
 
-        public SupportDumpWindow(ILogger<SupportDumpWindow> logger, MediatorService mediator, ImGuiService imGuiService, InventoryToolsConfiguration configuration, SupportDumpService supportDumpService, IFileDialogManager fileDialogManager, IChatUtilities chatUtilities, string name = "Generate Support Dump") : base(logger, mediator, imGuiService, configuration, name)
+        public SupportDumpWindow(ILogger<SupportDumpWindow> logger, MediatorService mediator, ImGuiService imGuiService, InventoryToolsConfiguration configuration, SupportDumpService supportDumpService, IFileDialogManager fileDialogManager, IChatUtilities chatUtilities, string name = "生成诊断文件") : base(logger, mediator, imGuiService, configuration, name)
         {
             _supportDumpService = supportDumpService;
             _fileDialogManager = fileDialogManager;
@@ -26,7 +26,7 @@ namespace InventoryTools.Ui
 
         public override void Initialize()
         {
-            WindowName = "Generate Support Dump";
+            WindowName = "生成诊断文件";
             Key = "supportdump";
         }
 
@@ -35,20 +35,20 @@ namespace InventoryTools.Ui
         public override Vector2? MaxSize { get; } = new Vector2(800, 400);
         public override Vector2? MinSize { get; } = new Vector2(300, 150);
         public override string GenericKey { get; } = "supportdump";
-        public override string GenericName { get; } = "Generate Support Dump";
+        public override string GenericName { get; } = "生成诊断文件";
         public override bool DestroyOnClose => true;
 
         public override void DrawWindow()
         {
             ImGui.PushTextWrapPos();
             ImGui.TextWrapped(
-                "Only press this if you have been instructed to, it will generate a zip file containing your inventory, the allagan tools configuration, and your logs. If you are attempting to provide this information to help fix a bug, turn on Verbose Logging in File, replicate the bug and then generate this dump. Proceed?");
+                "仅在需要排查问题时使用。此功能会生成包含背包记录、插件设置和日志的 ZIP 文件。若要协助修复问题，请先在“文件”菜单启用详细日志，重现问题后再生成。是否继续？");
             ImGui.PopTextWrapPos();
             ImGui.NewLine();
 
-            if (ImGui.Button("Proceed"))
+            if (ImGui.Button("继续"))
             {
-                _fileDialogManager.SaveFileDialog("Save support dump", "*.zip", "support_dump.zip", ".zip",
+                _fileDialogManager.SaveFileDialog("保存诊断文件", "*.zip", "support_dump.zip", ".zip",
                     (success, path) =>
                     {
                         if (success)
@@ -60,7 +60,7 @@ namespace InventoryTools.Ui
 
             ImGui.SameLine();
 
-            if (ImGui.Button("Cancel"))
+            if (ImGui.Button("取消"))
             {
                 this.IsOpen = false;
             }
@@ -72,15 +72,15 @@ namespace InventoryTools.Ui
             if (result.Success)
             {
                 var included = result.IncludedFiles.Any() ? string.Join(", ", result.IncludedFiles) : "no files";
-                _chatUtilities.Print($"Support dump saved to {result.ZipPath} ({included}).");
+                _chatUtilities.Print($"诊断文件已保存到 {result.ZipPath} ({included}).");
                 if (result.MissingFiles.Any())
                 {
-                    _chatUtilities.PrintError($"The following files could not be included in the support dump: {string.Join(", ", result.MissingFiles)}.");
+                    _chatUtilities.PrintError($"以下文件未能包含在诊断文件中：{string.Join(", ", result.MissingFiles)}.");
                 }
             }
             else
             {
-                _chatUtilities.PrintError("Failed to generate the support dump. Please check your Dalamud log for details.");
+                _chatUtilities.PrintError("生成诊断文件失败，请查看卫月日志了解详情。");
             }
 
             this.IsOpen = false;

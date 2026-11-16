@@ -19,10 +19,10 @@ namespace InventoryTools.Logic.Settings
         }
 
         public override string Key { get; set; } = "InvertTabHighlighting";
-        public override string Name { get; set; } = "Invert Tab Highlighting?";
+        public override string Name { get; set; } = "反向高亮标签页？";
 
         public override string HelpText { get; set; } =
-            "Should all the tabs not matching a list be highlighted instead? This can be overridden in the list configuration.";
+            "是否改为高亮不符合清单条件的背包分页？可在清单设置中单独覆盖。";
         
         public override string Version => "1.7.0.0";
 

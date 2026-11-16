@@ -9,7 +9,7 @@ namespace InventoryTools.Logic.Filters;
 
 public class CanBeHighQualityFilter : GenericBooleanFilter
 {
-    public CanBeHighQualityFilter(ILogger<CanBeHighQualityFilter> logger, ImGuiService imGuiService) : base("CanBeHq", "Can be High Quality?", "Can the item be high quality?", FilterCategory.Basic, item => item.Item.Base.CanBeHq, item => item.Base.CanBeHq, logger, imGuiService)
+    public CanBeHighQualityFilter(ILogger<CanBeHighQualityFilter> logger, ImGuiService imGuiService) : base("CanBeHq", "能否为优质？", "此物品能否为优质？", FilterCategory.Basic, item => item.Item.Base.CanBeHq, item => item.Base.CanBeHq, logger, imGuiService)
     {
     }
 }

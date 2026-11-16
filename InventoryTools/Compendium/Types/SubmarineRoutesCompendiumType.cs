@@ -65,12 +65,12 @@ public class SubmarineRoutesCompendiumType : CompendiumType<SubmarineExploration
 
     public override void BuildColumns(CompendiumColumnBuilder<SubmarineExplorationRow> builder)
     {
-        builder.AddCompendiumOpenViewColumn(new(){Key = "icon", Name = "Icon", HelpText = "The icon of the route", Version = "14.0.3", CompendiumType = this, RowIdSelector = row => row.RowId, ValueSelector = this.GetIcon});
-        builder.AddStringColumn(new (){Key = "name", Name = "Name", HelpText = "The name of the route", Version = "14.0.3", ValueSelector = row => row.Base.Destination.ToImGuiString()});
-        builder.AddStringColumn(new (){Key = "unlock", Name = "Unlock Route", HelpText = "The name of the route that unlocks this", Version = "14.0.3", ValueSelector = row => row.Unlock?.Base.Destination.ToImGuiString() ?? ""});
-        builder.AddIntegerColumn(new(){Key = "rankrequired", Name = "Rank Required", HelpText = "The rank required for the route", Version = "14.0.3", ValueSelector =row => row.Base.RankReq.ToString()});
-        builder.AddIntegerColumn(new(){Key = "cerelumrequired", Name = "Ceruleum Required", HelpText = "The ceruleum required for the route", Version = "14.0.3", ValueSelector =row => row.Base.CeruleumTankReq.ToString()});
-        builder.AddItemsColumn(new(){Key = "drops", Name = "Drops", HelpText = "The drops for this submarine route", Version = "14.0.3", ValueSelector = row => row.DropItems, ColumnFlags = ImGuiTableColumnFlags.WidthFixed});
+        builder.AddCompendiumOpenViewColumn(new(){Key = "icon", Name = "图标", HelpText = "航线的图标", Version = "14.0.3", CompendiumType = this, RowIdSelector = row => row.RowId, ValueSelector = this.GetIcon});
+        builder.AddStringColumn(new (){Key = "name", Name = "名称", HelpText = "航线的名称", Version = "14.0.3", ValueSelector = row => row.Base.Destination.ToImGuiString()});
+        builder.AddStringColumn(new (){Key = "unlock", Name = "前置航线", HelpText = "解锁此航线所需的前置航线名称", Version = "14.0.3", ValueSelector = row => row.Unlock?.Base.Destination.ToImGuiString() ?? ""});
+        builder.AddIntegerColumn(new(){Key = "rankrequired", Name = "所需等级", HelpText = "此航线要求的等级", Version = "14.0.3", ValueSelector =row => row.Base.RankReq.ToString()});
+        builder.AddIntegerColumn(new(){Key = "cerelumrequired", Name = "所需青磷水", HelpText = "此航线需要消耗的青磷水", Version = "14.0.3", ValueSelector =row => row.Base.CeruleumTankReq.ToString()});
+        builder.AddItemsColumn(new(){Key = "drops", Name = "掉落物品", HelpText = "此潜水艇航线的掉落物品", Version = "14.0.3", ValueSelector = row => row.DropItems, ColumnFlags = ImGuiTableColumnFlags.WidthFixed});
     }
 
     public override void BuildViewFields(CompendiumViewBuilder viewBuilder, SubmarineExplorationRow row)
@@ -78,13 +78,13 @@ public class SubmarineRoutesCompendiumType : CompendiumType<SubmarineExploration
         viewBuilder.SetupDefaults(this, row);
         var information = new List<(string Header, string Value, bool IsVisible)>
         {
-            ("Rank Req.", row.Base.RankReq.ToString(), true),
-            ("Ceruleum Req.", row.Base.CeruleumTankReq.ToString(), true),
+            ("所需等级", row.Base.RankReq.ToString(), true),
+            ("所需青磷水", row.Base.CeruleumTankReq.ToString(), true),
         };
         viewBuilder.AddInfoTableSection(new InfoTableSectionOptions()
         {
             SectionKey = "information",
-            SectionName = "Information",
+            SectionName = "信息",
             Items = information.AsReadOnly()
         });
         if (row.Unlock != null)
@@ -92,7 +92,7 @@ public class SubmarineRoutesCompendiumType : CompendiumType<SubmarineExploration
             viewBuilder.AddSingleRowRefSection(new SingleRowRefSectionOptions()
             {
                 SectionKey = "unlocked_via",
-                SectionName = "Unlocked Via",
+                SectionName = "解锁途径",
                 RelatedRef = row.Unlock.Base.AsUntypedRowRef()
             });
         }
@@ -100,7 +100,7 @@ public class SubmarineRoutesCompendiumType : CompendiumType<SubmarineExploration
         {
             RelatedRefs = _submarineExplorationSheet.Where(c => c.UnlockId != null && c.UnlockId == row.RowId).Select(c => c.Base.AsUntypedRowRef()).ToList(),
             SectionKey = "unlocks",
-            SectionName = "Unlocks",
+            SectionName = "可解锁航线",
             HideWhenEmpty = true
         });
 
@@ -108,7 +108,7 @@ public class SubmarineRoutesCompendiumType : CompendiumType<SubmarineExploration
         {
             Items = row.DropItems.Select(c => new ItemInfo(c)).ToList(),
             SectionKey = "potential_drops",
-            SectionName = "Potential Drops"
+            SectionName = "可能获得的物品"
         });
     }
 
@@ -125,9 +125,9 @@ public class SubmarineRoutesCompendiumType : CompendiumType<SubmarineExploration
 
     public override List<Type>? RelatedTypes => [typeof(SubmarineExploration)];
 
-    public override string Singular => "Submarine Route";
-    public override string Plural => "Submarine Routes";
-    public override string Description => "Routes traversed by company submarines";
+    public override string Singular => "潜水艇航线";
+    public override string Plural => "潜水艇航线";
+    public override string Description => "部队潜水艇可探索的航线。";
     public override string Key => "submarines";
     public override (string?, uint?) Icon => (null, Icons.SubmarineIcon);
 }

@@ -17,7 +17,7 @@ public class ChangelogWindow : GenericWindow, IMenuWindow
     private SemanticVersion? scrollTo;
     private SemanticVersion? viewingVersion;
 
-    public ChangelogWindow(ILogger<ChangelogWindow> logger, MediatorService mediator, ImGuiService imGuiService, InventoryToolsConfiguration configuration, ChangelogService changelogService) : base(logger, mediator, imGuiService, configuration, "Changelog")
+    public ChangelogWindow(ILogger<ChangelogWindow> logger, MediatorService mediator, ImGuiService imGuiService, InventoryToolsConfiguration configuration, ChangelogService changelogService) : base(logger, mediator, imGuiService, configuration, "更新日志")
     {
         _changelogService = changelogService;
     }
@@ -25,11 +25,11 @@ public class ChangelogWindow : GenericWindow, IMenuWindow
     public override void DrawWindow()
     {
         ImGui.SetNextWindowSize(new Vector2(600, 400), ImGuiCond.FirstUseEver);
-        ImGui.Begin("Changelog");
+        ImGui.Begin("更新日志");
 
         // Sidebar and Main Panel
         var sidebarWidth = 150f;
-        using (var sideBar = ImRaii.Child("Sidebar", new Vector2(sidebarWidth, 0), true))
+        using (var sideBar = ImRaii.Child("侧边栏", new Vector2(sidebarWidth, 0), true))
         {
             if (sideBar)
             {
@@ -62,7 +62,7 @@ public class ChangelogWindow : GenericWindow, IMenuWindow
 
         ImGui.SameLine();
 
-        using (var main = ImRaii.Child("Main", new Vector2(0, 0), true))
+        using (var main = ImRaii.Child("主要", new Vector2(0, 0), true))
         {
             if (main)
             {
@@ -81,10 +81,10 @@ public class ChangelogWindow : GenericWindow, IMenuWindow
                             ImGui.SetScrollHereY(0);
                             scrollTo = null;
                         }
-                        DrawSection("Added", changelog.Item3.Added);
-                        DrawSection("Fixed", changelog.Item3.Fixed);
-                        DrawSection("Changed", changelog.Item3.Changed);
-                        DrawSection("Removed", changelog.Item3.Removed);
+                        DrawSection("新增", changelog.Item3.Added);
+                        DrawSection("修复", changelog.Item3.Fixed);
+                        DrawSection("调整", changelog.Item3.Changed);
+                        DrawSection("移除", changelog.Item3.Removed);
                     }
                 }
             }
@@ -132,7 +132,7 @@ public class ChangelogWindow : GenericWindow, IMenuWindow
 
     public override FilterConfiguration? SelectedConfiguration { get; } = null;
     public override string GenericKey { get; } = "changelog";
-    public override string GenericName { get; } = "Changelog";
+    public override string GenericName { get; } = "更新日志";
     public override bool DestroyOnClose { get; } = true;
     public override bool SaveState { get; } = true;
     public override Vector2? DefaultSize { get; } = new Vector2(500, 500);

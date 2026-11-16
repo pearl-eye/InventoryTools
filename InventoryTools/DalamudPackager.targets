@@ -1,5 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project>
+    <PropertyGroup>
+        <AllaganDotnetCommand Condition="'$(DotNetHostPath)' != ''">$(DotNetHostPath)</AllaganDotnetCommand>
+        <AllaganDotnetCommand Condition="'$(AllaganDotnetCommand)' == ''">dotnet</AllaganDotnetCommand>
+    </PropertyGroup>
+    <Target Name="LocalizeAllaganDependencies" BeforeTargets="PackagePlugin" Condition="'$(Configuration)' == 'Release'">
+        <Exec WorkingDirectory="$(MSBuildProjectDirectory)/.."
+              Command="&quot;$(AllaganDotnetCommand)&quot; run --project &quot;$(MSBuildProjectDirectory)/../tools/LocalizeDependencies/LocalizeDependencies.csproj&quot; --configuration Release --no-launch-profile -- &quot;$(TargetDir)&quot; &quot;$(MSBuildProjectDirectory)/../localization/dependencies.json&quot;" />
+    </Target>
     <Target Name="PackagePlugin" AfterTargets="Build" Condition="'$(Configuration)' == 'Release'">
         <DalamudPackager
                 ProjectDir="$(ProjectDir)"

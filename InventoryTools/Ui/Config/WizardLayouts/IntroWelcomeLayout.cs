@@ -6,14 +6,14 @@ public class IntroWelcomeLayout : ContentLayout
 {
     public override PageLayout Build()
     {
-        return Page("intro/welcome", "Overview",
-            Paragraph("Allagan Tools does three main things. The next few pages cover each briefly. It should take a minute, and all of it is in the Help window later if you want more detail."),
-            Section("Track your inventories",
-                Paragraph("Every item across your characters, retainers, free company, saddlebag and glamour chest, searchable in one place.")),
-            Section("Plan your crafts",
-                Paragraph("Break a craft down into every sub-item, see what you already own, and find where the rest can be bought or gathered.")),
-            Section("Look things up",
-                Paragraph("A database covering items, monsters, duties, NPCs, airships and more telling you where things come from and what they are used for."))
+        return Page("intro/welcome", "概览",
+            Paragraph("接下来会简要介绍 Allagan Tools 的三项主要功能，大约需要一分钟。之后也能在帮助窗口中重新查看。"),
+            Section("记录各处背包",
+                Paragraph("统一搜索角色、雇员、部队、鞍囊和幻化台中的物品。")),
+            Section("规划制作",
+                Paragraph("将配方逐级拆分，核对已持有材料，并查找其他材料的购买或采集来源。")),
+            Section("查询资料",
+                Paragraph("查询物品、怪物、副本、NPC、飞空艇等资料，了解来源和用途。"))
         );
     }
 }

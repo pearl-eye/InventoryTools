@@ -107,7 +107,7 @@ public class InventoryChange : ICsv, IItem
                 {
                     if (ToItem != null)
                     {
-                        _formattedChange = "Gained";
+                        _formattedChange = "获得";
                     }
 
                     break;
@@ -116,7 +116,7 @@ public class InventoryChange : ICsv, IItem
                 {
                     if (FromItem != null && ToItem != null)
                     {
-                        _formattedChange = "Moved";
+                        _formattedChange = "移动";
                     }
 
                     break;
@@ -125,7 +125,7 @@ public class InventoryChange : ICsv, IItem
                 {
                     if (FromItem != null)
                     {
-                        _formattedChange = "Lost";
+                        _formattedChange = "失去";
                     }
 
                     break;
@@ -134,7 +134,7 @@ public class InventoryChange : ICsv, IItem
                 {
                     if (ToItem != null && FromItem != null)
                     {
-                        _formattedChange = "Moved";
+                        _formattedChange = "移动";
                     }
 
                     break;
@@ -146,12 +146,12 @@ public class InventoryChange : ICsv, IItem
                         if (FromItem.Quantity > ToItem.Quantity)
                         {
                             var lost = FromItem.Quantity - ToItem.Quantity;
-                            _formattedChange = "Lost";
+                            _formattedChange = "失去";
                         }
                         else
                         {
                             var gained = ToItem.Quantity - FromItem.Quantity;
-                            _formattedChange = "Gained";
+                            _formattedChange = "获得";
                         }
                     }
 
@@ -163,7 +163,7 @@ public class InventoryChange : ICsv, IItem
                     {
                         if (FromItem.RetainerMarketPrice != ToItem.RetainerMarketPrice)
                         {
-                            _formattedChange = "Market Price Updated";
+                            _formattedChange = "市场价格更新";
                         }
                     }
 
@@ -173,7 +173,7 @@ public class InventoryChange : ICsv, IItem
                 {
                     if (FromItem != null && ToItem != null)
                     {
-                        _formattedChange = "Gearsets Changed";
+                        _formattedChange = "套装变更";
                     }
 
                     break;
@@ -182,7 +182,7 @@ public class InventoryChange : ICsv, IItem
                 {
                     if (ToItem != null && FromItem != null)
                     {
-                        _formattedChange = "Condition Changed";
+                        _formattedChange = "耐久度变更";
                     }
 
                     break;
@@ -191,7 +191,7 @@ public class InventoryChange : ICsv, IItem
                 {
                     if (ToItem != null && FromItem != null)
                     {
-                        _formattedChange = "Spiritbond Changed";
+                        _formattedChange = "精炼度变更";
                     }
 
                     break;
@@ -200,7 +200,7 @@ public class InventoryChange : ICsv, IItem
                 {
                     if (ToItem != null && FromItem != null)
                     {
-                        _formattedChange = "Modified";
+                        _formattedChange = "变更";
                     }
 
                     break;
@@ -209,7 +209,7 @@ public class InventoryChange : ICsv, IItem
 
             if (_formattedChange == null)
             {
-                _formattedChange = "Unknown";
+                _formattedChange = "未知";
             }
         }
 

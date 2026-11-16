@@ -33,9 +33,9 @@ public class IngredientPatchSearchColumn : DecimalColumn
 
 
 
-    public override string Name { get; set; } = "Ingredient Patch Search";
+    public override string Name { get; set; } = "材料使用版本";
     public override float Width { get; set; } = 100;
 
     public override string HelpText { get; set; } =
-        "Shows a number indicating the highest patch a craft material is used in.";
+        "显示使用此材料的配方所属的最新版本。";
 }

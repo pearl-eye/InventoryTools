@@ -33,9 +33,9 @@ public class LeveCompendiumType : CompendiumType<LeveRow>
         _itemInfoCache = itemInfoCache;
     }
 
-    public override string Singular => "Leve";
-    public override string Plural => "Leves";
-    public override string Description => "Leves the character can undertake.";
+    public override string Singular => "理符任务";
+    public override string Plural => "理符任务";
+    public override string Description => "角色可接受的理符任务。";
     public override string Key => "leves";
     public override (string?, uint?) Icon => (null, Icons.LeveIcon);
 
@@ -89,22 +89,22 @@ public class LeveCompendiumType : CompendiumType<LeveRow>
 
     public override void BuildColumns(CompendiumColumnBuilder<LeveRow> builder)
     {
-        builder.AddCompendiumOpenViewColumn(new() { Key = "icon", Name = "##Icon", HelpText = "The icon of the leve", Version = "14.0.3", ValueSelector = this.GetIcon, CompendiumType = this, RowIdSelector = row => row.RowId });
-        builder.AddStringColumn(new() { Key = "name", Name = "Name", HelpText = "The name of the leve", Version = "14.0.3", ValueSelector = row => row.Base.Name.ToImGuiString() });
-        builder.AddStringColumn(new() { Key = "type", Name = "Type", HelpText = "The type of the leve", Version = "14.0.3", ValueSelector = row => row.LeveType.ToString().Humanize() + "(" + row.Base.LeveAssignmentType.Value.Name.ToImGuiString() + ")" });
-        builder.AddIntegerColumn(new() { Key = "level", Name = "Level", HelpText = "The level of the leve", Version = "14.0.3", ValueSelector = row => row.Base.ClassJobLevel.ToString() });
-        builder.AddStringColumn(new() { Key = "leveissuer", Name = "Leve Issuer", HelpText = "The NPC who starts the leve", Version = "14.0.3", ValueSelector = row => row.StartENpc == null ? "N/A" : _npcLocalizer.Format(row.StartENpc.ENpcBase.Base) });
-        builder.AddIntegerColumn(new() { Key = "exp", Name = "EXP", HelpText = "The exp rewarded on completion of the leve", Version = "14.0.3", ValueSelector = row => row.ExpReward.ToString() });
-        builder.AddIntegerColumn(new() { Key = "gil", Name = "Gil", HelpText = "The gil rewarded on completion of the leve", Version = "14.0.3", ValueSelector = row => row.GilReward.ToString() });
-        builder.AddStringColumn(new() { Key = "startlocation", Name = "Start Location", HelpText = "The start location of the leve", Version = "14.0.3", ValueSelector = row => row.StartLocation?.FormattedName ?? null });
-        builder.AddIntegerColumn(new() { Key = "handins", Name = "Hand Ins", HelpText = "The number of times the leve can be handed in", Version = "14.0.3", ValueSelector = row => row.HandIns.ToString() });
+        builder.AddCompendiumOpenViewColumn(new() { Key = "icon", Name = "##Icon", HelpText = "理符任务的图标", Version = "14.0.3", ValueSelector = this.GetIcon, CompendiumType = this, RowIdSelector = row => row.RowId });
+        builder.AddStringColumn(new() { Key = "name", Name = "名称", HelpText = "理符任务的名称", Version = "14.0.3", ValueSelector = row => row.Base.Name.ToImGuiString() });
+        builder.AddStringColumn(new() { Key = "type", Name = "类型", HelpText = "理符任务的类型", Version = "14.0.3", ValueSelector = row => row.LeveType.ToString().Humanize() + "(" + row.Base.LeveAssignmentType.Value.Name.ToImGuiString() + ")" });
+        builder.AddIntegerColumn(new() { Key = "level", Name = "等级", HelpText = "理符任务的等级", Version = "14.0.3", ValueSelector = row => row.Base.ClassJobLevel.ToString() });
+        builder.AddStringColumn(new() { Key = "leveissuer", Name = "理符任务发布人", HelpText = "发布此理符任务的 NPC", Version = "14.0.3", ValueSelector = row => row.StartENpc == null ? "不适用" : _npcLocalizer.Format(row.StartENpc.ENpcBase.Base) });
+        builder.AddIntegerColumn(new() { Key = "exp", Name = "经验值", HelpText = "完成此理符任务获得的经验值", Version = "14.0.3", ValueSelector = row => row.ExpReward.ToString() });
+        builder.AddIntegerColumn(new() { Key = "gil", Name = "金币", HelpText = "完成此理符任务获得的金币", Version = "14.0.3", ValueSelector = row => row.GilReward.ToString() });
+        builder.AddStringColumn(new() { Key = "startlocation", Name = "起始地点", HelpText = "此理符任务的起始地点", Version = "14.0.3", ValueSelector = row => row.StartLocation?.FormattedName ?? null });
+        builder.AddIntegerColumn(new() { Key = "handins", Name = "交纳次数", HelpText = "此理符任务可交纳的次数", Version = "14.0.3", ValueSelector = row => row.HandIns.ToString() });
 
         //Maybe make a reward display column
         builder.AddItemsColumn(new()
         {
             Key = "rewards",
-            Name = "Rewards",
-            HelpText = "The rewards for the leve",
+            Name = "奖励",
+            HelpText = "此理符任务的奖励",
             Version = "14.0.3",
             ValueSelector =
                 row =>
@@ -131,8 +131,8 @@ public class LeveCompendiumType : CompendiumType<LeveRow>
         builder.AddItemsColumn(new()
         {
             Key = "required",
-            Name = "Required Items",
-            HelpText = "The required items for the leve",
+            Name = "所需物品",
+            HelpText = "此理符任务所需的物品",
             Version = "14.0.3",
             ValueSelector =
                 row =>
@@ -159,15 +159,15 @@ public class LeveCompendiumType : CompendiumType<LeveRow>
         viewBuilder.AddInfoTableSection(new()
         {
             SectionKey = "info",
-            SectionName = "Info",
+            SectionName = "信息",
             HideHeader = false,
             Items =
         [
-            ("Level", row.Base.ClassJobLevel.ToString(), true),
-            ("EXP", row.ExpReward.ToString(), row.ExpReward > 0),
-            ("Gil", row.GilReward.ToString(),  row.GilReward > 0),
-            ("Allowances", row.Base.AllowanceCost.ToString(), row.Base.AllowanceCost > 0),
-            ("Hand-Ins", row.HandIns.ToString(), true)
+            ("等级", row.Base.ClassJobLevel.ToString(), true),
+            ("经验值", row.ExpReward.ToString(), row.ExpReward > 0),
+            ("金币", row.GilReward.ToString(),  row.GilReward > 0),
+            ("理符受理限额", row.Base.AllowanceCost.ToString(), row.Base.AllowanceCost > 0),
+            ("交纳次数", row.HandIns.ToString(), true)
         ]
         });
         if (row.StartENpc != null && row.StartENpc.ENpcBase.Locations.Any())
@@ -175,7 +175,7 @@ public class LeveCompendiumType : CompendiumType<LeveRow>
             viewBuilder.AddMapLinkSectionSection(new MapLinkViewSectionOptions()
             {
                 SectionKey = "leve_issuer",
-                SectionName = "Leve Issuer",
+                SectionName = "理符任务发布人",
                 MapLink = new MapLinkEntry(Icons.FlagIcon, _npcLocalizer.Format(row.StartENpc.ENpcBase.Base), row.StartENpc.ENpcBase.Locations.First().FormattedName, row.StartENpc.ENpcBase.Locations.First())
             });
         }
@@ -184,7 +184,7 @@ public class LeveCompendiumType : CompendiumType<LeveRow>
             viewBuilder.AddMapLinkSectionSection(new MapLinkViewSectionOptions()
             {
                 SectionKey = "leve_start",
-                SectionName = "Leve Start",
+                SectionName = "理符任务起点",
                 MapLink = new MapLinkEntry(Icons.FlagIcon, row.StartLocation.FormattedName, row.StartLocation.FormattedName, row.StartLocation)
             });
         }
@@ -199,7 +199,7 @@ public class LeveCompendiumType : CompendiumType<LeveRow>
                 viewBuilder.AddItemListSection(new ItemListSectionOptions()
                 {
                     SectionKey = "required_items",
-                    SectionName = "Required Items",
+                    SectionName = "所需物品",
                     Items = requiredItems,
                 });
             }
@@ -234,7 +234,7 @@ public class LeveCompendiumType : CompendiumType<LeveRow>
             viewBuilder.AddItemListSection(new ItemListSectionOptions()
             {
                 SectionKey = "reward_items",
-                SectionName = "Reward Items",
+                SectionName = "奖励物品",
                 Items = rewards,
             });
         }
@@ -259,18 +259,18 @@ public class LeveCompendiumType : CompendiumType<LeveRow>
             new CompendiumGrouping<LeveRow>()
             {
                 Key = "type",
-                Name = "Type",
+                Name = "类型",
                 GroupFunc = row => row.LeveType,
                 GroupMapping = row =>
                 {
                     var leveType = (LeveType)row;
                     return leveType switch
                     {
-                        LeveType.Battle => "Battle",
-                        LeveType.Gathering => "Gathering",
-                        LeveType.Craft => "Craft",
-                        LeveType.Company => "Company",
-                        _ => "Unknown"
+                        LeveType.Battle => "战斗",
+                        LeveType.Gathering => "采集",
+                        LeveType.Craft => "制作",
+                        LeveType.Company => "军队",
+                        _ => "未知"
                     };
                 },
             }

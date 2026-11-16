@@ -109,7 +109,7 @@ public class CharacterDebuggerPane : DebugLogPane
             ImGui.TextUnformatted($"Internal Character ID: {_characterMonitor.InternalCharacterId}");
 
             ImGui.Separator();
-            ImGui.TextUnformatted("Active Character:");
+            ImGui.TextUnformatted("当前角色:");
             ImGui.TextUnformatted(_characterMonitor.ActiveCharacter != null
                 ? $"{_characterMonitor.ActiveCharacter.Name} ({_characterMonitor.ActiveCharacterId})"
                 : "<none>");
@@ -125,7 +125,7 @@ public class CharacterDebuggerPane : DebugLogPane
                 : "<none>");
         }
 
-        if (ImGui.CollapsingHeader("Housing"))
+        if (ImGui.CollapsingHeader("房屋"))
         {
             ImGui.TextUnformatted($"Active House ID: {_characterMonitor.ActiveHouseId}");
             ImGui.TextUnformatted($"Cached Ward Id: {_characterMonitor.InternalWardId}");
@@ -154,35 +154,35 @@ public class CharacterDebuggerPane : DebugLogPane
             ImGui.TextUnformatted("Has Housing Permission: " +
                 (_characterMonitor.InternalHasHousePermission ||
                  _characterMonitor.GetOwnedHouseIds().Contains(_characterMonitor.InternalHouseId)
-                    ? "Yes"
-                    : "No"));
+                    ? "是"
+                    : "否"));
         }
 
         //
         // Worlds
         //
-        if (ImGui.CollapsingHeader("Worlds"))
+        if (ImGui.CollapsingHeader("服务器"))
         {
             foreach (var wid in _characterMonitor.GetWorldIds())
-                ImGui.BulletText($"World {wid}");
+                ImGui.BulletText($"服务器 {wid}");
         }
 
-        if (ImGui.CollapsingHeader("Characters"))
+        if (ImGui.CollapsingHeader("角色"))
         {
             foreach (var kv in _characterMonitor.Characters)
                 ImGui.BulletText($"{kv.Key}: {kv.Value.Name}");
         }
 
-        if (ImGui.CollapsingHeader("Retainers"))
+        if (ImGui.CollapsingHeader("雇员"))
         {
             using (var table = ImRaii.Table("retainerTable", 6))
             {
                 if (table)
                 {
                     ImGui.TableSetupColumn("Hire Order");
-                    ImGui.TableSetupColumn("Name");
-                    ImGui.TableSetupColumn("Type");
-                    ImGui.TableSetupColumn("Gil");
+                    ImGui.TableSetupColumn("名称");
+                    ImGui.TableSetupColumn("类型");
+                    ImGui.TableSetupColumn("金币");
                     ImGui.TableSetupColumn("ID");
                     ImGui.TableSetupColumn("Owner ID");
                     ImGui.TableHeadersRow();
@@ -237,7 +237,7 @@ public class CharacterDebuggerPane : DebugLogPane
             foreach (var characterPair in _configuration.AcquiredItems)
             {
                 var character = _characterMonitor.GetCharacterById(characterPair.Key);
-                ImGui.TextUnformatted(character?.FormattedName ?? "Unknown Character");
+                ImGui.TextUnformatted(character?.FormattedName ?? "未知角色");
                 ImGui.Text($"{characterPair.Value.Count} unlocked items");
             }
         }

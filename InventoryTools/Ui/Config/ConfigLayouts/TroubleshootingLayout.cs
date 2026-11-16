@@ -7,12 +7,12 @@ public class TroubleshootingLayout : ConfigLayout
 {
     public override PageLayout Build()
     {
-        return Page("troubleshooting", "Troubleshooting",
-            Paragraph("Timings that only need changing if you are seeing a specific symptom. The defaults suit almost everyone."),
-            Section("Acquisition tracker",
-                Paragraph("The acquisition tracker watches what you craft, gather and loot so craft lists can tick themselves off. Both values are in seconds, and raising them trades responsiveness for reliability on a slow connection or a busy machine."),
-                Setting<AcquisitionTrackerLoginDelaySetting>("Wait this long after login before scanning"),
-                Setting<AcquisitionTrackerPersistStateSetting>("Keep tracking this long after you stop"))
+        return Page("troubleshooting", "故障排查",
+            Paragraph("仅在遇到特定问题时调整这些时间。默认值适合大多数情况。"),
+            Section("物品获取追踪器",
+                Paragraph("追踪制作、采集和掉落物品，以自动更新制作清单进度。两个时间均以秒为单位。增大它们可减少慢速连接或繁忙电脑造成的漏记，但更新会更慢。"),
+                Setting<AcquisitionTrackerLoginDelaySetting>("登录后等待多久再扫描"),
+                Setting<AcquisitionTrackerPersistStateSetting>("停止操作后继续追踪多久"))
         );
     }
 }

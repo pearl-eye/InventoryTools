@@ -25,11 +25,11 @@ namespace InventoryTools.Logic.Columns
             return null;
         }
 
-        public override string Name { get; set; } = "Shortcuts";
+        public override string Name { get; set; } = "快捷操作";
         public override float Width { get; set; } = 32.0f;
 
         public override string HelpText { get; set; } =
-            "Provides a series of small buttons that allow opening garland tools and trying on items.";
+            "显示用于打开Garland Tools、试穿等操作的小按钮。";
         public override bool HasFilter { get; set; } = false;
         public override ColumnFilterType FilterType { get; set; } = ColumnFilterType.Text;
 
@@ -48,7 +48,7 @@ namespace InventoryTools.Logic.Columns
                 if (searchResult.Item.CanTryOn)
                 {
                     ImGui.SameLine();
-                    if (ImGui.SmallButton("Try On##TO" + rowIndex))
+                    if (ImGui.SmallButton("试穿##TO" + rowIndex))
                     {
                         if (_tryOn.CanUseTryOn)
                         {
@@ -57,7 +57,7 @@ namespace InventoryTools.Logic.Columns
                         }
                         else
                         {
-                            Logger.LogError("Something went wrong while attempting to try on " +
+                            Logger.LogError("尝试试穿时发生错误：" +
                                             searchResult.Item.NameString);
                         }
                     }

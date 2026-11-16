@@ -18,10 +18,10 @@ namespace InventoryTools.Logic.Settings
         }
 
         public override string Key { get; set; } = "HighlightDestination";
-        public override string Name { get; set; } = "Highlight Destination?";
+        public override string Name { get; set; } = "高亮目标位置？";
 
         public override string HelpText { get; set; } =
-            "Should the destination for items be highlighted? This can be overridden in the filter configuration.";
+            "是否高亮物品应移至的目标位置？可在筛选器设置中单独覆盖。";
         
         public override string Version => "1.7.0.0";
 

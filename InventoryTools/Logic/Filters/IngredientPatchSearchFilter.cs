@@ -13,8 +13,8 @@ public class IngredientPatchSearchFilter : GenericDecimalFilter
         IngredientPatchSearchFilter(IngredientPatchService ingredientPatchService,
             ILogger<IngredientPatchSearchFilter> logger, ImGuiService imGuiService) : base(
         "IngredientPatchSearch",
-        "Ingredient Patch Search",
-        "Shows a number indicating the highest patch a craft material is used in.",
+        "材料使用版本",
+        "显示使用此材料的配方所属的最新版本。",
         FilterCategory.Crafting,
         item => ingredientPatchService.IngredientPatches.TryGetValue(item.Item.RowId, out var value) ? value : null,
         item => ingredientPatchService.IngredientPatches.TryGetValue(item.RowId, out var value) ? value : null,

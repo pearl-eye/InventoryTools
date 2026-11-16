@@ -23,8 +23,8 @@ namespace InventoryTools.Logic.Settings
         }
 
         public override string Key { get; set; } = "TooltipColor";
-        public override string Name { get; set; } = "Text Colour";
-        public override string HelpText { get; set; } = "This is the colour of any text added to the item tooltip. You can give each tooltip module it's own colour by going into the tooltip's settings.";
+        public override string Name { get; set; } = "文字颜色";
+        public override string HelpText { get; set; } = "添加至物品提示的默认文字颜色。各提示功能也可在其设置中单独指定颜色。";
         public override string Version => "1.7.0.0";
     }
 }

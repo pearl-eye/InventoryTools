@@ -33,13 +33,13 @@ public class OverlayServiceDebuggerPane : IDebugPane
         ImGui.Text($"Current State: {(OverlayService.LastState == null ? "No State" : "Has State")}");
         if (OverlayService.LastState != null)
         {
-            ImGui.Text($"Filter: {OverlayService.LastState.FilterConfiguration.Name}");
-            ImGui.Text($"Should Highlight: {(OverlayService.LastState.ShouldHighlight ? "Yes" : "No")}");
+            ImGui.Text($"筛选: {OverlayService.LastState.FilterConfiguration.Name}");
+            ImGui.Text($"Should Highlight: {(OverlayService.LastState.ShouldHighlight ? "是" : "否")}");
             ImGui.TextUnformatted($"Active Retainer ID: {_characterMonitor.ActiveRetainerId}");
             ImGui.TextUnformatted($"Retainer List Open?: {_gameUiManager.IsWindowVisible(CriticalCommonLib.Services.Ui.WindowName.RetainerList)}");
-            ImGui.Text($"Should Highlight Destination: {(OverlayService.LastState.ShouldHighlightDestination ? "Yes" : "No")}");
-            ImGui.Text($"Invert Highlighting: {(OverlayService.LastState.InvertHighlighting ? "Yes" : "No")}");
-            ImGui.Text($"Has Filter Result: {(OverlayService.LastState.HasFilterResult ? "Yes" : "No")}");
+            ImGui.Text($"Should Highlight Destination: {(OverlayService.LastState.ShouldHighlightDestination ? "是" : "否")}");
+            ImGui.Text($"Invert Highlighting: {(OverlayService.LastState.InvertHighlighting ? "是" : "否")}");
+            ImGui.Text($"Has Filter Result: {(OverlayService.LastState.HasFilterResult ? "是" : "否")}");
 
             var retainerBags1 = OverlayService.LastState.GetBagHighlights(InventoryType.RetainerBag0);
             var retainerBags2 = OverlayService.LastState.GetBagHighlights(InventoryType.RetainerBag1);
@@ -58,8 +58,8 @@ public class OverlayServiceDebuggerPane : IDebugPane
         foreach (var overlay in OverlayService.Overlays)
         {
             ImGui.Text($"{overlay.GetType()}");
-            ImGui.Text($"Needs State Refresh: {(overlay.NeedsStateRefresh ? "Yes" : "No")}");
-            ImGui.Text($"Should Draw: {(overlay.ShouldDraw ? "Yes" : "No")}");
+            ImGui.Text($"Needs State Refresh: {(overlay.NeedsStateRefresh ? "是" : "否")}");
+            ImGui.Text($"Should Draw: {(overlay.ShouldDraw ? "是" : "否")}");
         }
 
         if (ImGui.CollapsingHeader("Current State:") && OverlayService.LastState != null)

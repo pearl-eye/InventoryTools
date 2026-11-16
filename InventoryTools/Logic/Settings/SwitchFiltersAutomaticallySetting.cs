@@ -18,10 +18,10 @@ namespace InventoryTools.Logic.Settings
         }
 
         public override string Key { get; set; } = "SwitchFiltersAutomatically";
-        public override string Name { get; set; } = "Switch lists automatically?";
+        public override string Name { get; set; } = "自动切换清单？";
 
         public override string HelpText { get; set; } =
-            "When you view a different list, should highlighting automatically switch to the list you are viewing? Highlighting will only change to the new list if highlighting is already active.";
+            "查看另一份清单时，是否自动将高亮切换至该清单？只有已经启用高亮时才会切换。";
         
         public override string Version => "1.7.0.0";
 

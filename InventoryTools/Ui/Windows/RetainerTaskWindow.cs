@@ -42,13 +42,13 @@ namespace InventoryTools.Ui
             if (RetainerTask != null)
             {
                 Key = "rt_" + retainerTaskId;
-                WindowName = "Allagan Tools - " + RetainerTask.FormattedName + " - Venture";
+                WindowName = "Allagan Tools - " + RetainerTask.FormattedName + " - 雇员探险";
                 _drops = RetainerTask.Drops;
             }
             else
             {
                 Key = "rt_invalid";
-                WindowName = "Allagan Tools - Invalid Retainer Task";
+                WindowName = "Allagan Tools - 无效雇员探险";
                 _drops = new List<ItemRow>();
             }
         }
@@ -59,34 +59,34 @@ namespace InventoryTools.Ui
 
 
         public override string GenericKey { get; } = "retainertask";
-        public override string GenericName { get; } = "Retainer Task";
+        public override string GenericName { get; } = "雇员探险";
         public override bool DestroyOnClose => true;
         public override void DrawWindow()
         {
             if (RetainerTask == null)
             {
-                ImGui.TextUnformatted("Submarine Exploration Point with the ID " + _retainerTaskId + " could not be found.");
+                ImGui.TextUnformatted("潜水艇探索点 ID " + _retainerTaskId + " 未找到。");
             }
             else
             {
                 ImGui.TextUnformatted(RetainerTask.FormattedName);
-                ImGui.TextUnformatted("Level: " + RetainerTask.Base.RetainerLevel);
-                ImGui.TextUnformatted("Duration: " + RetainerTask.DurationString);
-                ImGui.TextUnformatted("Experience: " + RetainerTask.ExperienceString);
-                ImGui.TextUnformatted("Venture Cost: " + RetainerTask.Base.VentureCost);
-                ImGui.TextUnformatted("Average iLvl: " + RetainerTask.Base.RequiredItemLevel);
+                ImGui.TextUnformatted("等级: " + RetainerTask.Base.RetainerLevel);
+                ImGui.TextUnformatted("所需时间: " + RetainerTask.DurationString);
+                ImGui.TextUnformatted("经验值: " + RetainerTask.ExperienceString);
+                ImGui.TextUnformatted("所需探险币: " + RetainerTask.Base.VentureCost);
+                ImGui.TextUnformatted("平均品级: " + RetainerTask.Base.RequiredItemLevel);
                 ;
                 ImGui.Image(ImGuiService.GetIconTexture(65049).Handle, new Vector2(100, 100) * ImGui.GetIO().FontGlobalScale);
 
 
-                if (ImGui.CollapsingHeader("Rewards (" + _drops.Count + ")", ImGuiTreeNodeFlags.DefaultOpen | ImGuiTreeNodeFlags.CollapsingHeader))
+                if (ImGui.CollapsingHeader("奖励（" + _drops.Count + ")", ImGuiTreeNodeFlags.DefaultOpen | ImGuiTreeNodeFlags.CollapsingHeader))
                 {
                     ImGuiStylePtr style = ImGui.GetStyle();
                     float windowVisibleX2 = ImGui.GetWindowPos().X + ImGui.GetWindowContentRegionMax().X;
 
                     for (var index = 0; index < _drops.Count; index++)
                     {
-                        ImGui.PushID("Reward"+index);
+                        ImGui.PushID("奖励"+index);
                         var drop = _drops[index];
 
                         if (ImGui.ImageButton(ImGuiService.GetIconTexture(drop.Icon).Handle,

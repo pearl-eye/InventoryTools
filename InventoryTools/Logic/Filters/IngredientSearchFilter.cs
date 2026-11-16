@@ -33,9 +33,9 @@ public class IngredientSearchFilter : UintMultipleChoiceFilter
         _craftListFactory = craftListFactory;
     }
     public override string Key { get; set; } = "IngredientSearchFilter";
-    public override string Name { get; set; } = "Ingredient Search Filter";
+    public override string Name { get; set; } = "材料筛选";
 
-    public override string HelpText { get; set; } = "Select craftable items and the filter will determine the ingredients used in the craft and will only list those ingredients. The add all from filter button will add all the items from the selected filter to the list.";
+    public override string HelpText { get; set; } = "选择可制作物品后，仅显示这些配方使用的材料。“从筛选器全部添加”会加入所选筛选器中的所有物品。";
 
     public override FilterCategory FilterCategory { get; set; } = FilterCategory.Searching;
 
@@ -71,7 +71,7 @@ public class IngredientSearchFilter : UintMultipleChoiceFilter
     {
         base.DrawSearchBox(configuration);
         ImGui.SameLine();
-        if (ImGui.Button("Add all from filter"))
+        if (ImGui.Button("从筛选器全部添加"))
         {
             ImGui.OpenPopup("AddAllFilterSelect");
         }
@@ -86,7 +86,7 @@ public class IngredientSearchFilter : UintMultipleChoiceFilter
                         c.FilterType is Logic.FilterType.SearchFilter or FilterType.SortingFilter or FilterType.GameItemFilter && c != configuration).ToArray();
                 foreach (var filter in filters)
                 {
-                    if (ImGui.Selectable("Add all from " + filter.Name))
+                    if (ImGui.Selectable("全部添加自" + filter.Name))
                     {
                         var filterResult = _listFilterService.Value.RefreshList(filter);
                         foreach (var item in filterResult)

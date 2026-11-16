@@ -85,7 +85,7 @@ namespace InventoryTools.Ui
             }
             else
             {
-                WindowName = "Invalid Duty";
+                WindowName = "无效副本任务";
                 Key = "cfcid_unknown";
                 DungeonChestItems = new HashSet<uint>();
             }
@@ -102,20 +102,20 @@ namespace InventoryTools.Ui
 
         private Dictionary<uint, List<DungeonBossChest>> DungeonBossChests { get; set; } = null!;
         public override string GenericKey => "duty";
-        public override string GenericName => "Duty";
+        public override string GenericName => "副本任务";
         public override bool DestroyOnClose => true;
         public override void DrawWindow()
         {
             if (ContentFinderCondition == null)
             {
-                ImGui.TextUnformatted("Dungeon with the ID " + _contentFinderConditionId + " could not be found.");
+                ImGui.TextUnformatted("副本 ID " + _contentFinderConditionId + " 未找到。");
             }
             else
             {
                 ImGui.TextUnformatted(ContentFinderCondition.Base.Name.ExtractText());
-                ImGui.TextUnformatted(ContentFinderCondition.Base.ContentType.ValueNullable?.Name.ToString() ?? "Unknown Content Type");
-                ImGui.TextUnformatted("Level Required: " + ContentFinderCondition.Base.ClassJobLevelRequired);
-                ImGui.TextUnformatted("Item Level Required: " + ContentFinderCondition.Base.ItemLevelRequired);
+                ImGui.TextUnformatted(ContentFinderCondition.Base.ContentType.ValueNullable?.Name.ToString() ?? "未知任务类型");
+                ImGui.TextUnformatted("所需等级: " + ContentFinderCondition.Base.ClassJobLevelRequired);
+                ImGui.TextUnformatted("所需品级: " + ContentFinderCondition.Base.ItemLevelRequired);
                 ;
                 var itemIcon = ImGuiService.GetIconTexture((int)(ContentFinderCondition.Base.ContentType.ValueNullable?.IconDutyFinder ?? Icons.DutyIcon));
                 ImGui.Image(itemIcon.Handle, new Vector2(100, 100) * ImGui.GetIO().FontGlobalScale);
@@ -128,7 +128,7 @@ namespace InventoryTools.Ui
                 }
                 foreach (var dungeonBoss in DungeonBosses)
                 {
-                    if (ImGui.CollapsingHeader(_bNpcNameSheet.GetRowOrDefault(dungeonBoss.BNpcNameId)?.Base.Singular.ExtractText() + " - Fight " + (dungeonBoss.FightNo + 1) ??
+                    if (ImGui.CollapsingHeader(_bNpcNameSheet.GetRowOrDefault(dungeonBoss.BNpcNameId)?.Base.Singular.ExtractText() + " - 战斗 " + (dungeonBoss.FightNo + 1) ??
                             "Unknown Boss",
                             ImGuiTreeNodeFlags.DefaultOpen | ImGuiTreeNodeFlags.CollapsingHeader))
                     {
@@ -137,7 +137,7 @@ namespace InventoryTools.Ui
                             var chests = DungeonBossChests[dungeonBoss.FightNo];
                             foreach (var chest in chests.GroupBy(c => c.CofferNo))
                             {
-                                if (ImGui.CollapsingHeader("Coffer " + (chest.Key + 1),
+                                if (ImGui.CollapsingHeader("宝箱 " + (chest.Key + 1),
                                         ImGuiTreeNodeFlags.DefaultOpen | ImGuiTreeNodeFlags.CollapsingHeader))
                                 {
                                     ImGuiStylePtr style = ImGui.GetStyle();
@@ -197,7 +197,7 @@ namespace InventoryTools.Ui
                         if (DungeonBossDrops.ContainsKey(dungeonBoss.FightNo))
                         {
                             var drops = DungeonBossDrops[dungeonBoss.FightNo].Select(c => _itemSheet.GetRowOrDefault(c.ItemId)).Where(c => c != null).Select(c => c!).ToList();
-                            if (ImGui.CollapsingHeader("Drops", ImGuiTreeNodeFlags.DefaultOpen | ImGuiTreeNodeFlags.CollapsingHeader))
+                            if (ImGui.CollapsingHeader("掉落物品", ImGuiTreeNodeFlags.DefaultOpen | ImGuiTreeNodeFlags.CollapsingHeader))
                             {
                                 ImGuiStylePtr style = ImGui.GetStyle();
                                 float windowVisibleX2 =
@@ -251,14 +251,14 @@ namespace InventoryTools.Ui
                     }
                 }
 
-                if (ImGui.CollapsingHeader("Other Chests (" + DungeonChestItems.Count + ")", ImGuiTreeNodeFlags.DefaultOpen | ImGuiTreeNodeFlags.CollapsingHeader))
+                if (ImGui.CollapsingHeader("其他宝箱 (" + DungeonChestItems.Count + ")", ImGuiTreeNodeFlags.DefaultOpen | ImGuiTreeNodeFlags.CollapsingHeader))
                 {
                     ImGuiStylePtr style = ImGui.GetStyle();
                     float windowVisibleX2 = ImGui.GetWindowPos().X + ImGui.GetWindowContentRegionMax().X;
                     var uses = DungeonChestItems.Select(c => _itemSheet.GetRowOrDefault(c)).Where(c => c != null).Select(c => c!).ToList();
                     for (var index = 0; index < uses.Count; index++)
                     {
-                        ImGui.PushID("Use"+index);
+                        ImGui.PushID("用途"+index);
                         var use = uses[index];
                         if (ImGui.ImageButton(ImGuiService.GetIconTexture(use.Icon).Handle,
                                 new Vector2(32, 32) * ImGui.GetIO().FontGlobalScale, new(0, 0), new(1, 1), 0))
@@ -294,14 +294,14 @@ namespace InventoryTools.Ui
                     }
                 }
 
-                if (ImGui.CollapsingHeader("Rewards (" + DungeonRewards.Count + ")", ImGuiTreeNodeFlags.DefaultOpen | ImGuiTreeNodeFlags.CollapsingHeader))
+                if (ImGui.CollapsingHeader("奖励（" + DungeonRewards.Count + ")", ImGuiTreeNodeFlags.DefaultOpen | ImGuiTreeNodeFlags.CollapsingHeader))
                 {
                     ImGuiStylePtr style = ImGui.GetStyle();
                     float windowVisibleX2 = ImGui.GetWindowPos().X + ImGui.GetWindowContentRegionMax().X;
                     var uses = DungeonRewards.Select(c => _itemSheet.GetRowOrDefault(c)).Where(c => c != null).Select(c => c!).ToList();
                     for (var index = 0; index < uses.Count; index++)
                     {
-                        ImGui.PushID("Use"+index);
+                        ImGui.PushID("用途"+index);
                         var use = uses[index];
 
                         if (ImGui.ImageButton(ImGuiService.GetIconTexture(use.Icon).Handle,

@@ -22,12 +22,12 @@ namespace InventoryTools.Logic.Settings
         }
 
         public override string Key { get; set; } = "ItemSearchContextMenu";
-        public override string Name { get; set; } = "Context Menu - Search";
+        public override string Name { get; set; } = "右键菜单 - 搜索";
 
-        public override string WizardName { get; } = "Search";
+        public override string WizardName { get; } = "搜索";
 
         public override string HelpText { get; set; } =
-            "Performs a search covering either all inventories or the scope defined below?";
+            "搜索全部背包，或仅搜索下方指定的范围？";
         
         public override string Version => "1.7.0.13";
     }

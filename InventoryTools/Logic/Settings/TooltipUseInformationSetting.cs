@@ -18,17 +18,17 @@ namespace InventoryTools.Logic.Settings;
 
 public class TooltipUseInformationEnabledSetting : GenericBooleanSetting
 {
-    public TooltipUseInformationEnabledSetting(ILogger<TooltipUseInformationEnabledSetting> logger, ImGuiService imGuiService) : base("TooltipUseInformationEnabled", "Use Information Enabled", "Should use information be shown in the tooltip? For example, the item is used in a recipe or as currency at a shop, etc", true, "1.11.0.11", logger, imGuiService)
+    public TooltipUseInformationEnabledSetting(ILogger<TooltipUseInformationEnabledSetting> logger, ImGuiService imGuiService) : base("TooltipUseInformationEnabled", "启用用途信息", "是否在物品提示中显示配方材料、商店货币等用途？", true, "1.11.0.11", logger, imGuiService)
     {
     }
-    public override string WizardName { get; } = "Show Use Information";
+    public override string WizardName { get; } = "显示用途信息";
 }
 
 public class TooltipUseInformationModifierSetting : GenericEnumChoiceSetting<TooltipSourceModifier>
 {
-    public TooltipUseInformationModifierSetting(ILogger<TooltipUseInformationModifierSetting> logger, ImGuiService imGuiService) : base("TooltipUseInformationModifier", "Use Information Modifier Key", "Should the tooltip only be shown if a modifier key is pressed?", TooltipSourceModifier.Always, new()
+    public TooltipUseInformationModifierSetting(ILogger<TooltipUseInformationModifierSetting> logger, ImGuiService imGuiService) : base("TooltipUseInformationModifier", "用途信息修饰键", "是否仅在按住修饰键时显示该提示？", TooltipSourceModifier.Always, new()
     {
-        {TooltipSourceModifier.Always, "Always"},
+        {TooltipSourceModifier.Always, "始终"},
         {TooltipSourceModifier.Control, "Control"},
         {TooltipSourceModifier.Shift, "Shift"},
     }, "1.11.0.11", logger, imGuiService)
@@ -48,9 +48,9 @@ public class TooltipUseInformationSetting : Setting<Dictionary<ItemInfoType, Too
         _itemInfoRenderers = itemInfoRenderers.Where(c => c.RendererType == RendererType.Use).ToDictionary(c => c.Type, c => c);
         _choices = new Dictionary<SourceIconGrouping, string>()
         {
-            {SourceIconGrouping.Default, "Default"},
-            {SourceIconGrouping.Grouped, "Grouped"},
-            {SourceIconGrouping.Ungrouped, "Ungrouped"}
+            {SourceIconGrouping.Default, "默认"},
+            {SourceIconGrouping.Grouped, "分组"},
+            {SourceIconGrouping.Ungrouped, "不分组"}
         };
     }
 
@@ -100,10 +100,10 @@ public class TooltipUseInformationSetting : Setting<Dictionary<ItemInfoType, Too
                 }
 
 
-                ImGui.TableSetupColumn("Settings", ImGuiTableColumnFlags.NoHeaderLabel);
-                ImGui.TableSetupColumn("Name");
-                ImGui.TableSetupColumn("Show");
-                ImGui.TableSetupColumn("Group Mode");
+                ImGui.TableSetupColumn("设置", ImGuiTableColumnFlags.NoHeaderLabel);
+                ImGui.TableSetupColumn("名称");
+                ImGui.TableSetupColumn("显示");
+                ImGui.TableSetupColumn("分组方式");
 
                 ImGui.TableHeadersRow();
 
@@ -255,10 +255,10 @@ public class TooltipUseInformationSetting : Setting<Dictionary<ItemInfoType, Too
     }
 
     public override string Key { get; set; } = "TooltipUseInformation";
-    public override string Name { get; set; } = "Use Information Configuration";
+    public override string Name { get; set; } = "用途信息设置";
 
     public override string HelpText { get; set; } =
-        "If the use information tooltip is enabled, how should the various uses be ordered/displayed/etc?";
+        "启用用途信息后，各类用途应如何排序和显示？";
 
     public override string Version { get; } = "1.11.0.11";
 }

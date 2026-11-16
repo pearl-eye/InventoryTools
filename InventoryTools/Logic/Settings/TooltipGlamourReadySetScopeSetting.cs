@@ -61,7 +61,7 @@ public class TooltipGlamourReadySetScopeSetting : Setting<List<InventorySearchSc
         if (disableReset != true && HasValueSet(configuration))
         {
             ImGui.SameLine();
-            if (ImGui.Button("Reset##" + Key + "Reset"))
+            if (ImGui.Button("重置##" + Key + "Reset"))
             {
                 Reset(configuration);
             }
@@ -74,8 +74,8 @@ public class TooltipGlamourReadySetScopeSetting : Setting<List<InventorySearchSc
     }
 
     public override string Key { get; set; } = "TooltipGlamourReadySetScope";
-    public override string Name { get; set; } = "Outfit Glamour (Search Locations)";
-    public override string HelpText { get; set; } = "Which inventories should be searched when determining which outfit glamour set items you already own?";
+    public override string Name { get; set; } = "整套幻化（搜索位置）";
+    public override string HelpText { get; set; } = "统计已持有的整套幻化部件时，应搜索哪些背包？";
     
     public override string Version => "15.0.5";
 }

@@ -10,15 +10,15 @@ namespace CriticalCommonLib.Extensions
             switch (craftRetainerRetrieval)
             {
                 case CraftRetainerRetrieval.Yes:
-                    return "Yes";
+                    return "是";
                 case CraftRetainerRetrieval.No:
-                    return "No";
+                    return "否";
                 case CraftRetainerRetrieval.HqOnly:
-                    return "HQ Only";
+                    return "仅 HQ";
                 case CraftRetainerRetrieval.NqOnly:
-                    return "NQ Only";
+                    return "仅普通品质";
                 case CraftRetainerRetrieval.CollectableOnly:
-                    return "Collectable Only";
+                    return "仅收藏品";
             }
             return craftRetainerRetrieval.ToString();
         }

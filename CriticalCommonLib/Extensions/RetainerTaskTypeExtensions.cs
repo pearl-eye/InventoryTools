@@ -10,25 +10,25 @@ namespace CriticalCommonLib.Extensions
             switch (retainerTaskType)
             {
                 case RetainerTaskType.Botanist:
-                    return "Botany";
+                    return "园艺";
                 case RetainerTaskType.FieldExploration:
-                    return "Field Exploration";
+                    return "平地探索";
                 case RetainerTaskType.HighlandExploration:
-                    return "Highland Exploration";
+                    return "山岳探索";
                 case RetainerTaskType.WatersideExploration:
-                    return "Waterside Exploration";
+                    return "水边探索";
                 case RetainerTaskType.WoodlandExploration:
-                    return "Woodland Exploration";
+                    return "林间探索";
                 case RetainerTaskType.Fishing:
-                    return "Fishing";
+                    return "钓鱼";
                 case RetainerTaskType.Hunting:
-                    return "Hunting";
+                    return "狩猎";
                 case RetainerTaskType.Mining:
-                    return "Mining";
+                    return "采矿";
                 case RetainerTaskType.QuickExploration:
-                    return "Quick Exploration";
+                    return "探索委托";
                 case RetainerTaskType.Unknown:
-                    return "Unknown";
+                    return "未知";
             }
             return retainerTaskType.ToString();
         }

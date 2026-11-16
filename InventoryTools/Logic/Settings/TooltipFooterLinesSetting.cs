@@ -18,10 +18,10 @@ public class TooltipFooterLinesSetting : IntegerSetting
     }
 
     public override string Key { get; set; } = "TooltipFooterLines";
-    public override string Name { get; set; } = "Footer New Lines";
+    public override string Name { get; set; } = "末尾空行数";
 
     public override string HelpText { get; set; } =
-        "How many new lines should be added below any tooltip modifications made by this plugin?";
+        "在插件添加的物品提示内容下方插入多少空行？";
     
     public override string Version => "1.7.0.0";
 

@@ -1,0 +1,163 @@
+name: Build and release CN
+
+on:
+  push:
+    branches: [zh-CN]
+    tags: ['cn-v*']
+  pull_request:
+    branches: [zh-CN]
+  workflow_dispatch:
+    inputs:
+      publish:
+        description: Publish a GitHub Release after a successful build
+        type: boolean
+        default: false
+      release_tag:
+        description: Optional tag; must equal cn-v plus the assembly version
+        type: string
+        required: false
+      dalamud_url:
+        description: Optional CN Dalamud archive URL, overriding the repository variable
+        type: string
+        required: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cn-build-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  DOTNET_CLI_TELEMETRY_OPTOUT: '1'
+  DOTNET_NOLOGO: '1'
+  # Source: Dalamud-DailyRoutines/Dalamud .github/workflows/r2-upload.yml.
+  # Keep API 15 dependencies pinned and update deliberately.
+  DEFAULT_DALAMUD_URL: https://dalamud-dis.atmoomen.top/26-11-13-01/latest.7z
+
+jobs:
+  build:
+    runs-on: windows-latest
+    outputs:
+      release_tag: ${{ steps.metadata.outputs.release_tag }}
+      publish: ${{ steps.metadata.outputs.publish }}
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - name: Check out source and submodules
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          persist-credentials: false
+
+      - name: Install .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.100'
+
+      - name: Download CN Dalamud dependencies
+        env:
+          INPUT_DALAMUD_URL: ${{ inputs.dalamud_url }}
+          REPOSITORY_DALAMUD_URL: ${{ vars.DALAMUD_DISTRIB_URL }}
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $url = $env:INPUT_DALAMUD_URL
+          if (!$url) { $url = $env:REPOSITORY_DALAMUD_URL }
+          if (!$url) { $url = $env:DEFAULT_DALAMUD_URL }
+          $uri = [Uri]$url
+          if ($uri.Scheme -ne 'https') { throw 'The CN dependency URL must use HTTPS.' }
+          $archive = Join-Path $env:RUNNER_TEMP 'dalamud-cn.archive'
+          $destination = Join-Path $env:RUNNER_TEMP 'dalamud-cn'
+          Invoke-WebRequest -Uri $uri -OutFile $archive
+          & 7z x $archive "-o$destination" -y
+          if ($LASTEXITCODE -ne 0) { throw 'Could not extract the CN Dalamud archive.' }
+          $assemblies = @(Get-ChildItem -LiteralPath $destination -Filter Dalamud.dll -File -Recurse)
+          if ($assemblies.Count -ne 1) { throw 'Expected exactly one Dalamud.dll in the archive.' }
+          "DALAMUD_BUILD_PATH=$($assemblies[0].DirectoryName)" >> $env:GITHUB_ENV
+          "DALAMUD_BUILD_URL=$url" >> $env:GITHUB_ENV
+
+      - name: Build localized plugin and package
+        run: ./scripts/Build.ps1 -DalamudPath $env:DALAMUD_BUILD_PATH -OutputDirectory artifacts
+
+      - name: Generate repository index and checksums
+        id: metadata
+        env:
+          INPUT_RELEASE_TAG: ${{ inputs.release_tag }}
+          INPUT_PUBLISH: ${{ inputs.publish }}
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $manifest = Get-Content artifacts/InventoryTools/InventoryTools.json -Raw | ConvertFrom-Json
+          $tag = "cn-v$($manifest.AssemblyVersion)"
+          if ($env:GITHUB_REF_TYPE -eq 'tag' -and $env:GITHUB_REF_NAME -cne $tag) {
+            throw "The pushed tag must match the built version: $tag"
+          }
+          if ($env:INPUT_RELEASE_TAG -and $env:INPUT_RELEASE_TAG -cne $tag) {
+            throw "The requested release tag must match the built version: $tag"
+          }
+          ./scripts/Generate-Repo.ps1 -ManifestPath artifacts/InventoryTools/InventoryTools.json -PackagePath artifacts/latest.zip -OutputPath artifacts/repo.json -Repository $env:GITHUB_REPOSITORY -ReleaseTag $tag
+          $publish = $env:GITHUB_EVENT_NAME -eq 'push' -and $env:GITHUB_REF_TYPE -eq 'tag'
+          $publish = $publish -or ($env:GITHUB_EVENT_NAME -eq 'workflow_dispatch' -and $env:INPUT_PUBLISH -eq 'true')
+          if ($publish -and $env:GITHUB_REF_TYPE -ne 'tag' -and $env:GITHUB_REF_NAME -ne 'zh-CN') {
+            throw 'Manual releases must be built from the zh-CN branch or a version tag.'
+          }
+          "release_tag=$tag" >> $env:GITHUB_OUTPUT
+          "publish=$($publish.ToString().ToLowerInvariant())" >> $env:GITHUB_OUTPUT
+          $checksums = foreach ($name in @('latest.zip', 'repo.json')) {
+            $hash = (Get-FileHash -Algorithm SHA256 -LiteralPath "artifacts/$name").Hash.ToLowerInvariant()
+            "$hash  $name"
+          }
+          # Use LF because the release job verifies these files on Linux.
+          [System.IO.File]::WriteAllText((Join-Path $PWD 'artifacts/SHA256SUMS'), ($checksums -join "`n") + "`n", [System.Text.UTF8Encoding]::new($false))
+          @(
+            "Allagan Tools CN $($manifest.AssemblyVersion)",
+            '',
+            "Source: https://github.com/$env:GITHUB_REPOSITORY/commit/$env:GITHUB_SHA",
+            "CN Dalamud dependencies: $env:DALAMUD_BUILD_URL",
+            '',
+            '插件仓库：https://github.com/pearl-eye/Allagan-Tools-CN/releases/latest/download/repo.json',
+            '原作者：Critical_Impact；国服汉化维护：pearl-eye。许可证：GPL-3.0。'
+          ) | Set-Content artifacts/RELEASE_NOTES.md -Encoding utf8NoBOM
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: InventoryTools-${{ steps.metadata.outputs.release_tag }}
+          if-no-files-found: error
+          path: |
+            artifacts/latest.zip
+            artifacts/repo.json
+            artifacts/SHA256SUMS
+            artifacts/RELEASE_NOTES.md
+
+  release:
+    needs: build
+    if: needs.build.outputs.publish == 'true' && github.repository == 'pearl-eye/Allagan-Tools-CN'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download verified package
+        uses: actions/download-artifact@v4
+        with:
+          name: InventoryTools-${{ needs.build.outputs.release_tag }}
+          path: artifacts
+
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ needs.build.outputs.release_tag }}
+          SOURCE_SHA: ${{ github.sha }}
+        run: |
+          cd artifacts
+          sha256sum --check SHA256SUMS
+          if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
+            echo "Release $RELEASE_TAG already exists; publish a new version instead of replacing it."
+            exit 1
+          fi
+          gh release create "$RELEASE_TAG" latest.zip repo.json SHA256SUMS \
+            --target "$SOURCE_SHA" \
+            --title "Allagan Tools CN $RELEASE_TAG" \
+            --notes-file RELEASE_NOTES.md \
+            --latest

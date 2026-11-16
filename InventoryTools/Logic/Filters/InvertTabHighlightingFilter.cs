@@ -12,8 +12,8 @@ namespace InventoryTools.Logic.Filters
         public override FilterType AvailableIn { get; set; } =
             FilterType.SearchFilter | FilterType.CraftFilter | FilterType.SortingFilter | FilterType.GameItemFilter | FilterType.HistoryFilter | FilterType.CuratedList;
         public override string Key { get; set; } = "InvertTabHighlighting";
-        public override string Name { get; set; } = "Invert Tab Highlighting?";
-        public override string HelpText { get; set; } = "Should all the items not matching the filter be highlighted instead? If set to N/A will use the 'Invert Highlighting' setting inside the general configuration.";
+        public override string Name { get; set; } = "反向高亮标签页？";
+        public override string HelpText { get; set; } = "高亮不匹配筛选条件的物品。设为“不适用”时使用全局设置中的“反向高亮”。";
         public override FilterCategory FilterCategory { get; set; } = FilterCategory.Display;
 
         public override bool? FilterItem(FilterConfiguration configuration, InventoryItem item)

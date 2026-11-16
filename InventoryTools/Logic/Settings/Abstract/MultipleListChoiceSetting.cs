@@ -51,7 +51,7 @@ public abstract class MultipleListChoiceSetting : MultipleChoiceSetting<string>
 
     public override string GetPreviewValue(List<string> items)
     {
-        return items.Count == 0 ? "All lists" : $"{items.Count} lists selected";
+        return items.Count == 0 ? "全部清单" : $"{items.Count}份清单已选中";
     }
 
     public override bool HideAlreadyPicked { get; set; } = true;

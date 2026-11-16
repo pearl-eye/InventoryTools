@@ -221,9 +221,9 @@ public class ListFilterService : DisposableMediatorBackgroundService
         var activeCharacter = _characterMonitor.ActiveCharacterId;
         var activeRetainer = _characterMonitor.ActiveRetainerId;
 
-        Logger.LogTrace("Filter Information:");
-        Logger.LogTrace("Filter Name:" + filter.Name);
-        Logger.LogTrace("List Type: " + filter.FilterType);
+        Logger.LogTrace("筛选信息:");
+        Logger.LogTrace("筛选名称:" + filter.Name);
+        Logger.LogTrace("清单类型: " + filter.FilterType);
 
         var filtersWithValues = _filterService.AvailableFilters.Where(c => c.HasValueSet(filter) && c.AvailableIn.HasFlag(filter.FilterType)).ToList();
 
@@ -237,7 +237,7 @@ public class ListFilterService : DisposableMediatorBackgroundService
             Dictionary<(ulong, InventoryType), List<FilteredItem>> filteredSources = new();
             //Dictionary<(ulong, InventoryCategory), List<InventoryItem>> filteredDestinations = new();
             var sourceKeys = sourceInventories.Select(c => c.Key);
-            Logger.LogTrace(sourceInventories.Count() + " inventories to examine.");
+            Logger.LogTrace(sourceInventories.Count() + " 个背包待检查。");
             if (filter.FilterType == FilterType.CraftFilter)
             {
                 filter.CraftList.GetFlattenedMergedMaterials(true);
@@ -519,7 +519,7 @@ public class ListFilterService : DisposableMediatorBackgroundService
             //Filter the source and destination inventories based on the applicable items so we have less to sort
             Dictionary<(ulong, InventoryType), List<FilteredItem>> filteredSources = new();
             //Dictionary<(ulong, InventoryCategory), List<InventoryItem>> filteredDestinations = new();
-            Logger.LogTrace(sourceInventories.Count() + " inventories to examine.");
+            Logger.LogTrace(sourceInventories.Count() + " 个背包待检查。");
             foreach (var sourceInventory in sourceInventories)
             {
                 ct.ThrowIfCancellationRequested();

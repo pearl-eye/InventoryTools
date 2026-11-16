@@ -19,9 +19,9 @@ namespace InventoryTools.Logic.Filters
         }
         public override int LabelSize { get; set; } = 240;
         public override string Key { get; set; } = "SourceInventories";
-        public override string Name { get; set; } = "Source - Inventories";
+        public override string Name { get; set; } = "来源 - 背包";
         public override string HelpText { get; set; } =
-            "This is a list of source inventories to sort items from based on the filter configuration";
+            "根据筛选设置选择用于整理物品的来源背包。";
         public override FilterCategory FilterCategory { get; set; } = FilterCategory.Inventories;
 
         public override List<InventorySearchScope>? DefaultValue { get; set; } = null;
@@ -33,9 +33,9 @@ namespace InventoryTools.Logic.Filters
             {
                 case FilterType.SearchFilter:
                 case FilterType.HistoryFilter:
-                    return "Search Inventories";
+                    return "搜索背包";
                 case FilterType.SortingFilter:
-                    return "Source Inventories";
+                    return "来源背包";
             }
 
             return Name;
@@ -47,13 +47,13 @@ namespace InventoryTools.Logic.Filters
             {
                 case FilterType.SearchFilter:
                     return
-                        "Define which inventories you want to be searched, these will show up in the list. You can see which inventories have been found based on the scope configuration below.";
+                        "选择要搜索的背包，匹配的物品会显示在列表中。下方可查看范围内的背包。";
                 case FilterType.HistoryFilter:
                     return
-                        "Define the scope of inventories you want to see in the historical list of inventory changes.";
+                        "设置背包变更历史记录清单中显示的背包范围。";
                 case FilterType.SortingFilter:
                     return
-                        "Define which inventories you want to be searched, the plugin will then attempt to show you where to put them in the destinations you have selected. You can see which inventories have been found based on the scope configuration below.";
+                        "选择要搜索的背包，插件会显示应将物品放入哪些目标背包。下方可查看范围内的背包。";
             }
 
             return HelpText;

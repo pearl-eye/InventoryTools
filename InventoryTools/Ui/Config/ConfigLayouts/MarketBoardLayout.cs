@@ -7,18 +7,18 @@ public class MarketBoardLayout : ConfigLayout
 {
     public override PageLayout Build()
     {
-        return Page("marketboard", "Market Board",
-            Paragraph("Market prices come from Universalis rather than the game, so they are fetched and cached rather than read live."),
-            Section("Worlds to price",
-                Paragraph("These combine into a single list, the extra worlds below are added to your home and current world rather than replacing them."),
-                Setting<MarketBoardUseHomeWorldSetting>("Home world"),
-                Setting<MarketBoardUseActiveWorldSetting>("Current world"),
-                Setting<MarketBoardExtraWorldsSetting>("Additional worlds")),
-            Section("Downloading",
-            Paragraph("Should pricing data be downloaded automatically? If not-enabled the 'Refresh Market Prices' button must be pressed to download pricing for items."),
-                Setting<AutomaticallyDownloadPricesSetting>("Download prices automatically"),
-                Setting<MarketRefreshTimeHoursSetting>("Keep prices for (hours)"),
-                Setting<MarketBoardSaleCountLimitSetting>("Sale history window (days)"))
+        return Page("marketboard", "市场",
+            Paragraph("市场价格由 Universalis 提供，需要下载并缓存。"),
+            Section("获取价格的服务器",
+                Paragraph("以下选项会合并为一份服务器列表。额外服务器将与原始和当前服务器一起查询。"),
+                Setting<MarketBoardUseHomeWorldSetting>("原始服务器"),
+                Setting<MarketBoardUseActiveWorldSetting>("当前服务器"),
+                Setting<MarketBoardExtraWorldsSetting>("其他服务器")),
+            Section("下载",
+            Paragraph("是否自动下载价格数据？关闭后，必须点击“刷新市场价格”才能获取物品价格。"),
+                Setting<AutomaticallyDownloadPricesSetting>("自动下载价格"),
+                Setting<MarketRefreshTimeHoursSetting>("价格保留时间（小时）"),
+                Setting<MarketBoardSaleCountLimitSetting>("成交历史范围（天）"))
         );
     }
 }

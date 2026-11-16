@@ -67,7 +67,7 @@ namespace InventoryTools.Ui
             }
             else
             {
-                WindowName = "Unknown Mob";
+                WindowName = "未知怪物";
             }
         }
 
@@ -77,21 +77,21 @@ namespace InventoryTools.Ui
         private List<MobSpawnPosition>? _mobSpawns;
 
         private BNpcNameRow? bNpc => _bNpcNameSheet.GetRowOrDefault(_bNpcId);
-        public override string GenericName => "Mob";
+        public override string GenericName => "怪物";
         public override bool DestroyOnClose => true;
         public override void DrawWindow()
         {
             if (bNpc == null)
             {
-                ImGui.TextUnformatted("bNpc with the ID " + _bNpcId + " could not be found.");
+                ImGui.TextUnformatted("怪物 ID " + _bNpcId + " 未找到。");
             }
             else
             {
-                ImGui.Text("Type: " + string.Join(", ", bNpc.MobTypes.Select(c => c.ToString())));
+                ImGui.Text("类型: " + string.Join(", ", bNpc.MobTypes.Select(c => c.ToString())));
 
                 if (bNpc.NotoriousMonster != null)
                 {
-                    ImGui.Text("Rank: " + bNpc.NotoriousMonster?.RankFormatted());
+                    ImGui.Text("阶级: " + bNpc.NotoriousMonster?.RankFormatted());
                 }
 
                 var garlandId = bNpc.GarlandToolsId;
@@ -103,7 +103,7 @@ namespace InventoryTools.Ui
                         $"https://www.garlandtools.org/db/#mob/{garlandId}".OpenBrowser();
                     }
 
-                    ImGuiUtil.HoverTooltip("Open in Garland Tools");
+                    ImGuiUtil.HoverTooltip("在 Garland Tools 中打开");
                     ImGui.SameLine();
                 }
 
@@ -112,18 +112,18 @@ namespace InventoryTools.Ui
                 {
                     $"https://ffxivteamcraft.com/db/en/mob/{_bNpcId}".OpenBrowser();
                 }
-                ImGuiUtil.HoverTooltip("Open in Teamcraft");
+                ImGuiUtil.HoverTooltip("在 Teamcraft 中打开");
 
                 ImGui.Separator();
 
 
-                if (_mobDrops != null && ImGui.CollapsingHeader("Drops (" + _mobDrops.Count + ")", ImGuiTreeNodeFlags.DefaultOpen | ImGuiTreeNodeFlags.CollapsingHeader))
+                if (_mobDrops != null && ImGui.CollapsingHeader("掉落物品 (" + _mobDrops.Count + ")", ImGuiTreeNodeFlags.DefaultOpen | ImGuiTreeNodeFlags.CollapsingHeader))
                 {
                     ImGuiStylePtr style = ImGui.GetStyle();
                     float windowVisibleX2 = ImGui.GetWindowPos().X + ImGui.GetWindowContentRegionMax().X;
                     for (var index = 0; index < _mobDrops.Count; index++)
                     {
-                        ImGui.PushID("Drop"+index);
+                        ImGui.PushID("掉落物品"+index);
                         var drop = _mobDrops[index];
                         var listingCount = 0;
 
@@ -172,13 +172,13 @@ namespace InventoryTools.Ui
 
                 ImGui.NewLine();
 
-                if (_mobSpawns != null && ImGui.CollapsingHeader("Locations (" + _mobSpawns.Count + ")", ImGuiTreeNodeFlags.DefaultOpen | ImGuiTreeNodeFlags.CollapsingHeader))
+                if (_mobSpawns != null && ImGui.CollapsingHeader("位置 (" + _mobSpawns.Count + ")", ImGuiTreeNodeFlags.DefaultOpen | ImGuiTreeNodeFlags.CollapsingHeader))
                 {
                     ImGuiStylePtr style = ImGui.GetStyle();
                     float windowVisibleX2 = ImGui.GetWindowPos().X + ImGui.GetWindowContentRegionMax().X;
                     for (var index = 0; index < _mobSpawns.Count; index++)
                     {
-                        ImGui.PushID("Location"+index);
+                        ImGui.PushID("位置"+index);
                         var spawn = _mobSpawns[index];
                         var listingCount = 0;
 
@@ -200,7 +200,7 @@ namespace InventoryTools.Ui
                             if (ImGui.IsItemHovered())
                             {
                                 using var tt = ImRaii.Tooltip();
-                                ImGui.TextUnformatted((territory.Base.PlaceName.ValueNullable?.Name.ExtractText() ?? "Unknown") + " - " +
+                                ImGui.TextUnformatted((territory.Base.PlaceName.ValueNullable?.Name.ExtractText() ?? "未知") + " - " +
                                                       spawn.Position.X +
                                                       " : " + spawn.Position.Y);
                             }
@@ -219,7 +219,7 @@ namespace InventoryTools.Ui
                 var firstBase = bNpc.RelatedBases.FirstOrDefault();
                 if (firstBase != null && firstBase.GetRelatedItems().Count != 0)
                 {
-                    if (ImGui.CollapsingHeader("Shared Models", ImGuiTreeNodeFlags.DefaultOpen))
+                    if (ImGui.CollapsingHeader("相同模型", ImGuiTreeNodeFlags.DefaultOpen))
                     {
                         using (ImRaii.PushIndent())
                         {
@@ -258,7 +258,7 @@ namespace InventoryTools.Ui
                                     c.FilterType == Logic.FilterType.CraftFilter && !c.CraftListDefault).ToArray();
                             if (craftFilters.Length != 0)
                             {
-                                using var menu = ImRaii.Menu("Add to Craft List");
+                                using var menu = ImRaii.Menu("添加到制作清单");
                                 if (menu)
                                 {
                                     foreach (var filter in craftFilters)
@@ -280,7 +280,7 @@ namespace InventoryTools.Ui
                                 }
                             }
 
-                            if (ImGui.MenuItem("Add to new Craft List"))
+                            if (ImGui.MenuItem("添加到新制作清单"))
                             {
                                 var filter = _listService.AddNewCraftList();
                                 foreach (var slot in _equipSlots)
@@ -297,7 +297,7 @@ namespace InventoryTools.Ui
                                 filter.NeedsRefresh = true;
                             }
 
-                            if (ImGui.MenuItem("Add to new Craft List (ephemeral)"))
+                            if (ImGui.MenuItem("添加到新临时制作清单"))
                             {
                                 var filter = _listService.AddNewCraftList(null, true);
                                 foreach (var slot in _equipSlots)
@@ -336,7 +336,7 @@ namespace InventoryTools.Ui
             {
                 return;
             }
-            if (ImGui.CollapsingHeader("Shared Models - " + slot.Humanize() + " (" + relatedItems.Count + ")", ImGuiTreeNodeFlags.DefaultOpen))
+            if (ImGui.CollapsingHeader("相同模型 - " + slot.Humanize() + " (" + relatedItems.Count + ")", ImGuiTreeNodeFlags.DefaultOpen))
             {
                 ImGuiStylePtr style = ImGui.GetStyle();
                 float windowVisibleX2 = ImGui.GetWindowPos().X + ImGui.GetWindowContentRegionMax().X;

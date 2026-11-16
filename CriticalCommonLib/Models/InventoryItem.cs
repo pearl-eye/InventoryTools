@@ -310,7 +310,7 @@ namespace CriticalCommonLib.Models
         {
             get
             {
-                return this.IsCollectible ? "Collectible" : (IsHQ ? "HQ" : "NQ");
+                return this.IsCollectible ? "收藏品" : (IsHQ ? "HQ" : "NQ");
             }
         }
 
@@ -321,7 +321,7 @@ namespace CriticalCommonLib.Models
             {
                 if (ItemId == 0)
                 {
-                    return "Empty Slot";
+                    return "空格子";
                 }
                 return Item.NameString;
             }

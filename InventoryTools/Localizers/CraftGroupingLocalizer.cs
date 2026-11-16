@@ -19,7 +19,7 @@ public class CraftGroupingLocalizer
         var name = craftGrouping.CraftGroupType.FormattedName();
         if (craftGrouping.Depth != null)
         {
-            name = craftGrouping.Depth.Value.ConvertToOrdinal() + " Tier " + name;
+            name = craftGrouping.Depth.Value.ConvertToOrdinal() + "阶段" + name;
         }
 
         if (craftGrouping.CraftTypeId != null)

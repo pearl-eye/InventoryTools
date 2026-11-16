@@ -22,7 +22,7 @@ public class TooltipDisplayUnlockSetting : BooleanSetting
     }
 
     public override string Key { get; set; } = "TooltipDisplayUnlockSetting";
-    public override string Name { get; set; } = "Add Item Unlock Status";
-    public override string HelpText { get; set; } = "If an item can be unlocked/acquired, shows if your characters have unlocked/acquired said item. Can be configured to show specific characters inside the configuration window.";
+    public override string Name { get; set; } = "添加物品解锁状态";
+    public override string HelpText { get; set; } = "对于可以学习或获取的物品，显示各角色是否已解锁或获取。可在设置窗口中指定要显示的角色。";
     public override string Version { get; } = "1.11.0.4";
 }

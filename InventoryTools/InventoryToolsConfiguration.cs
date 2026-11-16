@@ -39,7 +39,7 @@ namespace InventoryTools
 
         private Vector4 _retainerListColor = ImGuiColors.HealerGreen;
 
-        private string _highlightWhen = "When Searching";
+    private string _highlightWhen = "When Searching";
         private bool _invertHighlighting = true;
         private bool _invertDestinationHighlighting;
         private bool _invertTabHighlighting;

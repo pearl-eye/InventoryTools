@@ -18,8 +18,8 @@ public class ItemGcSupplyDutySourceRenderer : ItemInfoRenderer<ItemGCSupplyDutyS
 
     public override RendererType RendererType => RendererType.Use;
     public override ItemInfoType Type => ItemInfoType.GCDailySupply;
-    public override string SingularName => "Grand Company Supply & Provisioning";
-    public override string HelpText => "Can the item be handed in for 'Supply & Provisioning' at your grand company?";
+    public override string SingularName => "大国防联军筹备任务";
+    public override string HelpText => "此物品能否用于大国防联军的筹备任务？";
     public override bool ShouldGroup => true;
 
     public override Action<ItemSource> DrawTooltip => source =>
@@ -30,13 +30,13 @@ public class ItemGcSupplyDutySourceRenderer : ItemInfoRenderer<ItemGCSupplyDutyS
         {
             var baseReward = rewardRow.Base.ExperienceSupply;
             var sealsSupply = rewardRow.Base.SealsSupply;
-            ImGui.Text("Level: " + asSource.GCSupplyDutyRow.RowId);
-            ImGui.Text("Exp: " + baseReward);
-            ImGui.Text("Seals: " + sealsSupply);
+            ImGui.Text("等级：" + asSource.GCSupplyDutyRow.RowId);
+            ImGui.Text("经验：" + baseReward);
+            ImGui.Text("军票：" + sealsSupply);
         }
         else
         {
-            ImGui.Text("Unknown rewards");
+            ImGui.Text("未知奖励");
         }
     };
 
@@ -56,11 +56,11 @@ public class ItemGcSupplyDutySourceRenderer : ItemInfoRenderer<ItemGCSupplyDutyS
         {
             var baseReward = rewardRow.Base.ExperienceSupply;
             var sealsSupply = rewardRow.Base.SealsSupply;
-            return $"Level {asSource.GCSupplyDutyRow.RowId} ({baseReward} xp, {sealsSupply} seals)";
+            return $"等级{asSource.GCSupplyDutyRow.RowId} ({baseReward}经验，{sealsSupply}军票）";
         }
         else
         {
-            return "Unknown rewards";
+            return "未知奖励";
         }
     };
 }

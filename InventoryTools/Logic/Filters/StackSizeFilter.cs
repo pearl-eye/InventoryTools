@@ -8,7 +8,7 @@ namespace InventoryTools.Logic.Filters;
 
 public class StackSizeFilter : GenericIntegerFilter
 {
-    public StackSizeFilter(ILogger<StackSizeFilter> logger, ImGuiService imGuiService) : base("StackSize", "Stack Size", "The maximum stack size of the item.", FilterCategory.Basic, item => (int?)item.Item.Base.StackSize, item => (int?)item.Base.StackSize, logger, imGuiService)
+    public StackSizeFilter(ILogger<StackSizeFilter> logger, ImGuiService imGuiService) : base("StackSize", "堆叠上限", "此物品每组的最大数量。", FilterCategory.Basic, item => (int?)item.Item.Base.StackSize, item => (int?)item.Base.StackSize, logger, imGuiService)
     {
     }
 }

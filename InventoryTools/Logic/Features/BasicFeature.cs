@@ -14,11 +14,11 @@ public class BasicFeature : Feature
 
     public override PageLayout Build()
     {
-        return Page("feature/basic", "Basics",
-            Paragraph("These settings apply to the whole plugin. You can change all of them later in the settings window."),
-            Setting<AutoSaveSetting>("Save inventories automatically"),
-            Setting<HistoryEnabledSetting>("Enable historical item tracking"),
-            Setting<AddTitleMenuButtonSetting>("Add a button to the game's title menu")
+        return Page("feature/basic", "基础设置",
+            Paragraph("这些设置作用于整个插件。之后都可在设置窗口中修改。"),
+            Setting<AutoSaveSetting>("自动保存背包数据"),
+            Setting<HistoryEnabledSetting>("启用物品历史记录"),
+            Setting<AddTitleMenuButtonSetting>("在游戏标题菜单中添加按钮")
         );
     }
 }

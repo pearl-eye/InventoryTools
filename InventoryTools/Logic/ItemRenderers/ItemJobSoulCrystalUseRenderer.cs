@@ -18,9 +18,9 @@ public class ItemJobSoulCrystalUseRenderer : ItemInfoRenderer<ItemJobSoulCrystal
 
     public override RendererType RendererType => RendererType.Use;
     public override ItemInfoType Type => ItemInfoType.JobSoulCrystal;
-    public override string SingularName => "Job Soul Crystal";
-    public override string PluralName => "Job Soul Crystals";
-    public override string HelpText => "Equipped to either switch from a Class to Job or used by a Job?";
+    public override string SingularName => "特职灵魂水晶";
+    public override string PluralName => "特职灵魂水晶";
+    public override string HelpText => "此灵魂水晶是否用于从基础职业转为特职，或供特职使用？";
     public override bool ShouldGroup => false;
 
     public override Action<ItemSource> DrawTooltip => source =>
@@ -28,11 +28,11 @@ public class ItemJobSoulCrystalUseRenderer : ItemInfoRenderer<ItemJobSoulCrystal
         var asSource = AsSource(source);
         if (asSource.ParentClassJob != null)
         {
-            ImGui.Text("Converts " + asSource.ParentClassJob.Base.Name.ExtractText() + " into " + asSource.ClassJob.Base.Name.ExtractText());
+            ImGui.Text("将" + asSource.ParentClassJob.Base.Name.ExtractText() + "转为" + asSource.ClassJob.Base.Name.ExtractText());
         }
         else
         {
-            ImGui.Text("Provides the " + asSource.ClassJob.Base.Name.ExtractText() + " job");
+            ImGui.Text("解锁" + asSource.ClassJob.Base.Name.ExtractText() + "职业");
         }
     };
 
@@ -53,9 +53,9 @@ public class ItemJobSoulCrystalUseRenderer : ItemInfoRenderer<ItemJobSoulCrystal
         var asSource = AsSource(source);
         if (asSource.ParentClassJob != null)
         {
-            return "Converts " + asSource.ParentClassJob.Base.Name.ExtractText() + " into " + asSource.ClassJob.Base.Name.ExtractText();
+            return "将" + asSource.ParentClassJob.Base.Name.ExtractText() + "转为" + asSource.ClassJob.Base.Name.ExtractText();
         }
 
-        return "Provides the " + asSource.ClassJob.Base.Name.ExtractText() + " job";
+        return "解锁" + asSource.ClassJob.Base.Name.ExtractText() + "职业";
     };
 }

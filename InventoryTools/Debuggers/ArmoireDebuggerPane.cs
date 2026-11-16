@@ -16,7 +16,7 @@ public class ArmoireDebuggerPane : IDebugPane
         _gameGui = gameGui;
     }
 
-    public string Name => "Armoire";
+    public string Name => "收藏柜";
     public unsafe void Draw()
     {
         var uiState = UIState.Instance();

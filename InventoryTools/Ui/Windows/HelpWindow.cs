@@ -50,7 +50,7 @@ public class HelpWindow : GenericWindow
 
     public override void Initialize()
     {
-        WindowName = "Help";
+        WindowName = "帮助";
         Key = "help";
     }
 
@@ -59,7 +59,7 @@ public class HelpWindow : GenericWindow
     public override Vector2? MaxSize { get; } = new Vector2(2000, 2000);
     public override Vector2? MinSize { get; } = new Vector2(200, 200);
     public override string GenericKey { get; } = "help";
-    public override string GenericName { get; } = "Help";
+    public override string GenericName { get; } = "帮助";
     public override bool DestroyOnClose => true;
 
     private PageLayout? SelectedPage()

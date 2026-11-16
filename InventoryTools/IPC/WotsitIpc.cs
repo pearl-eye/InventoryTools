@@ -159,8 +159,8 @@ namespace InventoryTools.IPC
                 {
                     try
                     {
-                        var guid = _wotsitRegister.InvokeFunc(IpcDisplayName, $"Toggle Filter - {filter.Name}",
-                            $"Toggle the filter on/off {filter.Name} as a background filter. ", WotsitIconId);
+                        var guid = _wotsitRegister.InvokeFunc(IpcDisplayName, $"切换筛选 - {filter.Name}",
+                            $"启用或禁用筛选 {filter.Name} 作为后台筛选。", WotsitIconId);
                         _wotsitToggleFilterGuids.Add(guid, filter.Key);
                         _wotsitFilterNames.Add(filter.Key, filter.Name);
                     }
@@ -196,8 +196,8 @@ namespace InventoryTools.IPC
                 {
                     try
                     {
-                        var guid = _wotsitRegister.InvokeFunc(IpcDisplayName, "Compendium - " + compendiumType.Plural,
-                            $"Show the compendium list for " + compendiumType.Plural, WotsitIconId);
+                        var guid = _wotsitRegister.InvokeFunc(IpcDisplayName, "图鉴 - " + compendiumType.Plural,
+                            $"显示图鉴清单：" + compendiumType.Plural, WotsitIconId);
                         _wotsitCompendiumIds.Add(guid, compendiumType);
                     }
                     catch (Exception e)

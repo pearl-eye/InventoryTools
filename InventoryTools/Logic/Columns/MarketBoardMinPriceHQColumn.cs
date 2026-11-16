@@ -27,8 +27,8 @@ namespace InventoryTools.Logic.Columns
             _marketCache = marketCache;
         }
         public override ColumnCategory ColumnCategory => ColumnCategory.Market;
-        protected readonly string LoadingString = "loading...";
-        protected readonly string UntradableString = "untradable";
+        protected readonly string LoadingString = "加载中…";
+        protected readonly string UntradableString = "不可交易";
         protected readonly int Loading = -1;
         protected readonly int Untradable = -2;
 
@@ -118,12 +118,12 @@ namespace InventoryTools.Logic.Columns
 
             return Loading;
         }
-        public override string Name { get; set; } = "Market Board Minimum Price HQ";
-        public override string RenderName => "MB Min. Price HQ";
+        public override string Name { get; set; } = "市场最低价 优质";
+        public override string RenderName => "市场最低价 优质";
         public override float Width { get; set; } = 250.0f;
 
         public override string HelpText { get; set; } =
-            "Shows the minimum price of the HQ form of the item. If no world is selected, your home world is used. This data is sourced from universalis.";
+            "显示优质物品的最低价。未选择服务器时使用原始服务器。数据来自Universalis。";
         public override bool HasFilter { get; set; } = true;
         public override ColumnFilterType FilterType { get; set; } = ColumnFilterType.Text;
     }

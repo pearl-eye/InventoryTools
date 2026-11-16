@@ -25,10 +25,10 @@ namespace InventoryTools.Logic.Settings
         }
 
         public override string Key { get; set; } = "OpenItemLogHotKey";
-        public override string Name { get; set; } = "Open Item Log Hotkey";
+        public override string Name { get; set; } = "打开物品笔记快捷键";
 
         public override string HelpText { get; set; } =
-            "The hotkey to open the relevant log entry(gathering, crafting, fishing) for an item when hovering it.";
+            "鼠标悬停于物品时，打开对应笔记（采集、制作或钓鱼）的快捷键。";
         
         public override string Version => "1.11.0.2";
     }

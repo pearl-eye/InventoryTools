@@ -77,7 +77,7 @@ public class HorizontalSplitter
 
         if (CollapsedTop && !CollapsedBottom)
         {
-            using (var top = ImRaii.Child("Bottom##Bottom"))
+            using (var top = ImRaii.Child("底部##Bottom"))
             {
                 if (top.Success)
                 {
@@ -124,7 +124,7 @@ public class HorizontalSplitter
         }
         else if (CollapsedBottom && !CollapsedTop)
         {
-            using (var bottom = ImRaii.Child("Top##Top"))
+            using (var bottom = ImRaii.Child("顶部##Top"))
             {
                 if (bottom.Success)
                 {
@@ -197,7 +197,7 @@ public class HorizontalSplitter
 
         }
 
-        using (var topChild = ImRaii.Child("Top##Top", new Vector2(-1.0f, currentHeight) * ImGui.GetIO().FontGlobalScale, false))
+        using (var topChild = ImRaii.Child("顶部##Top", new Vector2(-1.0f, currentHeight) * ImGui.GetIO().FontGlobalScale, false))
         {
             if (topChild.Success)
             {
@@ -267,7 +267,7 @@ public class HorizontalSplitter
             }
         }
 
-        using (var bottomChild = ImRaii.Child("Bottom##Bottom", new Vector2(-1, -1) * ImGui.GetIO().FontGlobalScale, false))
+        using (var bottomChild = ImRaii.Child("底部##Bottom", new Vector2(-1, -1) * ImGui.GetIO().FontGlobalScale, false))
         {
             if (bottomChild.Success)
             {

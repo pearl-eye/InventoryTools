@@ -23,7 +23,7 @@ public class MagicalDamageColumn : IntegerColumn
         return searchResult.Item.Base.DamageMag;
     }
 
-    public override string Name { get; set; } = "Magical Damage";
+    public override string Name { get; set; } = "魔法基本性能";
     public override float Width { get; set; } = 80;
-    public override string HelpText { get; set; } = "The magical damage of the item";
+    public override string HelpText { get; set; } = "此物品的魔法基本性能。";
 }

@@ -20,8 +20,8 @@ public class ItemFateSourceRenderer : ItemInfoRenderer<ItemFateSource>
 
     public override RendererType RendererType => RendererType.Source;
     public override ItemInfoType Type => ItemInfoType.Fate;
-    public override string HelpText => "Can the item be obtained by completing a fate?";
-    public override string SingularName => "Fate";
+    public override string HelpText => "此物品能否通过完成危命任务获得？";
+    public override string SingularName => "危命任务";
     public override bool ShouldGroup => true;
 
     public override Action<List<ItemSource>>? DrawTooltipGrouped => sources =>

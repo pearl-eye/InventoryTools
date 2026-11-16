@@ -14,7 +14,7 @@ public class LayerDebuggerPane : IDebugPane
         {
             ImGui.TextUnformatted($"Level ID: {activeLayout->LevelId}");
             ImGui.TextUnformatted($"ID: {activeLayout->Id}");
-            ImGui.TextUnformatted($"Type: {activeLayout->Type}");
+            ImGui.TextUnformatted($"类型: {activeLayout->Type}");
             ImGui.TextUnformatted($"Resource Strings: {activeLayout->Type}");
             foreach (var resourcePath in activeLayout->ResourcePaths.Strings)
             {

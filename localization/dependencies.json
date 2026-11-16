@@ -1,0 +1,655 @@
+{
+  "schemaVersion": 1,
+  "assemblies": [
+    {
+      "name": "AllaganLib.GameSheets",
+      "file": "AllaganLib.GameSheets.dll",
+      "packageVersion": "2.2.9",
+      "rules": [
+        {
+          "fullMethodName": "System.String AllaganLib.GameSheets.Model.ILocation::get_FormattedName()",
+          "original": "Unknown Map",
+          "translation": "未知地图",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.String AllaganLib.GameSheets.Model.ILocation::get_FormattedName()",
+          "original": "Unknown Territory",
+          "translation": "未知区域",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.String AllaganLib.GameSheets.Model.NpcLocation::get_FormattedName()",
+          "original": "Unknown Map",
+          "translation": "未知地图",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.String AllaganLib.GameSheets.Model.NpcLocation::get_FormattedName()",
+          "original": "Unknown Territory",
+          "translation": "未知区域",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.String AllaganLib.GameSheets.Sheets.Rows.ItemRow::get_FormattedRarity()",
+          "original": "Aetherial",
+          "translation": "以太",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.String AllaganLib.GameSheets.Sheets.Rows.ItemRow::get_FormattedRarity()",
+          "original": "Artifact",
+          "translation": "珍品",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.String AllaganLib.GameSheets.Sheets.Rows.ItemRow::get_FormattedRarity()",
+          "original": "Normal",
+          "translation": "普通",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.String AllaganLib.GameSheets.Sheets.Rows.ItemRow::get_FormattedRarity()",
+          "original": "Relic",
+          "translation": "遗物",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.String AllaganLib.GameSheets.Sheets.Rows.ItemRow::get_FormattedRarity()",
+          "original": "Scarce",
+          "translation": "稀有",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.String AllaganLib.GameSheets.Sheets.Rows.ItemRow::get_FormattedRarity()",
+          "original": "Unknown",
+          "translation": "未知",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.String AllaganLib.GameSheets.Sheets.Rows.LevelRow::get_FormattedName()",
+          "original": "Unknown Map",
+          "translation": "未知地图",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.String AllaganLib.GameSheets.Sheets.Rows.LevelRow::get_FormattedName()",
+          "original": "Unknown Territory",
+          "translation": "未知区域",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.String AllaganLib.GameSheets.Sheets.Rows.NotoriousMonsterRow::RankFormatted()",
+          "original": "N/A",
+          "translation": "不适用",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.String AllaganLib.GameSheets.Sheets.Rows.RetainerTaskNormalRow::get_TaskName()",
+          "original": " - Lv ",
+          "translation": " - 等级 ",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.String AllaganLib.GameSheets.Sheets.Rows.RetainerTaskNormalRow::get_TaskName()",
+          "original": "Unknown",
+          "translation": "未知",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.String AllaganLib.GameSheets.Sheets.Rows.RetainerTaskRandomRow::get_FormattedName()",
+          "original": " - Lv ",
+          "translation": " - 等级 ",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.String AllaganLib.GameSheets.Sheets.Rows.RetainerTaskRandomRow::get_FormattedName()",
+          "original": "Unknown",
+          "translation": "未知",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.String AllaganLib.GameSheets.Sheets.Rows.RetainerTaskRow::get_ExperienceString()",
+          "original": "N/A",
+          "translation": "不适用",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.String AllaganLib.GameSheets.Sheets.Rows.RetainerTaskRow::get_FormattedName()",
+          "original": "Unknown Task",
+          "translation": "未知探险",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "name": "AllaganLib.Interface",
+      "file": "AllaganLib.Interface.dll",
+      "packageVersion": "2.2.0",
+      "rules": [
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.FormFields.ColorFormField`1::Draw(T,System.Nullable`1<System.Int32>,System.Nullable`1<System.Int32>)",
+          "original": "The alpha is currently set to 0, this will be invisible.",
+          "translation": "当前透明度为0，将无法显示。",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.FormFields.FlagsEnumFormField`2::DrawInput(TS,System.Nullable`1<System.Int32>)",
+          "original": "Add All",
+          "translation": "全部添加",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.FormFields.FlagsEnumFormField`2::DrawInput(TS,System.Nullable`1<System.Int32>)",
+          "original": "Start typing to search..##ItemSearch",
+          "translation": "输入以搜索…##ItemSearch",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.FormFields.HotkeyFormField`1::DrawInput(T,System.Nullable`1<System.Int32>)",
+          "original": "Cancel##",
+          "translation": "取消##",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.FormFields.HotkeyFormField`1::DrawInput(T,System.Nullable`1<System.Int32>)",
+          "original": "Confirm##",
+          "translation": "确认##",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.FormFields.HotkeyFormField`1::DrawInput(T,System.Nullable`1<System.Int32>)",
+          "original": "Set Keybind",
+          "translation": "设置快捷键",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.FormFields.MultipleChoiceFormField`2::DrawInput(TS,System.Nullable`1<System.Int32>)",
+          "original": " items selected.",
+          "translation": " 个物品已选中。",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.FormFields.MultipleChoiceFormField`2::DrawInput(TS,System.Nullable`1<System.Int32>)",
+          "original": "Add All",
+          "translation": "全部添加",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.FormFields.MultipleChoiceFormField`2::DrawInput(TS,System.Nullable`1<System.Int32>)",
+          "original": "Clear",
+          "translation": "清除",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.FormFields.MultipleChoiceFormField`2::DrawInput(TS,System.Nullable`1<System.Int32>)",
+          "original": "No item selected.",
+          "translation": "未选择物品。",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.FormFields.MultipleChoiceFormField`2::DrawInput(TS,System.Nullable`1<System.Int32>)",
+          "original": "No items selected.",
+          "translation": "未选择物品。",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.FormFields.MultipleChoiceFormField`2::DrawInput(TS,System.Nullable`1<System.Int32>)",
+          "original": "Start typing to search..##ItemSearch",
+          "translation": "输入以搜索…##ItemSearch",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.DatePickerWidget::Draw(System.String,System.Nullable`1<System.DateTime>&,System.Nullable`1<System.Int32>)",
+          "original": "April",
+          "translation": "四月",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.DatePickerWidget::Draw(System.String,System.Nullable`1<System.DateTime>&,System.Nullable`1<System.Int32>)",
+          "original": "August",
+          "translation": "八月",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.DatePickerWidget::Draw(System.String,System.Nullable`1<System.DateTime>&,System.Nullable`1<System.Int32>)",
+          "original": "Cancel",
+          "translation": "取消",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.DatePickerWidget::Draw(System.String,System.Nullable`1<System.DateTime>&,System.Nullable`1<System.Int32>)",
+          "original": "Date Picker##",
+          "translation": "日期选择器##",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.DatePickerWidget::Draw(System.String,System.Nullable`1<System.DateTime>&,System.Nullable`1<System.Int32>)",
+          "original": "Day",
+          "translation": "日",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.DatePickerWidget::Draw(System.String,System.Nullable`1<System.DateTime>&,System.Nullable`1<System.Int32>)",
+          "original": "December",
+          "translation": "十二月",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.DatePickerWidget::Draw(System.String,System.Nullable`1<System.DateTime>&,System.Nullable`1<System.Int32>)",
+          "original": "February",
+          "translation": "二月",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.DatePickerWidget::Draw(System.String,System.Nullable`1<System.DateTime>&,System.Nullable`1<System.Int32>)",
+          "original": "Friday",
+          "translation": "星期五",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.DatePickerWidget::Draw(System.String,System.Nullable`1<System.DateTime>&,System.Nullable`1<System.Int32>)",
+          "original": "January",
+          "translation": "一月",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.DatePickerWidget::Draw(System.String,System.Nullable`1<System.DateTime>&,System.Nullable`1<System.Int32>)",
+          "original": "July",
+          "translation": "七月",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.DatePickerWidget::Draw(System.String,System.Nullable`1<System.DateTime>&,System.Nullable`1<System.Int32>)",
+          "original": "June",
+          "translation": "六月",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.DatePickerWidget::Draw(System.String,System.Nullable`1<System.DateTime>&,System.Nullable`1<System.Int32>)",
+          "original": "March",
+          "translation": "三月",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.DatePickerWidget::Draw(System.String,System.Nullable`1<System.DateTime>&,System.Nullable`1<System.Int32>)",
+          "original": "May",
+          "translation": "五月",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.DatePickerWidget::Draw(System.String,System.Nullable`1<System.DateTime>&,System.Nullable`1<System.Int32>)",
+          "original": "Monday",
+          "translation": "星期一",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.DatePickerWidget::Draw(System.String,System.Nullable`1<System.DateTime>&,System.Nullable`1<System.Int32>)",
+          "original": "Month",
+          "translation": "月",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.DatePickerWidget::Draw(System.String,System.Nullable`1<System.DateTime>&,System.Nullable`1<System.Int32>)",
+          "original": "November",
+          "translation": "十一月",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.DatePickerWidget::Draw(System.String,System.Nullable`1<System.DateTime>&,System.Nullable`1<System.Int32>)",
+          "original": "OK",
+          "translation": "确定",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.DatePickerWidget::Draw(System.String,System.Nullable`1<System.DateTime>&,System.Nullable`1<System.Int32>)",
+          "original": "October",
+          "translation": "十月",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.DatePickerWidget::Draw(System.String,System.Nullable`1<System.DateTime>&,System.Nullable`1<System.Int32>)",
+          "original": "Reset",
+          "translation": "重置",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.DatePickerWidget::Draw(System.String,System.Nullable`1<System.DateTime>&,System.Nullable`1<System.Int32>)",
+          "original": "Saturday",
+          "translation": "星期六",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.DatePickerWidget::Draw(System.String,System.Nullable`1<System.DateTime>&,System.Nullable`1<System.Int32>)",
+          "original": "September",
+          "translation": "九月",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.DatePickerWidget::Draw(System.String,System.Nullable`1<System.DateTime>&,System.Nullable`1<System.Int32>)",
+          "original": "Sunday",
+          "translation": "星期日",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.DatePickerWidget::Draw(System.String,System.Nullable`1<System.DateTime>&,System.Nullable`1<System.Int32>)",
+          "original": "Thursday",
+          "translation": "星期四",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.DatePickerWidget::Draw(System.String,System.Nullable`1<System.DateTime>&,System.Nullable`1<System.Int32>)",
+          "original": "Today",
+          "translation": "今天",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.DatePickerWidget::Draw(System.String,System.Nullable`1<System.DateTime>&,System.Nullable`1<System.Int32>)",
+          "original": "Tuesday",
+          "translation": "星期二",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.DatePickerWidget::Draw(System.String,System.Nullable`1<System.DateTime>&,System.Nullable`1<System.Int32>)",
+          "original": "Wednesday",
+          "translation": "星期三",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.DatePickerWidget::Draw(System.String,System.Nullable`1<System.DateTime>&,System.Nullable`1<System.Int32>)",
+          "original": "Year",
+          "translation": "年",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.DateRangePickerWidget::Draw(System.String,System.Nullable`1<System.DateTime>&,System.Nullable`1<System.DateTime>&,System.Nullable`1<System.Int32>)",
+          "original": "Cancel",
+          "translation": "取消",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.DateRangePickerWidget::Draw(System.String,System.Nullable`1<System.DateTime>&,System.Nullable`1<System.DateTime>&,System.Nullable`1<System.Int32>)",
+          "original": "End Date",
+          "translation": "结束日期",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.DateRangePickerWidget::Draw(System.String,System.Nullable`1<System.DateTime>&,System.Nullable`1<System.DateTime>&,System.Nullable`1<System.Int32>)",
+          "original": "Invalid date range.",
+          "translation": "日期范围无效。",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.DateRangePickerWidget::Draw(System.String,System.Nullable`1<System.DateTime>&,System.Nullable`1<System.DateTime>&,System.Nullable`1<System.Int32>)",
+          "original": "OK",
+          "translation": "确定",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.DateRangePickerWidget::Draw(System.String,System.Nullable`1<System.DateTime>&,System.Nullable`1<System.DateTime>&,System.Nullable`1<System.Int32>)",
+          "original": "Reset",
+          "translation": "重置",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.DateRangePickerWidget::Draw(System.String,System.Nullable`1<System.DateTime>&,System.Nullable`1<System.DateTime>&,System.Nullable`1<System.Int32>)",
+          "original": "Start Date",
+          "translation": "开始日期",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.TimeSpanPickerWidget::Draw(System.String,System.Nullable`1<AllaganLib.Interface.Widgets.TimeUnit>&,System.Nullable`1<System.Int32>&,System.Nullable`1<System.Int32>)",
+          "original": " ago",
+          "translation": " 前",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.TimeSpanPickerWidget::Draw(System.String,System.Nullable`1<AllaganLib.Interface.Widgets.TimeUnit>&,System.Nullable`1<System.Int32>&,System.Nullable`1<System.Int32>)",
+          "original": "Cancel",
+          "translation": "取消",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.TimeSpanPickerWidget::Draw(System.String,System.Nullable`1<AllaganLib.Interface.Widgets.TimeUnit>&,System.Nullable`1<System.Int32>&,System.Nullable`1<System.Int32>)",
+          "original": "OK",
+          "translation": "确定",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.TimeSpanPickerWidget::Draw(System.String,System.Nullable`1<AllaganLib.Interface.Widgets.TimeUnit>&,System.Nullable`1<System.Int32>&,System.Nullable`1<System.Int32>)",
+          "original": "Past 14 Days##",
+          "translation": "过去14天##",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.TimeSpanPickerWidget::Draw(System.String,System.Nullable`1<AllaganLib.Interface.Widgets.TimeUnit>&,System.Nullable`1<System.Int32>&,System.Nullable`1<System.Int32>)",
+          "original": "Past 7 Days##",
+          "translation": "过去7天##",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.TimeSpanPickerWidget::Draw(System.String,System.Nullable`1<AllaganLib.Interface.Widgets.TimeUnit>&,System.Nullable`1<System.Int32>&,System.Nullable`1<System.Int32>)",
+          "original": "Past Month##",
+          "translation": "过去一个月##",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.TimeSpanPickerWidget::Draw(System.String,System.Nullable`1<AllaganLib.Interface.Widgets.TimeUnit>&,System.Nullable`1<System.Int32>&,System.Nullable`1<System.Int32>)",
+          "original": "Reset",
+          "translation": "重置",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.TimeSpanPickerWidget::Draw(System.String,System.Nullable`1<AllaganLib.Interface.Widgets.TimeUnit>&,System.Nullable`1<System.Int32>&,System.Nullable`1<System.Int32>)",
+          "original": "Since ",
+          "translation": "自",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.TimeSpanPickerWidget::Draw(System.String,System.Nullable`1<AllaganLib.Interface.Widgets.TimeUnit>&,System.Nullable`1<System.Int32>&,System.Nullable`1<System.Int32>)",
+          "original": "Time Span Picker##",
+          "translation": "时间范围选择器##",
+          "count": 2
+        },
+        {
+          "fullMethodName": "System.Boolean AllaganLib.Interface.Widgets.TimeSpanPickerWidget::Draw(System.String,System.Nullable`1<AllaganLib.Interface.Widgets.TimeUnit>&,System.Nullable`1<System.Int32>&,System.Nullable`1<System.Int32>)",
+          "original": "Unit",
+          "translation": "单位",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Collections.Generic.List`1<TMessageBase> AllaganLib.Interface.Grid.RenderTable`3::Draw(TConfiguration,System.Numerics.Vector2,System.Boolean)",
+          "original": "No columns have been added to the table.",
+          "translation": "尚未向表格添加任何列。",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Void AllaganLib.Interface.FormFields.FormField`2::DrawHelp(TConfiguration)",
+          "original": "Reset##",
+          "translation": "重置##",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Void AllaganLib.Interface.Widgets.DateRangePickerWidget::DrawDateSelector(System.String,System.Int32&,System.Int32&,System.Int32&)",
+          "original": "April",
+          "translation": "四月",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Void AllaganLib.Interface.Widgets.DateRangePickerWidget::DrawDateSelector(System.String,System.Int32&,System.Int32&,System.Int32&)",
+          "original": "August",
+          "translation": "八月",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Void AllaganLib.Interface.Widgets.DateRangePickerWidget::DrawDateSelector(System.String,System.Int32&,System.Int32&,System.Int32&)",
+          "original": "Day",
+          "translation": "日",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Void AllaganLib.Interface.Widgets.DateRangePickerWidget::DrawDateSelector(System.String,System.Int32&,System.Int32&,System.Int32&)",
+          "original": "December",
+          "translation": "十二月",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Void AllaganLib.Interface.Widgets.DateRangePickerWidget::DrawDateSelector(System.String,System.Int32&,System.Int32&,System.Int32&)",
+          "original": "February",
+          "translation": "二月",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Void AllaganLib.Interface.Widgets.DateRangePickerWidget::DrawDateSelector(System.String,System.Int32&,System.Int32&,System.Int32&)",
+          "original": "January",
+          "translation": "一月",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Void AllaganLib.Interface.Widgets.DateRangePickerWidget::DrawDateSelector(System.String,System.Int32&,System.Int32&,System.Int32&)",
+          "original": "July",
+          "translation": "七月",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Void AllaganLib.Interface.Widgets.DateRangePickerWidget::DrawDateSelector(System.String,System.Int32&,System.Int32&,System.Int32&)",
+          "original": "June",
+          "translation": "六月",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Void AllaganLib.Interface.Widgets.DateRangePickerWidget::DrawDateSelector(System.String,System.Int32&,System.Int32&,System.Int32&)",
+          "original": "March",
+          "translation": "三月",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Void AllaganLib.Interface.Widgets.DateRangePickerWidget::DrawDateSelector(System.String,System.Int32&,System.Int32&,System.Int32&)",
+          "original": "May",
+          "translation": "五月",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Void AllaganLib.Interface.Widgets.DateRangePickerWidget::DrawDateSelector(System.String,System.Int32&,System.Int32&,System.Int32&)",
+          "original": "Month",
+          "translation": "月",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Void AllaganLib.Interface.Widgets.DateRangePickerWidget::DrawDateSelector(System.String,System.Int32&,System.Int32&,System.Int32&)",
+          "original": "November",
+          "translation": "十一月",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Void AllaganLib.Interface.Widgets.DateRangePickerWidget::DrawDateSelector(System.String,System.Int32&,System.Int32&,System.Int32&)",
+          "original": "October",
+          "translation": "十月",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Void AllaganLib.Interface.Widgets.DateRangePickerWidget::DrawDateSelector(System.String,System.Int32&,System.Int32&,System.Int32&)",
+          "original": "September",
+          "translation": "九月",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Void AllaganLib.Interface.Widgets.DateRangePickerWidget::DrawDateSelector(System.String,System.Int32&,System.Int32&,System.Int32&)",
+          "original": "Today##",
+          "translation": "今天##",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Void AllaganLib.Interface.Widgets.DateRangePickerWidget::DrawDateSelector(System.String,System.Int32&,System.Int32&,System.Int32&)",
+          "original": "Year",
+          "translation": "年",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Void AllaganLib.Interface.Widgets.WizardWidget`1::Draw()",
+          "original": " configuration wizard.",
+          "translation": "设置向导。",
+          "count": 2
+        },
+        {
+          "fullMethodName": "System.Void AllaganLib.Interface.Widgets.WizardWidget`1::Draw()",
+          "original": "Close (and never show the wizard again)",
+          "translation": "关闭（不再显示向导）",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Void AllaganLib.Interface.Widgets.WizardWidget`1::Draw()",
+          "original": "Close (and show next time the plugin loads)",
+          "translation": "关闭（下次加载插件时显示）",
+          "count": 2
+        },
+        {
+          "fullMethodName": "System.Void AllaganLib.Interface.Widgets.WizardWidget`1::Draw()",
+          "original": "Continue",
+          "translation": "继续",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Void AllaganLib.Interface.Widgets.WizardWidget`1::Draw()",
+          "original": "Continue (and never show the wizard again)",
+          "translation": "继续（不再显示向导）",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Void AllaganLib.Interface.Widgets.WizardWidget`1::Draw()",
+          "original": "Continue (and show on new features)",
+          "translation": "继续（新增功能时显示）",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Void AllaganLib.Interface.Widgets.WizardWidget`1::Draw()",
+          "original": "Finish",
+          "translation": "完成",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Void AllaganLib.Interface.Widgets.WizardWidget`1::Draw()",
+          "original": "Next",
+          "translation": "下一步",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Void AllaganLib.Interface.Widgets.WizardWidget`1::Draw()",
+          "original": "Previous",
+          "translation": "上一步",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Void AllaganLib.Interface.Widgets.WizardWidget`1::Draw()",
+          "original": "There are new features available to configure and you elected to show this window when that occurs.",
+          "translation": "您选择在新增功能时显示此窗口。现在有新功能可供配置。",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Void AllaganLib.Interface.Widgets.WizardWidget`1::Draw()",
+          "original": "This will guide you through the setup of the most commonly used features. This wizard, with your permission will show itself again when a new feature gets released as features are normally left for the user to configure and activate.",
+          "translation": "本向导将引导您设置常用功能。如果选择允许，新功能发布后会再次显示向导，便于您配置和启用。",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Void AllaganLib.Interface.Widgets.WizardWidget`1::Draw()",
+          "original": "Welcome",
+          "translation": "欢迎",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Void AllaganLib.Interface.Widgets.WizardWidget`1::Draw()",
+          "original": "Welcome back to the ",
+          "translation": "欢迎再次使用",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Void AllaganLib.Interface.Widgets.WizardWidget`1::Draw()",
+          "original": "Welcome to the ",
+          "translation": "欢迎使用",
+          "count": 1
+        }
+      ]
+    }
+  ]
+}

@@ -26,16 +26,16 @@ public class ItemCompanyCraftDraftSourceRenderer : ItemInfoRenderer<ItemCompanyC
     }
     public override RendererType RendererType => RendererType.Use;
     public override ItemInfoType Type => ItemInfoType.CompanyCraftDraft;
-    public override string SingularName => "Company Craft Prototype";
-    public override string HelpText => "Is this item used in the creation of a company craft prototype?";
+    public override string SingularName => "部队工房设计图";
+    public override string HelpText => "此物品是否用于制作部队工房设计图？";
     public override bool ShouldGroup => true;
     public override Action<ItemSource> DrawTooltip => source =>
     {
         var asSource = AsSource(source);
-        ImGui.Text($"Name: {asSource.CompanyCraftDraft.Value.Name.ExtractText()}");
+        ImGui.Text($"名称：{asSource.CompanyCraftDraft.Value.Name.ExtractText()}");
 
-        DrawItems("Possible Reward Items: ", asSource.RewardItems);
-        DrawItems("Ingredients: ", asSource.CostItems);
+        DrawItems("可能获得的奖励物品：", asSource.RewardItems);
+        DrawItems("材料：", asSource.CostItems);
     };
 
     public override Func<ItemSource, string> GetName => source =>

@@ -20,17 +20,17 @@ public class TooltipGlamourReadySetDisplayModeSetting : ChoiceSetting<GlamourRea
     }
 
     public override string Key { get; set; } = "TooltipGlamourReadySetDisplayMode";
-    public override string Name { get; set; } = "Display Mode";
+    public override string Name { get; set; } = "显示模式";
 
-    public override string WizardName { get; } = "Display Mode";
+    public override string WizardName { get; } = "显示模式";
 
     public override string HelpText { get; set; } =
-        "How the Glamour Ready Set information should be displayed in the tooltip. Detailed lists each piece with its ownership status; Compact shows a summary count.";
+        "整套幻化信息在物品提示中的显示方式。详细模式列出各部件及持有状态；简洁模式仅显示数量汇总。";
     
     public override Dictionary<GlamourReadySetDisplayMode, string> Choices => new()
     {
-        { GlamourReadySetDisplayMode.Detailed, "Detailed (list all pieces)" },
-        { GlamourReadySetDisplayMode.Compact, "Compact (count summary)" },
+        { GlamourReadySetDisplayMode.Detailed, "详细（列出全部部件）" },
+        { GlamourReadySetDisplayMode.Compact, "简洁（仅显示数量）" },
     };
 
     public override string Version => "1.12.0.0";

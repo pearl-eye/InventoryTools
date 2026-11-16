@@ -107,7 +107,7 @@ public class SourceInformationTooltip : BaseTooltip
 
                     if (groupedLine.Count() > 20)
                     {
-                        textLines[^1] += " (" + (groupedLine.Count() - 20) + " more)";
+                        textLines[^1] += " (" + (groupedLine.Count() - 20) + " 个其他物品）";
                     }
                 }
                 else
@@ -119,7 +119,7 @@ public class SourceInformationTooltip : BaseTooltip
             var newText = "";
             if (textLines.Count != 0)
             {
-                newText = "\nSources: " + string.Join(", ", textLines.Distinct());
+                newText = "\n获取途径: " + string.Join(", ", textLines.Distinct());
             }
 
             newText = newText.TrimEnd('\n');

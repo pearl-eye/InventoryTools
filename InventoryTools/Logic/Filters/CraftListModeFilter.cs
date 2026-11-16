@@ -40,10 +40,10 @@ public class CraftListModeFilter : ChoiceFilter<CraftListMode>
     }
 
     public override string Key { get; set; } = "CraftListMode";
-    public override string Name { get; set; } = "Craft List Mode";
+    public override string Name { get; set; } = "制作清单模式";
 
     public override string HelpText { get; set; } =
-        "Should the craft list operate normally or in stocking mode. In normal mode, a quantity is entered and as you craft that number goes down. In stock mode, a quantity is entered and the number goes up based on the items within your characters inventory.";
+        "普通模式下，输入所需数量，制作后数量递减。备货模式下，输入目标库存，当前数量根据角色背包中的物品统计。";
 
     public override FilterCategory FilterCategory { get; set; } = FilterCategory.Settings;
 

@@ -41,8 +41,8 @@ public class ListDebugWindow : GenericWindow
         foreach (var list in _lists)
         {
             ImGui.Text("List: " + list.Name);
-            ImGui.Text("Refreshing: " + (list.Refreshing ? "Yes" : "No"));
-            ImGui.Text("Needs Refresh: " + (list.NeedsRefresh ? "Yes" : "No"));
+            ImGui.Text("Refreshing: " + (list.Refreshing ? "是" : "否"));
+            ImGui.Text("Needs Refresh: " + (list.NeedsRefresh ? "是" : "否"));
         }
     }
 

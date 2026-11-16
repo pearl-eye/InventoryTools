@@ -7,16 +7,16 @@ public class IntroWindowsLayout : ContentLayout
 {
     public override PageLayout Build()
     {
-        return Page("intro/windows", "Other tools",
-            Paragraph("A couple of calculators sit outside lists, crafts and the compendium. Both are in the menu button at the bottom of any Allagan Tools window."),
-            Section("Chocobo colour calculator",
-                Paragraph("Pick the colour you want your chocobo to be and it works out which fruit to feed, in which order. Lock the sequence in and it tracks your progress, ticking off each fruit as you go."),
-                OpenWindow<ChocoboColourWindow>("Open the chocobo colour calculator")),
-            Section("Equipment recommendations",
-                Paragraph("Pick a class and it looks through everything you own on any character and in any retainer for gear that beats what you are wearing, weighing item level against the stats that class actually cares about."),
-                OpenWindow<EquipmentSuggestWindow>("Open equipment recommendations")),
-            Section("Two things worth knowing",
-                Paragraph("Right-clicking an item or a table row almost always offers more than you would expect, and clicking an item's icon anywhere in the plugin opens its full information page."))
+        return Page("intro/windows", "其他工具",
+            Paragraph("除清单、制作和图鉴外，插件还提供两个计算工具，可从任意 Allagan Tools 窗口底部的菜单按钮打开。"),
+            Section("陆行鸟染色计算器",
+                Paragraph("选择想要的陆行鸟羽色，计算器会给出应喂食的水果及顺序。确认方案后，还可记录每次喂食进度。"),
+                OpenWindow<ChocoboColourWindow>("打开陆行鸟染色计算器")),
+            Section("装备推荐",
+                Paragraph("选择职业后，从所有角色和雇员持有的装备中查找提升项，综合考虑物品品级和该职业所需属性。"),
+                OpenWindow<EquipmentSuggestWindow>("打开装备推荐")),
+            Section("两点提示",
+                Paragraph("右键点击物品或表格行通常会显示更多操作。在插件任意位置点击物品图标，都可打开完整信息页。"))
         );
     }
 }

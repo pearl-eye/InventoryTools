@@ -137,41 +137,41 @@ public static class IngredientPreferenceTypeExtension
         switch (ingredientPreferenceType)
         {
             case IngredientPreferenceType.Botany:
-                return "Botany";
+                return "园艺";
             case IngredientPreferenceType.Buy:
-                return "Buy from Vendor";
+                return "从商店购买";
             case IngredientPreferenceType.HouseVendor:
-                return "Buy from House Vendor";
+                return "从房屋商人购买";
             case IngredientPreferenceType.Crafting:
-                return "Crafting";
+                return "制作";
             case IngredientPreferenceType.Fishing:
-                return "Fishing";
+                return "钓鱼";
             case IngredientPreferenceType.SpearFishing:
-                return "Spearfishing";
+                return "刺鱼";
             case IngredientPreferenceType.Item:
-                return "Item";
+                return "物品";
             case IngredientPreferenceType.Marketboard:
-                return "Marketboard";
+                return "市场布告板";
             case IngredientPreferenceType.Mining:
-                return "Mining";
+                return "采矿";
             case IngredientPreferenceType.Venture:
-                return "Venture";
+                return "雇员探险";
             case IngredientPreferenceType.Duty:
-                return "Duty";
+                return "副本任务";
             case IngredientPreferenceType.ExplorationVenture:
-                return "Venture (Exploration)";
+                return "雇员探险（探索）";
             case IngredientPreferenceType.Desynthesis:
-                return "Desynthesis";
+                return "分解";
             case IngredientPreferenceType.Reduction:
-                return "Reduction";
+                return "精选";
             case IngredientPreferenceType.ResourceInspection:
-                return "Resource Inspection";
+                return "资源勘察";
             case IngredientPreferenceType.Gardening:
-                return "Gardening";
+                return "园艺种植";
             case IngredientPreferenceType.Mobs:
-                return "Monsters";
+                return "怪物";
             case IngredientPreferenceType.Empty:
-                return "Nothing";
+                return "无";
         }
 
         return ingredientPreferenceType.ToString();

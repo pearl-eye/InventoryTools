@@ -48,7 +48,7 @@ namespace InventoryTools.Ui
             }
             else
             {
-                WindowName = "Invalid Submarine Exploration";
+                WindowName = "无效潜水艇探索点";
                 Key = "sepid_invalid";
                 _drops = new List<ItemRow>();
             }
@@ -59,31 +59,31 @@ namespace InventoryTools.Ui
         private SubmarineExplorationRow? SubmarineExploration => _submarineExplorationSheet.GetRowOrDefault(_submarineExplorationPointId);
 
         public override string GenericKey { get; } = "submarine";
-        public override string GenericName { get; } = "Submarines";
+        public override string GenericName { get; } = "潜水艇";
         public override bool DestroyOnClose => true;
         public override void DrawWindow()
         {
             if (SubmarineExploration == null)
             {
-                ImGui.TextUnformatted("Submarine Exploration Point with the ID " + _submarineExplorationPointId + " could not be found.");
+                ImGui.TextUnformatted("潜水艇探索点 ID " + _submarineExplorationPointId + " 未找到。");
             }
             else
             {
                 ImGui.TextUnformatted(SubmarineExploration.Base.Destination.ExtractText());
-                ImGui.TextUnformatted("Unlocked Via: " + SubmarineExploration.Unlock?.Base.Destination.ExtractText() ?? "N/A");
-                ImGui.TextUnformatted("Rank Required: " + SubmarineExploration.Base.RankReq);
+                ImGui.TextUnformatted("解锁条件: " + SubmarineExploration.Unlock?.Base.Destination.ExtractText() ?? "N/A");
+                ImGui.TextUnformatted("所需等级：" + SubmarineExploration.Base.RankReq);
                 ;
                 ImGui.Image(ImGuiService.GetIconTexture(Icons.AirshipIcon).Handle, new Vector2(100, 100) * ImGui.GetIO().FontGlobalScale);
 
 
-                if (ImGui.CollapsingHeader("Rewards (" + _drops.Count + ")", ImGuiTreeNodeFlags.DefaultOpen | ImGuiTreeNodeFlags.CollapsingHeader))
+                if (ImGui.CollapsingHeader("奖励（" + _drops.Count + ")", ImGuiTreeNodeFlags.DefaultOpen | ImGuiTreeNodeFlags.CollapsingHeader))
                 {
                     ImGuiStylePtr style = ImGui.GetStyle();
                     float windowVisibleX2 = ImGui.GetWindowPos().X + ImGui.GetWindowContentRegionMax().X;
 
                     for (var index = 0; index < _drops.Count; index++)
                     {
-                        ImGui.PushID("Reward"+index);
+                        ImGui.PushID("奖励"+index);
                         var drop = _drops[index];
 
                         if (ImGui.ImageButton(ImGuiService.GetIconTexture(drop.Icon).Handle,

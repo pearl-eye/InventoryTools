@@ -28,17 +28,17 @@ public abstract class ItemFieldOpCofferSourceRenderer<T> : ItemInfoRenderer<T> w
     public override Action<ItemSource> DrawTooltip => source =>
     {
         var asSource = AsSource(source);
-        ImGui.Text("Drops from " + asSource.CofferType + " coffer");
+        ImGui.Text("掉落自" + asSource.CofferType + "宝箱");
         if (asSource.Min != null && asSource.Max != null)
         {
             ImGui.SameLine();
             if (asSource.Min == asSource.Max)
             {
-                ImGui.Text("(Drops 1)");
+                ImGui.Text("（掉落1个）");
             }
             else
             {
-                ImGui.Text("(Drops " + asSource.Min.Value + " - " + asSource.Max.Value + ")");
+                ImGui.Text("（掉落" + asSource.Min.Value + " - " + asSource.Max.Value + ")");
             }
         }
 
@@ -56,7 +56,7 @@ public abstract class ItemFieldOpCofferSourceRenderer<T> : ItemInfoRenderer<T> w
     public override Func<ItemSource, string> GetDescription => source =>
     {
         var asSource = AsSource(source);
-        return asSource.CofferType + " coffer";
+        return asSource.CofferType + "宝箱";
     };
 }
 
@@ -69,8 +69,8 @@ public class ItemPagosTreasureSourceRenderer : ItemFieldOpCofferSourceRenderer<I
     {
     }
 
-    public override string SingularName => "Eureka Pagos (Treasure Coffer)";
-    public override string HelpText => "Does this item drop from a pagos treasure coffer?";
+    public override string SingularName => "优雷卡涌冰之地（宝箱）";
+    public override string HelpText => "此物品是否由涌冰之地的宝箱掉落？";
 }
 
 public class ItemPyrosTreasureSourceRenderer : ItemFieldOpCofferSourceRenderer<ItemPyrosTreasureCofferSource>
@@ -82,8 +82,8 @@ public class ItemPyrosTreasureSourceRenderer : ItemFieldOpCofferSourceRenderer<I
     {
     }
 
-    public override string SingularName => "Eureka Pyros (Treasure Coffer)";
-    public override string HelpText => "Does this item drop from a pyros treasure coffer?";
+    public override string SingularName => "优雷卡火焰之地（宝箱）";
+    public override string HelpText => "此物品是否由火焰之地的宝箱掉落？";
 }
 
 public class ItemHydatosTreasureSourceRenderer : ItemFieldOpCofferSourceRenderer<ItemHydatosTreasureCofferSource>
@@ -95,8 +95,8 @@ public class ItemHydatosTreasureSourceRenderer : ItemFieldOpCofferSourceRenderer
     {
     }
 
-    public override string SingularName => "Eureka Hydatos (Treasure Coffer)";
-    public override string HelpText => "Does this item drop from a hydatos treasure coffer?";
+    public override string SingularName => "优雷卡丰水之地（宝箱）";
+    public override string HelpText => "此物品是否由丰水之地的宝箱掉落？";
 }
 
 public class ItemOccultTreasureSourceRenderer : ItemFieldOpCofferSourceRenderer<ItemOccultTreasureCofferSource>
@@ -108,8 +108,8 @@ public class ItemOccultTreasureSourceRenderer : ItemFieldOpCofferSourceRenderer<
     {
     }
 
-    public override string SingularName => "Occult Crescent (Treasure Coffer)";
-    public override string HelpText => "Does this item drop from a occult crescent treasure coffer?";
+    public override string SingularName => "新月岛（宝箱）";
+    public override string HelpText => "此物品是否由新月岛的宝箱掉落？";
 }
 
 public class ItemOccultPotSourceRenderer : ItemFieldOpCofferSourceRenderer<ItemOccultPotSource>
@@ -121,8 +121,8 @@ public class ItemOccultPotSourceRenderer : ItemFieldOpCofferSourceRenderer<ItemO
     {
     }
 
-    public override string SingularName => "Occult Crescent (Pot)";
-    public override string HelpText => "Does this item drop from a occult crescent pot?";
+    public override string SingularName => "新月岛（魔壶）";
+    public override string HelpText => "此物品是否由新月岛的魔壶掉落？";
 }
 
 public class ItemOccultGoldenCofferSourceRenderer : ItemFieldOpCofferSourceRenderer<ItemOccultGoldenCofferSource>
@@ -134,6 +134,6 @@ public class ItemOccultGoldenCofferSourceRenderer : ItemFieldOpCofferSourceRende
     {
     }
 
-    public override string SingularName => "Occult Crescent (Golden Coffer)";
-    public override string HelpText => "Does this item drop from a occult crescent golden coffer?";
+    public override string SingularName => "新月岛（金宝箱）";
+    public override string HelpText => "此物品是否由新月岛的金宝箱掉落？";
 }

@@ -18,10 +18,10 @@ public class TooltipHeaderLinesSetting : IntegerSetting
     }
 
     public override string Key { get; set; } = "TooltipDisplayHeader";
-    public override string Name { get; set; } = "Header New Lines";
+    public override string Name { get; set; } = "开头空行数";
 
     public override string HelpText { get; set; } =
-        "How many new lines should be added above any tooltip modifications made by this plugin?";
+        "在插件添加的物品提示内容上方插入多少空行？";
     
     public override string Version => "1.7.0.0";
 

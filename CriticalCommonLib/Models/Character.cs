@@ -107,7 +107,7 @@ namespace CriticalCommonLib.Models
 
                 if (Name.Trim().Length == 0)
                 {
-                    return AlternativeName ?? "Unknown";
+                    return AlternativeName ?? "未知";
                 }
 
                 return AlternativeName ?? Name;
@@ -141,23 +141,23 @@ namespace CriticalCommonLib.Models
                         var room = RoomId;
                         var division = DivisionId;
 
-                        var zoneName = Territory?.PlaceNameZone.ValueNullable?.Name.ExtractText() ?? "Unknown";
+                        var zoneName = Territory?.PlaceNameZone.ValueNullable?.Name.ExtractText() ?? "未知";
 
                         strings.Add($"{zoneName} -");
-                        strings.Add($"Ward {ward}");
-                        if (division == 2 || plot is >= 30 or -127) strings.Add($"Subdivision");
+                        strings.Add($"住宅区 {ward}");
+                        if (division == 2 || plot is >= 30 or -127) strings.Add($"扩建区");
 
                         switch (plot)
                         {
                             case < -1:
-                                strings.Add($"Apartment {(room == 0 ? $"Lobby" : $"{room}")}");
+                                strings.Add($"公寓 {(room == 0 ? $"大厅" : $"{room}")}");
                                 break;
                             case > -1:
                             {
-                                strings.Add($"Plot {plot + 1}");
+                                strings.Add($"房号 {plot + 1}");
                                 if (room > 0)
                                 {
-                                    strings.Add($"Room {room}");
+                                    strings.Add($"房间 {room}");
                                 }
 
                                 break;

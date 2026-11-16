@@ -26,9 +26,9 @@ public class ItemAirshipDropSourceRenderer : ItemInfoRenderer<ItemAirshipDropSou
 
     public override RendererType RendererType => RendererType.Source;
     public override ItemInfoType Type => ItemInfoType.Airship;
-    public override string SingularName => "Airship Exploration";
+    public override string SingularName => "飞空艇探索";
     public override bool ShouldGroup => true;
-    public override string HelpText => "Can the item be earned from a airship exploration route?";
+    public override string HelpText => "此物品能否通过飞空艇探索航线获得？";
 
     public override Func<ItemSource, (Type, uint)>? RelatedType => source =>
     {
@@ -53,7 +53,7 @@ public class ItemAirshipDropSourceRenderer : ItemInfoRenderer<ItemAirshipDropSou
             {
                 using (ImRaii.PushIndent())
                 {
-                    ImGui.TextUnformatted("Unlocks via: " + asSource.AirshipExplorationPoint.Unlock.Base.Name.ToImGuiString());
+                    ImGui.TextUnformatted("解锁途径：" + asSource.AirshipExplorationPoint.Unlock.Base.Name.ToImGuiString());
                 }
             }
         }
@@ -67,7 +67,7 @@ public class ItemAirshipDropSourceRenderer : ItemInfoRenderer<ItemAirshipDropSou
         {
             using (ImRaii.PushIndent())
             {
-                ImGui.TextUnformatted("Unlocks via: " + asSource.AirshipExplorationPoint.Unlock.Base.Name.ToImGuiString());
+                ImGui.TextUnformatted("解锁途径：" + asSource.AirshipExplorationPoint.Unlock.Base.Name.ToImGuiString());
             }
         }
     };

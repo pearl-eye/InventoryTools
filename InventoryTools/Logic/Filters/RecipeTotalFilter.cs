@@ -16,8 +16,8 @@ public class RecipeTotalFilter : StringFilter
     }
 
     public override string Key { get; set; } = "RecipeTotalFilter";
-    public override string Name { get; set; } = "Recipe Total Count";
-    public override string HelpText { get; set; } = "The number of recipes the item is a component of.";
+    public override string Name { get; set; } = "相关配方数量";
+    public override string HelpText { get; set; } = "使用此物品作为材料的配方数量。";
     public override FilterCategory FilterCategory { get; set; } = FilterCategory.Crafting;
 
     public override bool? FilterItem(FilterConfiguration configuration, InventoryItem item)

@@ -19,16 +19,16 @@ public class ItemFurnitureSourceRenderer : ItemInfoRenderer<ItemFurnitureSource>
 
     public override RendererType RendererType => RendererType.Use;
     public override ItemInfoType Type => ItemInfoType.FurnitureItem;
-    public override string SingularName => "Interior Furniture";
-    public override string HelpText => "Can the item be placed inside houses?";
+    public override string SingularName => "家具";
+    public override string HelpText => "此物品能否放置在房屋内？";
     public override bool ShouldGroup => true;
     public override IReadOnlyList<ItemInfoRenderCategory>? Categories => [ItemInfoRenderCategory.House];
 
     public override Action<ItemSource> DrawTooltip => source =>
     {
         var asSource = AsSource(source);
-        ImGui.Text($"Category: {asSource.FurnitureCatalogItemList.ValueNullable?.Category.Value.Category.ExtractText() ?? "N/A"}");
-        ImGui.Text($"Patch Added: {asSource.FurnitureCatalogItemList.ValueNullable?.Patch.ToString() ?? "N/A"}");
+        ImGui.Text($"分类：{asSource.FurnitureCatalogItemList.ValueNullable?.Category.Value.Category.ExtractText() ?? "不适用"}");
+        ImGui.Text($"实装版本：{asSource.FurnitureCatalogItemList.ValueNullable?.Patch.ToString() ?? "不适用"}");
     };
 
     public override Func<ItemSource, string> GetName => source =>
@@ -40,6 +40,6 @@ public class ItemFurnitureSourceRenderer : ItemInfoRenderer<ItemFurnitureSource>
     public override Func<ItemSource, string> GetDescription => source =>
     {
         var asSource = AsSource(source);
-        return "Can be placed inside a house.";
+        return "可放置在房屋内。";
     };
 }

@@ -9,8 +9,8 @@ public class ContextMenuAddToFavouritesSetting : GenericBooleanSetting
 {
     public ContextMenuAddToFavouritesSetting(ILogger<ContextMenuAddToFavouritesSetting> logger,
         ImGuiService imGuiService) : base("AddToFavouritesContextMenu",
-        "Context Menu - Add/Remove to Favourites",
-        "Add a submenu to add/remove the item to/from your favourites?",
+        "右键菜单 - 添加或移出收藏",
+        "添加子菜单，将物品添加至收藏或从收藏中移除？",
         false,
         "1.13.1.9",
         logger,
@@ -18,6 +18,6 @@ public class ContextMenuAddToFavouritesSetting : GenericBooleanSetting
     {
     }
 
-    public override string WizardName { get; } = "Add/Remove to Favourites";
+    public override string WizardName { get; } = "添加或移出收藏";
 
 }

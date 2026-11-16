@@ -6,15 +6,15 @@ public class IntroCraftingLayout : ContentLayout
 {
     public override PageLayout Build()
     {
-        return Page("intro/crafting", "Crafting",
-            Paragraph("A craft list takes what you want to make and breaks it into every intermediate item and raw material, then checks that against what you already own."),
-            Section("What you get",
-                Bullet("A full material tree, not just the immediate ingredients."),
-                Bullet("What you already have, and which character or retainer is holding it."),
-                Bullet("Where to buy or gather whatever is missing."),
-                Bullet("Progress ticking down as you acquire things.")),
-            Section("Have a look",
-                OpenWindow<CraftsWindow>("Open the crafts window"))
+        return Page("intro/crafting", "制作",
+            Paragraph("制作清单会把想制作的物品拆分成全部中间材料和原材料，再与已持有物品核对。"),
+            Section("提供的内容",
+                Bullet("完整材料树，包含各级中间材料。"),
+                Bullet("已持有的材料，以及保管它们的角色或雇员。"),
+                Bullet("缺少材料的购买或采集地点。"),
+                Bullet("随着材料获取自动更新进度。")),
+            Section("开始浏览",
+                OpenWindow<CraftsWindow>("打开制作窗口"))
         );
     }
 }

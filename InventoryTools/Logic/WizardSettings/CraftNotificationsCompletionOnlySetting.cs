@@ -13,8 +13,8 @@ public class CraftNotificationsCompletionOnlySetting : GenericBooleanSetting
 
     public CraftNotificationsCompletionOnlySetting(ILogger<CraftNotificationsCompletionOnlySetting> logger,
         ImGuiService imGuiService) : base("CraftNotificationsCompletionOnly",
-        "Only report when an item is complete?",
-        "Instead of reporting every acquisition, only print a message when an item reaches its required quantity. The craft list must be active for notifications to occur.",
+        "仅在物品数量达标时通知？",
+        "仅在物品达到所需数量时发送消息，不逐次报告获取进度。制作清单启用后才会通知。",
         false,
         "15.0.8",
         logger,

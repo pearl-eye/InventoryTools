@@ -266,11 +266,11 @@ namespace CriticalCommonLib.Services
 
         public string GetCharacterNameById(ulong characterId, bool owner = false)
         {
-            if (!owner) return GetCharacterById(characterId)?.FormattedName ?? "Unknown";
+            if (!owner) return GetCharacterById(characterId)?.FormattedName ?? "未知";
             var character = GetParentCharacterById(characterId);
             if (character != null && character.CharacterId == characterId)
                 return "";
-            return character?.FormattedName ?? "Unknown";
+            return character?.FormattedName ?? "未知";
         }
 
         public bool BelongsToActiveCharacter(ulong characterId)

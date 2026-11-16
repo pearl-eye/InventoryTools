@@ -28,13 +28,13 @@ public class ListServiceDebuggerPane : IDebugPane
         var activeBackgroundList = ListService.GetActiveBackgroundList();
         var activeUiList = ListService.GetActiveUiList(false);
         var lists = ListService.Lists;
-        ImGui.Text($"Active Background List: {(activeBackgroundList == null ? "No List" : activeBackgroundList.Name)}");
-        ImGui.Text($"Active UI List: {(activeUiList == null ? "No List" : activeUiList.Name)}");
+        ImGui.Text($"Active Background List: {(activeBackgroundList == null ? "无清单" : activeBackgroundList.Name)}");
+        ImGui.Text($"Active UI List: {(activeUiList == null ? "无清单" : activeUiList.Name)}");
         foreach (var list in lists)
         {
             using var id = ImRaii.PushId(list.Key);
             ImGui.Text($"{list.Name}:");
-            ImGui.Text($"{(list.Active ? "Active" : "Not Active")}");
+            ImGui.Text($"{(list.Active ? "已启用" : "Not Active")}");
             ImGui.SameLine();
             if (ImGui.Button("Request Refresh"))
             {
