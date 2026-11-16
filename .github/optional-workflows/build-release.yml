@@ -118,7 +118,7 @@ jobs:
             "Source: https://github.com/$env:GITHUB_REPOSITORY/commit/$env:GITHUB_SHA",
             "CN Dalamud dependencies: $env:DALAMUD_BUILD_URL",
             '',
-            '插件仓库：https://github.com/pearl-eye/Allagan-Tools-CN/releases/latest/download/repo.json',
+            '插件仓库：https://github.com/pearl-eye/InventoryTools/releases/latest/download/repo.json',
             '原作者：Critical_Impact；国服汉化维护：pearl-eye。许可证：GPL-3.0。'
           ) | Set-Content artifacts/RELEASE_NOTES.md -Encoding utf8NoBOM
 
@@ -135,7 +135,7 @@ jobs:
 
   release:
     needs: build
-    if: needs.build.outputs.publish == 'true' && github.repository == 'pearl-eye/Allagan-Tools-CN'
+    if: needs.build.outputs.publish == 'true' && github.repository == 'pearl-eye/InventoryTools'
     runs-on: ubuntu-latest
     permissions:
       contents: write

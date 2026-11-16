@@ -4,7 +4,7 @@ param(
     [string]$ManifestPath = 'artifacts/InventoryTools/InventoryTools.json',
     [string]$PackagePath = 'artifacts/latest.zip',
     [string]$OutputPath = 'artifacts/repo.json',
-    [string]$Repository = 'pearl-eye/Allagan-Tools-CN',
+    [string]$Repository = 'pearl-eye/InventoryTools',
     [string]$ReleaseTag
 )
 

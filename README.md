@@ -16,7 +16,7 @@ Allagan Tools 的国服汉化分支。原插件由 [Critical_Impact](https://git
 https://raw.githubusercontent.com/pearl-eye/Dalamud-Plugins-CN/main/repo.json
 ```
 
-保存后，在插件安装器中搜索 **Allagan Tools CN**。安装包和更新索引可在 [Releases](https://github.com/pearl-eye/Allagan-Tools-CN/releases) 下载。
+保存后，在插件安装器中搜索 **Allagan Tools CN**。安装包和更新索引可在 [Releases](https://github.com/pearl-eye/InventoryTools/releases) 下载。
 
 如果已经安装其他来源的 Allagan Tools，请先禁用旧实例，再切换安装来源；不要同时加载两个 `InventoryTools` 实例。更换版本前可备份卫月的 `pluginConfigs/InventoryTools` 目录及 `InventoryTools.json` 配置。
 
@@ -24,7 +24,7 @@ https://raw.githubusercontent.com/pearl-eye/Dalamud-Plugins-CN/main/repo.json
 
 ## 反馈与贡献
 
-中文显示、翻译和本分支的国服兼容问题，请提交到 [本仓库 Issues](https://github.com/pearl-eye/Allagan-Tools-CN/issues)。报告时附上插件版本、问题所在窗口和复现步骤。
+中文显示、翻译和本分支的国服兼容问题，请提交到 [本仓库 Issues](https://github.com/pearl-eye/InventoryTools/issues)。报告时附上插件版本、问题所在窗口和复现步骤。
 
 修改界面文字时，请保留文本指令、配置字段、序列化名称、IPC 标识和 ImGui 的隐藏 ID。原始上游项目和资料见 [Critical-Impact/InventoryTools](https://github.com/Critical-Impact/InventoryTools) 与 [上游 Wiki](https://github.com/Critical-Impact/InventoryTools/wiki/1.-Overview)。
 

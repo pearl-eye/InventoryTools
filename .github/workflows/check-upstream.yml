@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   check:
-    if: github.repository == 'pearl-eye/Allagan-Tools-CN' && (github.event_name == 'schedule' || github.ref == 'refs/heads/zh-CN')
+    if: github.repository == 'pearl-eye/InventoryTools' && (github.event_name == 'schedule' || github.ref == 'refs/heads/zh-CN')
     runs-on: ubuntu-latest
     steps:
       - name: Check out the CN branch

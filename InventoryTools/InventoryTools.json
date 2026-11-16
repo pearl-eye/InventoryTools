@@ -10,15 +10,15 @@
     "汉化"
   ],
   "InternalName": "InventoryTools",
-  "RepoUrl": "https://github.com/pearl-eye/Allagan-Tools-CN",
+  "RepoUrl": "https://github.com/pearl-eye/InventoryTools",
   "LoadPriority": 0,
   "CanUnloadAsync": false,
-  "IconUrl": "https://raw.githubusercontent.com/pearl-eye/Allagan-Tools-CN/zh-CN/InventoryTools/Images/icon.png",
+  "IconUrl": "https://raw.githubusercontent.com/pearl-eye/InventoryTools/zh-CN/InventoryTools/Images/icon.png",
   "ImageUrls": [
-    "https://raw.githubusercontent.com/pearl-eye/Allagan-Tools-CN/zh-CN/InventoryTools/Images/banner1.png",
-    "https://raw.githubusercontent.com/pearl-eye/Allagan-Tools-CN/zh-CN/InventoryTools/Images/screenshot1.png",
-    "https://raw.githubusercontent.com/pearl-eye/Allagan-Tools-CN/zh-CN/InventoryTools/Images/screenshot2.png",
-    "https://raw.githubusercontent.com/pearl-eye/Allagan-Tools-CN/zh-CN/InventoryTools/Images/screenshot3.png",
-    "https://raw.githubusercontent.com/pearl-eye/Allagan-Tools-CN/zh-CN/InventoryTools/Images/screenshot4.png"
+    "https://raw.githubusercontent.com/pearl-eye/InventoryTools/zh-CN/InventoryTools/Images/banner1.png",
+    "https://raw.githubusercontent.com/pearl-eye/InventoryTools/zh-CN/InventoryTools/Images/screenshot1.png",
+    "https://raw.githubusercontent.com/pearl-eye/InventoryTools/zh-CN/InventoryTools/Images/screenshot2.png",
+    "https://raw.githubusercontent.com/pearl-eye/InventoryTools/zh-CN/InventoryTools/Images/screenshot3.png",
+    "https://raw.githubusercontent.com/pearl-eye/InventoryTools/zh-CN/InventoryTools/Images/screenshot4.png"
   ]
 }
