@@ -6,6 +6,8 @@ Allagan Tools 的国服汉化分支。原插件由 [Critical_Impact](https://git
 
 插件可以记录角色和雇员等位置的物品、搜索和整理背包、规划制作清单，并查询物品来源、用途及相关游戏资料。本分支保留插件内部名称 `InventoryTools`，现有设置可继续使用。
 
+插件版本号与原版国服分发版本完全一致，汉化或兼容修复不额外增加版本号。
+
 ## 安装方式
 
 需要支持 Dalamud API 15 的国服卫月。在卫月设置的自定义插件仓库中添加：
@@ -17,6 +19,8 @@ https://raw.githubusercontent.com/pearl-eye/Dalamud-Plugins-CN/main/repo.json
 保存后，在插件安装器中搜索 **Allagan Tools CN**。安装包和更新索引可在 [Releases](https://github.com/pearl-eye/Allagan-Tools-CN/releases) 下载。
 
 如果已经安装其他来源的 Allagan Tools，请先禁用旧实例，再切换安装来源；不要同时加载两个 `InventoryTools` 实例。更换版本前可备份卫月的 `pluginConfigs/InventoryTools` 目录及 `InventoryTools.json` 配置。
+
+已安装早期自增版本 `15.0.13.1` 或 `15.0.13.2` 的用户，需要卸载后重新安装才能恢复原版版本号；请保留配置。
 
 ## 反馈与贡献
 

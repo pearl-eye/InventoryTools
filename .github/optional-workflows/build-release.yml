@@ -156,7 +156,7 @@ jobs:
           cd artifacts
           sha256sum --check SHA256SUMS
           if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
-            echo "Release $RELEASE_TAG already exists; publish a new version instead of replacing it."
+            echo "Release $RELEASE_TAG already exists; keep the original plugin version and review the existing release."
             exit 1
           fi
           gh release create "$RELEASE_TAG" latest.zip repo.json SHA256SUMS \

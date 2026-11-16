@@ -31,6 +31,12 @@ if ($manifest.DalamudApiLevel -ne 15) {
     throw 'This release workflow currently supports Dalamud API 15 only.'
 }
 
+$repositoryRoot = [System.IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..'))
+$baseline = Get-Content -LiteralPath (Join-Path $repositoryRoot 'localization/upstream.json') -Raw | ConvertFrom-Json
+if ($manifest.AssemblyVersion -cne $baseline.distributionVersion) {
+    throw "The CN version must equal the original distribution version $($baseline.distributionVersion); found $($manifest.AssemblyVersion)."
+}
+
 $expectedTag = "cn-v$($manifest.AssemblyVersion)"
 if (!$ReleaseTag) { $ReleaseTag = $expectedTag }
 if ($ReleaseTag -cne $expectedTag) {
