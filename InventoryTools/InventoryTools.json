@@ -1,6 +1,6 @@
 {
   "Author": "Critical_Impact；汉化维护：pearl-eye",
-  "Name": "Allagan Tools CN（亚拉戈工具）",
+  "Name": "Allagan Tools CN",
   "Punchline": "跨角色与雇员查找物品、整理背包、规划制作，并查询物品来源与用途。",
   "Description": "Allagan Tools 国服源码汉化版。\n\n支持角色、雇员和部队物品追踪，物品筛选与整理、制作清单、市场价格、背包高亮，以及物品、怪物、副本、飞空艇和潜水艇图鉴。\n\n本分支由 pearl-eye 维护中文界面，基于国服兼容源码构建。",
   "Tags": [
