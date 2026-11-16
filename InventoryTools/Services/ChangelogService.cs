@@ -5,8 +5,6 @@ using System.Linq;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
 using Ionide.KeepAChangelog;
-using Microsoft.FSharp.Collections;
-using Microsoft.FSharp.Core;
 using SemVersion;
 
 namespace InventoryTools.Services;
@@ -21,26 +19,33 @@ public class ChangelogService
     {
         _pluginInterface = pluginInterface;
         _pluginLog = pluginLog;
-        var assemblyLocation = _pluginInterface.AssemblyLocation.DirectoryName!;
-        var fileName = Path.Combine(assemblyLocation, "CHANGELOG.md");
-        var parsedLogs = Ionide.KeepAChangelog.Parser.parseChangeLog(new FileInfo(fileName));
-        if (!parsedLogs.IsOk)
+        this.changeLogs = new();
+
+        // Release notes are optional. A malformed or missing file must not
+        // prevent the settings and other menu windows from being created.
+        try
         {
-            this.changeLogs = new();
-            _pluginLog.Error($"Could not parse changelog file due to error: {parsedLogs.ErrorValue.Item1}");
-        }
-        else
-        {
-            this.changeLogs = new();
-            foreach (var log in parsedLogs.ResultValue.Releases)
+            var assemblyLocation = _pluginInterface.AssemblyLocation.DirectoryName!;
+            var fileName = Path.Combine(assemblyLocation, "CHANGELOG.md");
+            var parsedLogs = Parser.parseChangeLog(new FileInfo(fileName));
+            if (!parsedLogs.IsOk)
             {
-                ChangeLogs.Add((log.Item1, log.Item2, log.Item3.Value));
+                _pluginLog.Error($"Could not parse changelog file due to error: {parsedLogs.ErrorValue.Item1}");
+                return;
             }
 
-            this.changeLogs = ChangeLogs.OrderByDescending(c => c.Item1).ToList();
+            var loadedLogs = new List<(SemanticVersion, DateTime, Domain.ChangelogData)>();
+            foreach (var log in parsedLogs.ResultValue.Releases)
+            {
+                loadedLogs.Add((log.Item1, log.Item2, log.Item3.Value));
+            }
+
+            this.changeLogs = loadedLogs.OrderByDescending(c => c.Item1).ToList();
         }
-
-
+        catch (Exception exception)
+        {
+            _pluginLog.Error(exception, "Could not read changelog; continuing without release notes.");
+        }
     }
 
     public List<(SemanticVersion, DateTime, Domain.ChangelogData)> ChangeLogs => changeLogs;

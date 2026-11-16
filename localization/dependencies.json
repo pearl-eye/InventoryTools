@@ -4,7 +4,7 @@
     {
       "name": "AllaganLib.GameSheets",
       "file": "AllaganLib.GameSheets.dll",
-      "packageVersion": "2.2.9",
+      "packageVersion": "2.3.1",
       "rules": [
         {
           "fullMethodName": "System.String AllaganLib.GameSheets.Model.ILocation::get_FormattedName()",
@@ -125,7 +125,7 @@
     {
       "name": "AllaganLib.Interface",
       "file": "AllaganLib.Interface.dll",
-      "packageVersion": "2.2.0",
+      "packageVersion": "2.3.3",
       "rules": [
         {
           "fullMethodName": "System.Boolean AllaganLib.Interface.FormFields.ColorFormField`1::Draw(T,System.Nullable`1<System.Int32>,System.Nullable`1<System.Int32>)",

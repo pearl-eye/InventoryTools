@@ -10,6 +10,7 @@ using Dalamud.Interface.Textures;
 using Dalamud.Plugin;
 using Dalamud.Plugin.Services;
 using Dalamud.Bindings.ImGui;
+using LuminaSupplemental.Excel.Model;
 
 namespace InventoryTools.Logic.ItemRenderers;
 
@@ -28,7 +29,7 @@ public abstract class ItemFieldOpCofferSourceRenderer<T> : ItemInfoRenderer<T> w
     public override Action<ItemSource> DrawTooltip => source =>
     {
         var asSource = AsSource(source);
-        ImGui.Text("掉落自" + asSource.CofferType + "宝箱");
+        ImGui.Text("掉落自" + GetCofferTypeName(asSource.CofferType) + "宝箱");
         if (asSource.Min != null && asSource.Max != null)
         {
             ImGui.SameLine();
@@ -38,7 +39,7 @@ public abstract class ItemFieldOpCofferSourceRenderer<T> : ItemInfoRenderer<T> w
             }
             else
             {
-                ImGui.Text("（掉落" + asSource.Min.Value + " - " + asSource.Max.Value + ")");
+                ImGui.Text("（掉落" + asSource.Min.Value + " - " + asSource.Max.Value + "）");
             }
         }
 
@@ -56,7 +57,15 @@ public abstract class ItemFieldOpCofferSourceRenderer<T> : ItemInfoRenderer<T> w
     public override Func<ItemSource, string> GetDescription => source =>
     {
         var asSource = AsSource(source);
-        return asSource.CofferType + "宝箱";
+        return GetCofferTypeName(asSource.CofferType) + "宝箱";
+    };
+
+    private static string GetCofferTypeName(FieldOpCofferType type) => type switch
+    {
+        FieldOpCofferType.Bronze => "铜",
+        FieldOpCofferType.Silver => "银",
+        FieldOpCofferType.Gold => "金",
+        _ => type.ToString(),
     };
 }
 
@@ -108,8 +117,8 @@ public class ItemOccultTreasureSourceRenderer : ItemFieldOpCofferSourceRenderer<
     {
     }
 
-    public override string SingularName => "新月岛（宝箱）";
-    public override string HelpText => "此物品是否由新月岛的宝箱掉落？";
+    public override string SingularName => "新月岛南部（宝箱）";
+    public override string HelpText => "此物品是否由新月岛南部的宝箱掉落？";
 }
 
 public class ItemOccultPotSourceRenderer : ItemFieldOpCofferSourceRenderer<ItemOccultPotSource>
@@ -121,8 +130,8 @@ public class ItemOccultPotSourceRenderer : ItemFieldOpCofferSourceRenderer<ItemO
     {
     }
 
-    public override string SingularName => "新月岛（魔壶）";
-    public override string HelpText => "此物品是否由新月岛的魔壶掉落？";
+    public override string SingularName => "新月岛南部（魔壶）";
+    public override string HelpText => "此物品是否由新月岛南部的魔壶掉落？";
 }
 
 public class ItemOccultGoldenCofferSourceRenderer : ItemFieldOpCofferSourceRenderer<ItemOccultGoldenCofferSource>
@@ -134,6 +143,45 @@ public class ItemOccultGoldenCofferSourceRenderer : ItemFieldOpCofferSourceRende
     {
     }
 
-    public override string SingularName => "新月岛（金宝箱）";
-    public override string HelpText => "此物品是否由新月岛的金宝箱掉落？";
+    public override string SingularName => "新月岛南部（金宝箱）";
+    public override string HelpText => "此物品是否由新月岛南部的金宝箱掉落？";
+}
+
+public class ItemOccultNorthHornTreasureSourceRenderer : ItemFieldOpCofferSourceRenderer<ItemOccultNorthHornTreasureCofferSource>
+{
+    public override IReadOnlyList<ItemInfoRenderCategory>? Categories { get; } =
+        [ItemInfoRenderCategory.FieldOperation, ItemInfoRenderCategory.OccultCrescent];
+
+    public ItemOccultNorthHornTreasureSourceRenderer(ItemSheet itemSheet, MapSheet mapSheet, ITextureProvider textureProvider, IDalamudPluginInterface pluginInterface) : base(itemSheet, mapSheet, textureProvider, pluginInterface, ItemInfoType.OccultNorthHornTreasure)
+    {
+    }
+
+    public override string SingularName => "新月岛北部（宝箱）";
+    public override string HelpText => "此物品是否由新月岛北部的宝箱掉落？";
+}
+
+public class ItemOccultNorthHornPotSourceRenderer : ItemFieldOpCofferSourceRenderer<ItemOccultNorthHornPotSource>
+{
+    public override IReadOnlyList<ItemInfoRenderCategory>? Categories { get; } =
+        [ItemInfoRenderCategory.FieldOperation, ItemInfoRenderCategory.OccultCrescent];
+
+    public ItemOccultNorthHornPotSourceRenderer(ItemSheet itemSheet, MapSheet mapSheet, ITextureProvider textureProvider, IDalamudPluginInterface pluginInterface) : base(itemSheet, mapSheet, textureProvider, pluginInterface, ItemInfoType.OccultNorthHornPot)
+    {
+    }
+
+    public override string SingularName => "新月岛北部（魔壶）";
+    public override string HelpText => "此物品是否由新月岛北部的魔壶掉落？";
+}
+
+public class ItemOccultNorthHornGoldenCofferSourceRenderer : ItemFieldOpCofferSourceRenderer<ItemOccultNorthHornGoldenCofferSource>
+{
+    public override IReadOnlyList<ItemInfoRenderCategory>? Categories { get; } =
+        [ItemInfoRenderCategory.FieldOperation, ItemInfoRenderCategory.OccultCrescent];
+
+    public ItemOccultNorthHornGoldenCofferSourceRenderer(ItemSheet itemSheet, MapSheet mapSheet, ITextureProvider textureProvider, IDalamudPluginInterface pluginInterface) : base(itemSheet, mapSheet, textureProvider, pluginInterface, ItemInfoType.OccultNorthHornGoldenCoffer)
+    {
+    }
+
+    public override string SingularName => "新月岛北部（金宝箱）";
+    public override string HelpText => "此物品是否由新月岛北部的金宝箱掉落？";
 }

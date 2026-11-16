@@ -178,7 +178,7 @@ namespace InventoryTools.Ui
                     new PopupMenu.PopupMenuItemSelectable("物品窗口", "filters", OpenFiltersWindow,"打开物品窗口。"),
                     new PopupMenu.PopupMenuItemSelectable("制作窗口", "crafts", OpenCraftsWindow,"打开制作窗口。"),
                     new PopupMenu.PopupMenuItemSeparator(),
-                    new PopupMenu.PopupMenuItemSelectable("怪物窗口", "mobs", OpenMobsWindow,"打开怪物窗口。"),
+                    new PopupMenu.PopupMenuItemSelectable("怪物图鉴", "mobs", OpenMobsWindow,"打开怪物图鉴。"),
                     new PopupMenu.PopupMenuItemSelectable("NPC 窗口", "npcs", OpenNpcsWindow,"打开 NPC 窗口。"),
                     new PopupMenu.PopupMenuItemSelectable("副本任务窗口", "duties", OpenDutiesWindow,"打开副本任务窗口。"),
                     new PopupMenu.PopupMenuItemSelectable("飞空艇窗口", "airships", OpenAirshipsWindow,"打开飞空艇窗口。"),
@@ -282,7 +282,7 @@ namespace InventoryTools.Ui
 
         private void OpenMobsWindow(string obj)
         {
-            MediatorService.Publish(new OpenGenericWindowMessage(typeof(BNpcsWindow)));
+            MediatorService.Publish(new InventoryTools.Mediator.OpenCompendiumListByTypeMessage(typeof(InventoryTools.Compendium.Types.BNpcCompendiumType)));
         }
 
         private void OpenNpcsWindow(string obj)

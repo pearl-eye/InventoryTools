@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
@@ -15,6 +15,7 @@ using FFXIVClientStructs.FFXIV.Client.System.String;
 using Dalamud.Bindings.ImGui;
 using Lumina.Excel;
 using Lumina.Excel.Sheets;
+using Lumina.Text.ReadOnly;
 
 
 namespace CriticalCommonLib
@@ -273,7 +274,7 @@ namespace CriticalCommonLib
                                 }
                                 PrintOutObject(value, addr, new List<string>(path));
                                 break;
-                            case Lumina.Text.ReadOnly.ReadOnlySeString seString:
+                            case ReadOnlySeString seString:
                                 ImGui.Text($"{seString.ExtractText()}");
                                 break;
                             default:

@@ -68,8 +68,8 @@ namespace InventoryTools.Ui
             _settingsMenu = new PopupMenu("configMenu", PopupMenu.PopupMenuButtons.All,
                 new List<PopupMenu.IPopupMenuItem>()
                 {
-                    new PopupMenu.PopupMenuItemSelectable("怪物窗口", "mobs", _ => MediatorService.Publish(new OpenGenericWindowMessage(typeof(BNpcsWindow))),
-                        "打开怪物窗口。"),
+                    new PopupMenu.PopupMenuItemSelectable("怪物图鉴", "mobs", _ => MediatorService.Publish(new InventoryTools.Mediator.OpenCompendiumListByTypeMessage(typeof(InventoryTools.Compendium.Types.BNpcCompendiumType))),
+                        "打开怪物图鉴。"),
                     new PopupMenu.PopupMenuItemSelectable("NPC 窗口", "npcs", _ => MediatorService.Publish(new OpenGenericWindowMessage(typeof(ENpcsWindow))),
                         "打开 NPC 窗口。"),
                     new PopupMenu.PopupMenuItemSelectable("副本任务窗口", "duties", _ => MediatorService.Publish(new OpenGenericWindowMessage(typeof(DutiesWindow))),

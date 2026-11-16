@@ -21,6 +21,14 @@ if ($outputRoot -eq $repositoryRoot) { throw 'OutputDirectory must be separate f
 Push-Location $repositoryRoot
 try {
     $project = Join-Path $repositoryRoot 'InventoryTools/InventoryTools.csproj'
+    $baseline = Get-Content (Join-Path $repositoryRoot 'localization/upstream.json') -Raw | ConvertFrom-Json
+    [xml]$projectXml = Get-Content -LiteralPath $project -Raw
+    $projectVersion = $projectXml.SelectSingleNode('/Project/PropertyGroup/Version').InnerText
+    if ($projectVersion -ne $baseline.distributionVersion) {
+        throw "The CN version must equal the original distribution version $($baseline.distributionVersion); found $projectVersion."
+    }
+    & $DotnetCommand run --project (Join-Path $repositoryRoot 'tests/ChangelogRegression/ChangelogRegression.csproj') --configuration Release
+    if ($LASTEXITCODE -ne 0) { throw 'Release-note regression checks failed; refusing to package a broken UI dependency.' }
     & $DotnetCommand build $project --configuration Release -m:1 -nr:false '-clp:ErrorsOnly;Summary' '-p:EnableWindowsTargeting=true' "-p:DalamudLibPath=$frameworkRoot/" "-p:AllaganDotnetCommand=$DotnetCommand"
     if ($LASTEXITCODE -ne 0) { throw "Build failed with exit code $LASTEXITCODE" }
     $builtPackage = Join-Path $repositoryRoot 'InventoryTools/bin/Release/InventoryTools/latest.zip'

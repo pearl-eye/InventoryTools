@@ -306,8 +306,8 @@ public class ItemOizysSourceRenderer : ItemSupplementSourceRenderer<ItemOizysSou
     {
     }
 
-    public override string SingularName => "Oizys";
-    public override string HelpText => "此物品能否从Oizys的战利品中获得？";
+    public override string SingularName => "俄匊斯";
+    public override string HelpText => "此物品能否从俄匊斯的战利品中获得？";
 }
 
 public class ItemAuxesiaSourceRenderer : ItemSupplementSourceRenderer<ItemAuxesiaSource>
@@ -318,8 +318,8 @@ public class ItemAuxesiaSourceRenderer : ItemSupplementSourceRenderer<ItemAuxesi
     {
     }
 
-    public override string SingularName => "Auxesia";
-    public override string HelpText => "此物品能否从Auxesia的战利品中获得？";
+    public override string SingularName => "奥克塞西亚";
+    public override string HelpText => "此物品能否从奥克塞西亚的战利品中获得？";
 }
 
 public class ItemHydatosUseRenderer : ItemSupplementUseRenderer<ItemHydatosSource>

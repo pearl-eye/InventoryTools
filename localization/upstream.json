@@ -1,0 +1,9 @@
+{
+  "repository": "Critical-Impact/InventoryTools",
+  "commit": "ad1ff01fede1848dfcd05b76a9ae13b0760d1222",
+  "sourceVersion": "15.1.1",
+  "distributionVersion": "1.15.1.1",
+  "distributionManifest": "https://raw.githubusercontent.com/Dalamud-DailyRoutines/PluginDistD17/main/stable/InventoryTools/InventoryTools.json",
+  "criticalCommonLibCommit": "420f6880b16497a6d6356f6dbeda963364e4d5ef",
+  "dalamudApiLevel": 15
+}

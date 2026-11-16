@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Numerics;
 using AllaganLib.GameSheets.Caches;
@@ -12,6 +13,7 @@ using CriticalCommonLib;
 using CriticalCommonLib.Addons;
 using CriticalCommonLib.Extensions;
 using CriticalCommonLib.MarketBoard;
+using CriticalCommonLib.Models;
 using CriticalCommonLib.Services;
 using CriticalCommonLib.Services.Mediator;
 using CriticalCommonLib.Services.Ui;
@@ -119,8 +121,8 @@ namespace InventoryTools.Ui
             _settingsMenu = new PopupMenu("configMenu", PopupMenu.PopupMenuButtons.All,
                 new List<PopupMenu.IPopupMenuItem>()
                 {
-                    new PopupMenu.PopupMenuItemSelectable("怪物窗口", "mobs", OpenMobsWindow,
-                        "打开怪物窗口。"),
+                    new PopupMenu.PopupMenuItemSelectable("怪物图鉴", "mobs", OpenMobsWindow,
+                        "打开怪物图鉴。"),
                     new PopupMenu.PopupMenuItemSelectable("NPC 窗口", "npcs", OpenNpcsWindow,
                         "打开 NPC 窗口。"),
                     new PopupMenu.PopupMenuItemSelectable("副本任务窗口", "duties", OpenDutiesWindow,
@@ -278,7 +280,7 @@ namespace InventoryTools.Ui
 
         private void OpenMobsWindow(string obj)
         {
-            MediatorService.Publish(new Mediator.OpenGenericWindowMessage(typeof(BNpcsWindow)));
+            MediatorService.Publish(new InventoryTools.Mediator.OpenCompendiumListByTypeMessage(typeof(InventoryTools.Compendium.Types.BNpcCompendiumType)));
         }
 
         private void OpenNpcsWindow(string obj)
@@ -1799,7 +1801,24 @@ namespace InventoryTools.Ui
                     }
 
                     ImGui.SameLine();
-                    ImGuiService.VerticalCenter("待处理的市场请求: " + _universalis.QueuedCount);
+                    ImGuiService.VerticalCenter("待处理的市场请求：" + _universalis.QueuedCount);
+
+                    if (_universalis.HasIssues && _universalis.LastFailure != null)
+                    {
+                        ImGui.SameLine();
+                        ImGui.Image(ImGuiService.GetIconTexture(Icons.ExclamationIcon).Handle,
+                            new Vector2(22, 22));
+                        ImGuiUtil.HoverTooltip($"在 {_universalis.LastFailure.Value.ToString(CultureInfo.CurrentCulture)} 连接 Universalis 时发生错误，Universalis 服务可能出现故障。Allagan Tools CN 将暂停请求 30 秒。");
+                    }
+
+                    if (_universalis.TooManyRequests)
+                    {
+                        ImGui.SameLine();
+                        ImGui.Image(ImGuiService.GetIconTexture(Icons.ExclamationIcon).Handle,
+                            new Vector2(22, 22));
+                        ImGuiUtil.HoverTooltip($"向 Universalis 发送的请求过多，多个插件同时请求市场数据可能导致此问题。");
+                    }
+
                     if (filterConfiguration.FilterType == FilterType.CraftFilter)
                     {
                         ImGui.SameLine();

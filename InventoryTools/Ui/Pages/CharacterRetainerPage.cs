@@ -74,8 +74,42 @@ namespace InventoryTools.Ui.Pages
             if (arg2)
             {
                 var characterId = ulong.Parse(arg1.Split("dc_", StringSplitOptions.RemoveEmptyEntries)[0]);
-                _characterMonitor.RemoveCharacter(characterId);
-                _inventoryMonitor.ClearCharacterInventories(characterId);
+                RemoveCharacter(characterId);
+            }
+        }
+
+        private void RemoveCharacter(ulong characterId)
+        {
+            _characterMonitor.RemoveCharacter(characterId);
+            _inventoryMonitor.ClearCharacterInventories(characterId);
+            if (_selectedCharacter == characterId)
+            {
+                _selectedCharacter = 0;
+                _editMode = false;
+            }
+        }
+
+        private void DrawDeleteConfirmPopup(Character character)
+        {
+            using var popup = ImRaii.Popup("deleteCharacterConfirm");
+            if (!popup)
+            {
+                return;
+            }
+
+            ImGui.TextUnformatted("确定删除此对象：" + character.CharacterType.FormattedName() + "？\n此操作无法撤销！\n\n");
+            ImGui.Separator();
+
+            if (ImGui.Button("确定", new Vector2(120, 0) * ImGui.GetIO().FontGlobalScale))
+            {
+                RemoveCharacter(character.CharacterId);
+                ImGui.CloseCurrentPopup();
+            }
+
+            ImGui.SameLine();
+            if (ImGui.Button("取消", new Vector2(120, 0) * ImGui.GetIO().FontGlobalScale))
+            {
+                ImGui.CloseCurrentPopup();
             }
         }
 
@@ -329,6 +363,16 @@ namespace InventoryTools.Ui.Pages
                             }
 
                             ImGuiUtil.HoverTooltip("修改显示名称。留空可恢复原名。");
+
+                            ImGui.SameLine();
+                            cursorX = ImGui.GetCursorPosX();
+                            if (ImGuiService.DrawIconButton(_font, FontAwesomeIcon.Trash, ref cursorX))
+                            {
+                                ImGui.OpenPopup("deleteCharacterConfirm");
+                            }
+
+                            ImGuiUtil.HoverTooltip("删除此对象及其背包记录：" + character.CharacterType.FormattedName() + "。");
+                            DrawDeleteConfirmPopup(character);
 
                             if (_editMode)
                             {

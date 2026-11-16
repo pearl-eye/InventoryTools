@@ -38,6 +38,10 @@ public class CompendiumListWindow : CompendiumWindow
     private object? _currentTab = null;
     private bool _defaultGroupSet = false;
 
+    private object? _pendingTab = null;
+
+    private object? _lastFollowedGroup = null;
+
     public delegate Owned<CompendiumListWindow> Factory(ICompendiumType compendiumType);
 
     public CompendiumListWindow(ILogger<CompendiumListWindow> logger, WindowState windowState, CompendiumSectionStateService sectionStateService, MediatorService mediator, ImGuiService imGuiService, InventoryToolsConfiguration configuration, ICompendiumType compendiumType, IPluginLog pluginLog, IEnumerable<IMenuWindow> menuWindows, IEnumerable<ICompendiumType> compendiumTypes) : base(logger, mediator, imGuiService, configuration, compendiumType.Plural + "窗口")
@@ -67,6 +71,41 @@ public class CompendiumListWindow : CompendiumWindow
     private void SetSavedGrouping(string? newGrouping)
     {
         _sectionState?.Set("grouping", newGrouping);
+    }
+
+    private string GetFollowKey(ICompendiumGrouping grouping)
+    {
+        return "follow_current_group_" + grouping.Key;
+    }
+
+    private bool IsFollowingCurrentGroup(ICompendiumGrouping grouping)
+    {
+        return ((AllaganLib.Interface.FormFields.IConfigurable<string?>)_sectionState!).Get(GetFollowKey(grouping)) == "true";
+    }
+
+    private void SetFollowingCurrentGroup(ICompendiumGrouping grouping, bool follow)
+    {
+        _sectionState?.Set(GetFollowKey(grouping), follow ? "true" : null);
+    }
+
+    private bool HasTab(object groupKey)
+    {
+        return _compendiumTabs?.Any(c => Equals(c.Key, groupKey)) ?? false;
+    }
+
+    private void UpdateFollowedGroup()
+    {
+        if (_compendiumGrouping?.CurrentGroupFunc == null || !IsFollowingCurrentGroup(_compendiumGrouping))
+        {
+            return;
+        }
+
+        var currentGroup = _compendiumGrouping.CurrentGroupFunc();
+        if (currentGroup != null && !Equals(currentGroup, _lastFollowedGroup))
+        {
+            _lastFollowedGroup = currentGroup;
+            _pendingTab = currentGroup;
+        }
     }
 
     public override void DrawWindow()
@@ -118,11 +157,14 @@ public class CompendiumListWindow : CompendiumWindow
         }
         else
         {
+            UpdateFollowedGroup();
             using (var tabBar = ImRaii.TabBar(_compendiumGrouping.Key, ImGuiTabBarFlags.FittingPolicyScroll | ImGuiTabBarFlags.ListPopupButton))
             {
                 if (tabBar)
                 {
                     _compendiumTabs ??= GetTabs(_compendiumGrouping);
+                    var pendingTab = _pendingTab;
+                    _pendingTab = null;
                     if (_compendiumTabs == null)
                     {
                         MediatorService.Publish(_table.Value.Draw(_windowState, new Vector2(0, 0)));
@@ -131,7 +173,13 @@ public class CompendiumListWindow : CompendiumWindow
                     {
                         foreach (var tab in _compendiumTabs)
                         {
-                            using (var tabItem = ImRaii.TabItem(tab.Value, ImGuiTabItemFlags.NoReorder))
+                            var tabFlags = ImGuiTabItemFlags.NoReorder;
+                            if (pendingTab != null && Equals(tab.Key, pendingTab))
+                            {
+                                tabFlags |= ImGuiTabItemFlags.SetSelected;
+                            }
+
+                            using (var tabItem = ImRaii.TabItem(tab.Value, tabFlags))
                             {
                                 if (tabItem)
                                 {
@@ -223,6 +271,7 @@ public class CompendiumListWindow : CompendiumWindow
                                 if (ImGui.MenuItem("无", _compendiumGrouping == null))
                                 {
                                     _compendiumGrouping = null;
+                                    _lastFollowedGroup = null;
                                     _table.Value.ClearGrouping();
                                 }
                                 foreach (var grouping in groupings)
@@ -231,12 +280,15 @@ public class CompendiumListWindow : CompendiumWindow
                                     {
                                         _compendiumGrouping = grouping;
                                         _compendiumTabs = null;
+                                        _lastFollowedGroup = null;
                                         SetSavedGrouping(grouping.Key);
                                     }
                                 }
                             }
                         }
                     }
+
+                    DrawCurrentGroupMenu();
 
                     using (var menu = ImRaii.Menu("窗口"))
                     {
@@ -277,6 +329,58 @@ public class CompendiumListWindow : CompendiumWindow
                 }
             }
         }
+
+    private void DrawCurrentGroupMenu()
+    {
+        var grouping = _compendiumGrouping;
+        if (grouping?.CurrentGroupFunc == null)
+        {
+            return;
+        }
+
+        var label = grouping.CurrentGroupLabel ?? "当前" + grouping.Name;
+        using var menu = ImRaii.Menu(label);
+        if (!menu)
+        {
+            return;
+        }
+
+        var currentGroup = grouping.CurrentGroupFunc();
+        var canShow = currentGroup != null && HasTab(currentGroup);
+        using (ImRaii.Disabled(!canShow))
+        {
+            if (ImGui.MenuItem("显示" + label) && currentGroup != null)
+            {
+                _pendingTab = currentGroup;
+            }
+        }
+
+        if (!canShow && ImGui.IsItemHovered(ImGuiHoveredFlags.AllowWhenDisabled))
+        {
+            using (ImRaii.Tooltip())
+            {
+                ImGui.TextUnformatted(currentGroup == null
+                    ? "你当前所在的" + grouping.Name.ToLower() + "不在此列表的显示范围内。"
+                    : (grouping.GroupMapping?.Invoke(currentGroup) ?? currentGroup.ToString()) + "中没有记录任何" + _compendiumType.Plural + "。");
+            }
+        }
+
+        var follow = IsFollowingCurrentGroup(grouping);
+        if (ImGui.MenuItem("跟随" + label, "", follow))
+        {
+            SetFollowingCurrentGroup(grouping, !follow);
+
+            _lastFollowedGroup = null;
+        }
+
+        if (ImGui.IsItemHovered())
+        {
+            using (ImRaii.Tooltip())
+            {
+                ImGui.TextUnformatted("当" + label.ToLower() + "改变时，打开对应的标签页。");
+            }
+        }
+    }
 
     public override void Invalidate()
     {
