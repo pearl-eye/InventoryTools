@@ -2,6 +2,8 @@
 
 Allagan Tools 的国服汉化分支。原插件由 [Critical_Impact](https://github.com/Critical-Impact/InventoryTools) 开发；本分支由 [pearl-eye](https://github.com/pearl-eye) 维护中文界面与国服适配。
 
+用于同步上游的 fork 位于 [pearl-eye/InventoryTools](https://github.com/pearl-eye/InventoryTools)，本仓库保存汉化源码和可安装版本。
+
 插件可以记录角色和雇员等位置的物品、搜索和整理背包、规划制作清单，并查询物品来源、用途及相关游戏资料。本分支保留插件内部名称 `InventoryTools`，现有设置可继续使用。
 
 ## 安装
@@ -12,7 +14,7 @@ Allagan Tools 的国服汉化分支。原插件由 [Critical_Impact](https://git
 https://github.com/pearl-eye/Allagan-Tools-CN/releases/latest/download/repo.json
 ```
 
-保存后，在插件安装器中搜索 **Allagan Tools**。安装包和更新索引可在 [Releases](https://github.com/pearl-eye/Allagan-Tools-CN/releases) 下载。首次发布完成后，以上仓库地址才会生效。
+保存后，在插件安装器中搜索 **Allagan Tools**。安装包和更新索引可在 [Releases](https://github.com/pearl-eye/Allagan-Tools-CN/releases) 下载。
 
 如果已经安装其他来源的 Allagan Tools，请先禁用旧实例，再切换安装来源；不要同时加载两个 `InventoryTools` 实例。更换版本前可备份卫月的 `pluginConfigs/InventoryTools` 目录及 `InventoryTools.json` 配置。
 
@@ -34,9 +36,13 @@ Set-Location Allagan-Tools-CN
 
 ## 自动构建与发布
 
-[Build and release CN](https://github.com/pearl-eye/Allagan-Tools-CN/actions/workflows/build-release.yml) 会在 `zh-CN` 分支更新或收到 Pull Request 时构建，并提供包含安装包、仓库索引和 SHA-256 校验文件的构建产物。
+自动构建是可选功能，配置保存在 [build-release.yml 模板](.github/optional-workflows/build-release.yml)，当前没有启用。需要启用时，将它放入 `.github/workflows/build-release.yml`；通过 GitHub CLI 提交工作流文件需要登录凭据包含 `workflow` 权限。
+
+启用后，流程会在 `zh-CN` 分支更新或收到 Pull Request 时构建，并提供安装包、仓库索引和 SHA-256 校验文件。
 
 手动运行时，默认仅构建。勾选 `publish` 会在构建成功后创建 GitHub Release；也可以推送与程序集版本一致的 `cn-v*` 标签触发发布。手动发布须选择 `zh-CN` 分支或版本标签。已存在的 Release 不会被覆盖，后续更新应提高版本号。
+
+未启用自动构建时，可在本地完成上面的构建及索引生成，再使用 GitHub 网页或 CLI 将 `artifacts/latest.zip` 和 `artifacts/repo.json` 上传到对应 `cn-v*` 标签的 Release。
 
 CI 默认使用固定的国服 Dalamud `26-11-13-01` 依赖包：
 
