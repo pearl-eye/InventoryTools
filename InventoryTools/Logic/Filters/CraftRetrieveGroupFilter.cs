@@ -58,7 +58,12 @@ public class CraftRetrieveGroupFilter : ChoiceFilter<RetrieveGroupSetting>
 
     public override string GetFormattedChoice(FilterConfiguration filterConfiguration, RetrieveGroupSetting choice)
     {
-        return choice.ToString();
+        return choice switch
+        {
+            RetrieveGroupSetting.None => "不单独分组",
+            RetrieveGroupSetting.Together => "合并待取回物品",
+            _ => choice.ToString()
+        };
     }
 
     public CraftRetrieveGroupFilter(ILogger<CraftRetrieveGroupFilter> logger, ImGuiService imGuiService) : base(logger, imGuiService)

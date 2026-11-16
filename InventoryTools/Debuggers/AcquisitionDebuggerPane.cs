@@ -16,7 +16,7 @@ public class AcquisitionDebuggerPane : DebugLogPane
         _acquisitionMonitorService = acquisitionMonitorService;
     }
 
-    public override string Name => "Item Acquisition Monitor";
+    public override string Name => "物品获取监视器";
 
     public override void SubscribeToEvents()
     {
@@ -46,7 +46,7 @@ public class AcquisitionDebuggerPane : DebugLogPane
 
             if (config == null)
             {
-                ImGui.TextUnformatted("<no configuration>");
+                ImGui.TextUnformatted("<无配置>");
             }
             else
             {
@@ -58,7 +58,7 @@ public class AcquisitionDebuggerPane : DebugLogPane
         if (ImGui.CollapsingHeader("最近活动"))
         {
             ImGui.TextUnformatted(
-                "See the log pane below for a chronological list of acquisition events."
+                "下方日志面板按时间顺序列出物品获取事件。"
             );
         }
     }

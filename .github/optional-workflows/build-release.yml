@@ -91,12 +91,20 @@ jobs:
         run: |
           $ErrorActionPreference = 'Stop'
           $manifest = Get-Content artifacts/InventoryTools/InventoryTools.json -Raw | ConvertFrom-Json
-          $tag = "cn-v$($manifest.AssemblyVersion)"
-          if ($env:GITHUB_REF_TYPE -eq 'tag' -and $env:GITHUB_REF_NAME -cne $tag) {
-            throw "The pushed tag must match the built version: $tag"
+          $baseTag = "cn-v$($manifest.AssemblyVersion)"
+          $allowedTags = @($baseTag, "$baseTag-localization")
+          $tag = $baseTag
+          if ($env:GITHUB_REF_TYPE -eq 'tag') {
+            if ($env:GITHUB_REF_NAME -cnotin $allowedTags) {
+              throw "The pushed tag must retain the original plugin version: $baseTag"
+            }
+            $tag = $env:GITHUB_REF_NAME
           }
-          if ($env:INPUT_RELEASE_TAG -and $env:INPUT_RELEASE_TAG -cne $tag) {
-            throw "The requested release tag must match the built version: $tag"
+          if ($env:INPUT_RELEASE_TAG) {
+            if ($env:INPUT_RELEASE_TAG -cnotin $allowedTags) {
+              throw "The requested tag must retain the original plugin version: $baseTag"
+            }
+            $tag = $env:INPUT_RELEASE_TAG
           }
           ./scripts/Generate-Repo.ps1 -ManifestPath artifacts/InventoryTools/InventoryTools.json -PackagePath artifacts/latest.zip -OutputPath artifacts/repo.json -Repository $env:GITHUB_REPOSITORY -ReleaseTag $tag
           $publish = $env:GITHUB_EVENT_NAME -eq 'push' -and $env:GITHUB_REF_TYPE -eq 'tag'

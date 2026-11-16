@@ -215,7 +215,15 @@ namespace InventoryTools.Ui.Pages
 
                         GetCharacterMenu(house.Value).Draw();
                         var tooltip = house.Value.FormattedName;
-                        tooltip += "\n" + house.Value.GetPlotSize().ToString();
+                        tooltip += "\n" + (house.Value.GetPlotSize() switch
+                        {
+                            PlotSize.Cottage => "小型房屋",
+                            PlotSize.House => "中型房屋",
+                            PlotSize.Mansion => "大型房屋",
+                            PlotSize.Apartment => "公寓",
+                            PlotSize.Room => "个人房间",
+                            _ => "未知房屋类型"
+                        });
 
                         tooltip += "\n\n右键：选项";
                         ImGuiUtil.HoverTooltip(tooltip);

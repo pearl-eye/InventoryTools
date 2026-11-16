@@ -72,7 +72,7 @@ public class TeleporterIpc : ITeleporterIpc
         catch(Exception ex)
         {
             _pluginLog.Debug($"Failed to call Teleporter IPC\nReason: {ex}");
-            _chatGui.PrintError("Teleporter plugin is not responding.");
+            _chatGui.PrintError("Teleporter 插件未响应。");
             return false;
         }
     }

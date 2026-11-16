@@ -227,7 +227,7 @@ public class EquipmentSuggestSelectedItemColumn  : StringFormField<EquipmentSugg
                     {
                         foreach (var filter in craftFilters)
                         {
-                            if (!ImGui.Selectable(filter.Name)) continue;
+                            if (!ImGui.Selectable(filter.DisplayName + "###list_" + filter.Key)) continue;
                             Task.Run(() =>
                             {
                                 foreach (var toAdd in GetItems())
@@ -284,7 +284,7 @@ public class EquipmentSuggestSelectedItemColumn  : StringFormField<EquipmentSugg
                     {
                         foreach (var filter in curatedLists)
                         {
-                            if (!ImGui.MenuItem(filter.Name)) continue;
+                            if (!ImGui.MenuItem(filter.DisplayName + "###list_" + filter.Key)) continue;
                             Task.Run(() =>
                             {
                                 foreach (var toAdd in GetItems())

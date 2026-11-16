@@ -10,6 +10,7 @@ using Dalamud.Interface.Colors;
 using Dalamud.Bindings.ImGui;
 using InventoryTools.Logic.Columns;
 using InventoryTools.Logic.Columns.Abstract;
+using InventoryTools.Localizers;
 using InventoryTools.Logic.Filters.Abstract;
 using OtterGui;
 using Dalamud.Interface.Utility.Raii;
@@ -194,7 +195,7 @@ namespace InventoryTools.Logic.Filters
                                 continue;
                             }
 
-                            if (ImGui.CollapsingHeader(groupedItem.Key.ToString(), ImGuiTreeNodeFlags.DefaultOpen))
+                            if (ImGui.CollapsingHeader(ColumnCategoryLocalizer.Format(groupedItem.Key), ImGuiTreeNodeFlags.DefaultOpen))
                             {
                                 foreach (var column in groupedItem)
                                 {

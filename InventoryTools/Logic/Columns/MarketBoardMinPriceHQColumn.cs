@@ -77,7 +77,7 @@ namespace InventoryTools.Logic.Columns
                 {
                     OtterGui.ImGuiUtil.RightAlign($"{currentValue.Value:n0}" + SeIconChar.Gil.ToIconString());
                     ImGui.SameLine();
-                    if (ImGui.SmallButton("R##" + rowIndex))
+                    if (ImGui.SmallButton("刷新###R##" + rowIndex))
                     {
                         var activeCharacter = _characterMonitor.ActiveCharacter;
                         if (activeCharacter != null)

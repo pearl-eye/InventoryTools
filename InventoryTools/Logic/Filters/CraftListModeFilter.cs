@@ -60,6 +60,11 @@ public class CraftListModeFilter : ChoiceFilter<CraftListMode>
 
     public override string GetFormattedChoice(FilterConfiguration filterConfiguration, CraftListMode choice)
     {
-        return choice.ToString();
+        return choice switch
+        {
+            CraftListMode.Normal => "普通模式",
+            CraftListMode.Stock => "备货模式",
+            _ => choice.ToString()
+        };
     }
 }

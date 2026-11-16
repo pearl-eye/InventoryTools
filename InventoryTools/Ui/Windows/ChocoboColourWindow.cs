@@ -495,7 +495,7 @@ namespace InventoryTools.Ui
                         {
                             foreach (var filter in craftLists)
                             {
-                                if (!ImGui.Selectable(filter.Name))
+                                if (!ImGui.Selectable(filter.DisplayName + "###list_" + filter.Key))
                                 {
                                     continue;
                                 }
@@ -526,7 +526,7 @@ namespace InventoryTools.Ui
                         {
                             foreach (var filter in curatedLists)
                             {
-                                if (!ImGui.MenuItem(filter.Name))
+                                if (!ImGui.MenuItem(filter.DisplayName + "###list_" + filter.Key))
                                 {
                                     continue;
                                 }
@@ -584,7 +584,7 @@ namespace InventoryTools.Ui
                 {
                     foreach (var filter in craftLists)
                     {
-                        if (!ImGui.Selectable(filter.Name))
+                        if (!ImGui.Selectable(filter.DisplayName + "###list_" + filter.Key))
                         {
                             continue;
                         }
@@ -615,7 +615,7 @@ namespace InventoryTools.Ui
                 {
                     foreach (var filter in curatedLists)
                     {
-                        if (!ImGui.MenuItem(filter.Name))
+                        if (!ImGui.MenuItem(filter.DisplayName + "###list_" + filter.Key))
                         {
                             continue;
                         }

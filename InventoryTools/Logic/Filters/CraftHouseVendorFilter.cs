@@ -57,7 +57,12 @@ public class CraftHouseVendorFilter : ChoiceFilter<HouseVendorSetting>
 
     public override string GetFormattedChoice(FilterConfiguration filterConfiguration, HouseVendorSetting choice)
     {
-        return choice.ToString();
+        return choice switch
+        {
+            HouseVendorSetting.Together => "与其他物品合并",
+            HouseVendorSetting.Separate => "单独分组",
+            _ => choice.ToString()
+        };
     }
 
     public CraftHouseVendorFilter(ILogger<CraftHouseVendorFilter> logger, ImGuiService imGuiService) : base(logger, imGuiService)

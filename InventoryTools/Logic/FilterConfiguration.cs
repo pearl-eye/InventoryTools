@@ -12,6 +12,7 @@ using CriticalCommonLib.Models;
 using Dalamud.Bindings.ImGui;
 using InventoryTools.Attributes;
 using InventoryTools.Converters;
+using InventoryTools.Lists;
 using InventoryTools.Logic.Editors;
 using InventoryTools.Logic.Filters;
 using Newtonsoft.Json;
@@ -339,11 +340,14 @@ namespace InventoryTools.Logic
         }
 
         [JsonIgnore]
+        public string DisplayName => ListNameLocalizer.Format(Name, FilterType, CraftListDefault);
+
+        [JsonIgnore]
         public string NameFormatted
         {
             get
             {
-                var actualName = Name == "" ? "未命名" : Name;
+                var actualName = Name == "" ? "未命名" : DisplayName;
                 if (IsEphemeralCraftList)
                 {
                     actualName += " (*)";

@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../InventoryTools/Lists/ListNameLocalizer.cs" Link="ListNameLocalizer.cs" />
+    <Compile Include="../../InventoryTools/Logic/FilterType.cs" Link="FilterType.cs" />
+    <Compile Include="../../InventoryTools/Logic/Filters/FilterCategory.cs" Link="FilterCategory.cs" />
+    <Compile Include="../../InventoryTools/Extensions/FilterCategoryExtensions.cs" Link="FilterCategoryExtensions.cs" />
+    <Compile Include="../../InventoryTools/Extensions/StringExtensions.cs" Link="StringExtensions.cs" />
+  </ItemGroup>
+</Project>

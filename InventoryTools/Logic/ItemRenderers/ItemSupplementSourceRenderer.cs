@@ -282,8 +282,8 @@ public class ItemHydatosSourceRenderer : ItemSupplementSourceRenderer<ItemHydato
     {
     }
 
-    public override string SingularName => "优雷卡丰水之地";
-    public override string HelpText => "此物品能否从优雷卡丰水之地的战利品中获得？";
+    public override string SingularName => "优雷卡丰水地带";
+    public override string HelpText => "此物品能否从优雷卡丰水地带的战利品中获得？";
 }
 
 public class ItemPilgrimsTraverseSourceRenderer : ItemSupplementSourceRenderer<ItemPilgrimsTraverseSource>
@@ -294,8 +294,8 @@ public class ItemPilgrimsTraverseSourceRenderer : ItemSupplementSourceRenderer<I
     {
     }
 
-    public override string SingularName => "Pilgrim's Traverse";
-    public override string HelpText => "此物品能否从Pilgrim's Traverse的战利品中获得？";
+    public override string SingularName => "巡礼者之路";
+    public override string HelpText => "此物品能否从巡礼者之路的战利品中获得？";
 }
 
 public class ItemOizysSourceRenderer : ItemSupplementSourceRenderer<ItemOizysSource>
@@ -330,8 +330,8 @@ public class ItemHydatosUseRenderer : ItemSupplementUseRenderer<ItemHydatosSourc
     {
     }
 
-    public override string SingularName => "优雷卡丰水之地";
-    public override string HelpText => "此物品是否为优雷卡丰水之地的战利品？";
+    public override string SingularName => "优雷卡丰水地带";
+    public override string HelpText => "此物品是否为优雷卡丰水地带的战利品？";
 }
 
 public class ItemBozjaSourceRenderer : ItemSupplementSourceRenderer<ItemBozjaSource>

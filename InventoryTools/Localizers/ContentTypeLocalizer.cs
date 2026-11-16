@@ -12,7 +12,8 @@ public class ContentTypeLocalizer : ILocalizer<ContentType>
             20 => "新人学堂",
             22 => "季节活动",
             23 => "云冠群岛",
-            39 => "The Final Verse",
+            // ContentType 39 has an empty name; use the shared title of duties 60051/60052.
+            39 => "卓异的悲寂",
             _ => instance.Name.ToImGuiString()
         };
     }

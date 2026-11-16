@@ -67,7 +67,7 @@ namespace CriticalCommonLib.Crafting
             get
             {
                 return this._phaseNames ??= this.Item.CompanyCraftSequence?.CompanyCraftParts.Where(c => c.RowId != 0)
-                                                .Select(c => c.Base.CompanyCraftType.ValueNullable?.Name.ToString() ?? "Unknown").ToArray() ??
+                                                .Select(c => c.Base.CompanyCraftType.ValueNullable?.Name.ToString() ?? "未知").ToArray() ??
                                             Array.Empty<string>();
             }
         }

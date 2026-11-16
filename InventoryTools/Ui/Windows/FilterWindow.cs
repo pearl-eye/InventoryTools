@@ -57,7 +57,7 @@ namespace InventoryTools.Ui
             if (SelectedConfiguration != null)
             {
                 Key = "filter_" + filterKey;
-                WindowName = "Allagan Tools - " + SelectedConfiguration.Name;
+                WindowName = "Allagan Tools - " + SelectedConfiguration.DisplayName + "###filter_" + filterKey;
             }
             else
             {

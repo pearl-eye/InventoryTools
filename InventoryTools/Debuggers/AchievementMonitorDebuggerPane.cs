@@ -16,7 +16,7 @@ public class AchievementDebuggerPane : DebugLogPane
         _achievementMonitorService = achievementMonitorService;
     }
 
-    public override string Name => "Achievement Monitor";
+    public override string Name => "成就监视器";
 
     public override void SubscribeToEvents()
     {
@@ -26,24 +26,24 @@ public class AchievementDebuggerPane : DebugLogPane
     {
         if (ImGui.CollapsingHeader("状态"))
         {
-            ImGui.TextUnformatted($"Loaded: {_achievementMonitorService.IsLoaded}");
-            ImGui.TextUnformatted($"Completed Achievement Count: {_achievementMonitorService.GetCompletedAchievementIds().Count}");
+            ImGui.TextUnformatted($"已加载：{_achievementMonitorService.IsLoaded}");
+            ImGui.TextUnformatted($"已完成成就数量：{_achievementMonitorService.GetCompletedAchievementIds().Count}");
         }
 
-        if (ImGui.CollapsingHeader("Completed Achievements"))
+        if (ImGui.CollapsingHeader("已完成成就"))
         {
             var completed = _achievementMonitorService.GetCompletedAchievements();
 
             if (completed.Count == 0)
             {
-                ImGui.TextUnformatted("<none>");
+                ImGui.TextUnformatted("<无>");
             }
             else
             {
                 foreach (var rowRef in completed.OrderBy(r => r.RowId))
                 {
-                    var name = rowRef.ValueNullable?.Name.ToImGuiString() ?? $"<unknown name>";
-                    ImGui.TextUnformatted($"ID={rowRef.RowId}, Name={name}");
+                    var name = rowRef.ValueNullable?.Name.ToImGuiString() ?? $"<未知名称>";
+                    ImGui.TextUnformatted($"ID={rowRef.RowId}，名称={name}");
                 }
             }
         }
@@ -53,7 +53,7 @@ public class AchievementDebuggerPane : DebugLogPane
             var config = _achievementMonitorService.Configuration;
             if (config == null)
             {
-                ImGui.TextUnformatted("<no configuration>");
+                ImGui.TextUnformatted("<无配置>");
             }
             else
             {

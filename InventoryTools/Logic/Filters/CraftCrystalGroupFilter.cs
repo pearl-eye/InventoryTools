@@ -58,7 +58,12 @@ public class CraftCrystalGroupFilter : ChoiceFilter<CrystalGroupSetting>
 
     public override string GetFormattedChoice(FilterConfiguration filterConfiguration, CrystalGroupSetting choice)
     {
-        return choice.ToString();
+        return choice switch
+        {
+            CrystalGroupSetting.Separate => "单独分组",
+            CrystalGroupSetting.Together => "合并到采集/购买",
+            _ => choice.ToString()
+        };
     }
 
     public CraftCrystalGroupFilter(ILogger<CraftCrystalGroupFilter> logger, ImGuiService imGuiService) : base(logger, imGuiService)

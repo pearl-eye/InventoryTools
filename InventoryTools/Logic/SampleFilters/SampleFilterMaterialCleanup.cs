@@ -49,7 +49,7 @@ public class SampleFilterMaterialCleanup : BooleanSetting, ISampleFilter
     public override string Key { get; set; } = "sample3";
     public override string Name { get; set; } = "整理材料";
     public override string HelpText { get; set; } = "查找角色背包中的可采集物品，并显示应放入哪名雇员的背包。";
-    public string SampleDefaultName => "100金币及以下";
+    public string SampleDefaultName => "整理材料";
     public string SampleDescription =>
         "添加一份清单，帮助快速存放多余材料。自动加入全部材料分类，并在规划存放位置时优先合并已有堆叠。";
     public SampleFilterType SampleFilterType => SampleFilterType.Sample;

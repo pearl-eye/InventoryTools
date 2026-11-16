@@ -63,7 +63,7 @@ namespace InventoryTools.Ui
             else
             {
                 ImGui.TextUnformatted(AirshipExplorationPoint.Base.NameShort.ExtractText());
-                ImGui.TextUnformatted("解锁条件: " + AirshipExplorationPoint.Unlock?.Base.NameShort.ExtractText() ?? "N/A");
+                ImGui.TextUnformatted("解锁条件: " + AirshipExplorationPoint.Unlock?.Base.NameShort.ExtractText() ?? "无");
                 ImGui.TextUnformatted("所需等级：" + AirshipExplorationPoint.Base.RankReq);
                 ;
                 var itemIcon = ImGuiService.GetIconTexture(Icons.AirshipIcon);
@@ -112,9 +112,9 @@ namespace InventoryTools.Ui
                 }
 
                 #if DEBUG
-                if (ImGui.CollapsingHeader("Debug"))
+                if (ImGui.CollapsingHeader("调试###Debug"))
                 {
-                    ImGui.TextUnformatted("Duty ID: " + _airshipExplorationPointId);
+                    ImGui.TextUnformatted("探索点 ID：" + _airshipExplorationPointId);
                     Utils.PrintOutObject(AirshipExplorationPoint, 0, new List<string>());
                 }
                 #endif

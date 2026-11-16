@@ -129,7 +129,7 @@ namespace InventoryTools.Ui
                 foreach (var dungeonBoss in DungeonBosses)
                 {
                     if (ImGui.CollapsingHeader(_bNpcNameSheet.GetRowOrDefault(dungeonBoss.BNpcNameId)?.Base.Singular.ExtractText() + " - 战斗 " + (dungeonBoss.FightNo + 1) ??
-                            "Unknown Boss",
+                            "未知首领",
                             ImGuiTreeNodeFlags.DefaultOpen | ImGuiTreeNodeFlags.CollapsingHeader))
                     {
                         if (DungeonBossChests.ContainsKey(dungeonBoss.FightNo))
@@ -339,9 +339,9 @@ namespace InventoryTools.Ui
                 }
 
                 #if DEBUG
-                if (ImGui.CollapsingHeader("Debug"))
+                if (ImGui.CollapsingHeader("调试###Debug"))
                 {
-                    ImGui.TextUnformatted("Duty ID: " + _contentFinderConditionId);
+                    ImGui.TextUnformatted("副本 ID：" + _contentFinderConditionId);
                     Utils.PrintOutObject(ContentFinderCondition, 0, new List<string>());
                 }
                 #endif

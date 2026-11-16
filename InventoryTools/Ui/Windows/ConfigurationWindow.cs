@@ -692,7 +692,7 @@ namespace InventoryTools.Ui
                         {
                             var hasChildren = configPage.ChildPages != null;
                             var isSelected = ConfigSelectedConfigurationPageKey == configPage.Key;
-                            using (var node = ImRaii.TreeNode(configPage.Name, hasChildren ?  ImGuiTreeNodeFlags.None : isSelected ? ImGuiTreeNodeFlags.Leaf | ImGuiTreeNodeFlags.Selected : ImGuiTreeNodeFlags.Leaf))
+                            using (var node = ImRaii.TreeNode(configPage.Name + "###page_" + configPage.Key, hasChildren ?  ImGuiTreeNodeFlags.None : isSelected ? ImGuiTreeNodeFlags.Leaf | ImGuiTreeNodeFlags.Selected : ImGuiTreeNodeFlags.Leaf))
                             {
                                 if (node)
                                 {
@@ -702,7 +702,7 @@ namespace InventoryTools.Ui
                                         {
                                             isSelected = ConfigSelectedConfigurationPageKey == childPage.Key;
 
-                                            using (var subNode = ImRaii.TreeNode(childPage.Name,
+                                            using (var subNode = ImRaii.TreeNode(childPage.Name + "###page_" + childPage.Key,
                                                        isSelected
                                                            ? ImGuiTreeNodeFlags.Selected |
                                                              ImGuiTreeNodeFlags.Bullet
@@ -738,7 +738,7 @@ namespace InventoryTools.Ui
 
                     foreach (var item in _filterPages)
                     {
-                        using (var subNode = ImRaii.TreeNode(item.Value.Name,
+                        using (var subNode = ImRaii.TreeNode(item.Value.Name + "###page_" + item.Value.Key,
                                    ConfigSelectedConfigurationPageKey == item.Value.Key
                                        ? ImGuiTreeNodeFlags.Selected |
                                          ImGuiTreeNodeFlags.Leaf

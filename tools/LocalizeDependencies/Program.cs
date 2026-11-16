@@ -158,6 +158,12 @@ internal static class Program
                     total += expected;
                 }
 
+                if (assembly.Name == TimeUnitLocalization.AssemblyName)
+                {
+                    changes += TimeUnitLocalization.Apply(module, assembly.PackageVersion);
+                    total += 4;
+                }
+
                 modules[^1] = (assembly, module, changes, total);
             }
 
@@ -189,6 +195,8 @@ internal static class Program
 
     private static void VerifyWritten(AssemblyRules assembly, ModuleDefinition module)
     {
+        if (assembly.Name == TimeUnitLocalization.AssemblyName)
+            TimeUnitLocalization.Verify(module, assembly.PackageVersion);
         var methods = module.Types.SelectMany(AllTypes).SelectMany(type => type.Methods)
             .ToDictionary(method => method.FullName, StringComparer.Ordinal);
         foreach (var methodRules in assembly.Rules.GroupBy(rule => rule.FullMethodName, StringComparer.Ordinal))

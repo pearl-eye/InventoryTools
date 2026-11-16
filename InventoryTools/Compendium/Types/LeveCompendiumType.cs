@@ -9,7 +9,6 @@ using AllaganLib.GameSheets.Sheets.Rows;
 using AllaganLib.Shared.Extensions;
 using AllaganLib.Shared.Misc;
 using DalaMock.Host.Mediator;
-using Humanizer;
 using InventoryTools.Compendium.Interfaces;
 using InventoryTools.Compendium.Models;
 using InventoryTools.Compendium.Sections;
@@ -57,7 +56,7 @@ public class LeveCompendiumType : CompendiumType<LeveRow>
 
     public override string? GetSubtitle(LeveRow row)
     {
-        return row.LeveType.ToString().Humanize();
+        return GetLeveTypeName(row.LeveType);
     }
 
     public override (string?, uint?) GetIcon(LeveRow row)
@@ -91,7 +90,7 @@ public class LeveCompendiumType : CompendiumType<LeveRow>
     {
         builder.AddCompendiumOpenViewColumn(new() { Key = "icon", Name = "##Icon", HelpText = "理符任务的图标", Version = "14.0.3", ValueSelector = this.GetIcon, CompendiumType = this, RowIdSelector = row => row.RowId });
         builder.AddStringColumn(new() { Key = "name", Name = "名称", HelpText = "理符任务的名称", Version = "14.0.3", ValueSelector = row => row.Base.Name.ToImGuiString() });
-        builder.AddStringColumn(new() { Key = "type", Name = "类型", HelpText = "理符任务的类型", Version = "14.0.3", ValueSelector = row => row.LeveType.ToString().Humanize() + "(" + row.Base.LeveAssignmentType.Value.Name.ToImGuiString() + ")" });
+        builder.AddStringColumn(new() { Key = "type", Name = "类型", HelpText = "理符任务的类型", Version = "14.0.3", ValueSelector = row => GetLeveTypeName(row.LeveType) + "(" + row.Base.LeveAssignmentType.Value.Name.ToImGuiString() + ")" });
         builder.AddIntegerColumn(new() { Key = "level", Name = "等级", HelpText = "理符任务的等级", Version = "14.0.3", ValueSelector = row => row.Base.ClassJobLevel.ToString() });
         builder.AddStringColumn(new() { Key = "leveissuer", Name = "理符任务发布人", HelpText = "发布此理符任务的 NPC", Version = "14.0.3", ValueSelector = row => row.StartENpc == null ? "不适用" : _npcLocalizer.Format(row.StartENpc.ENpcBase.Base) });
         builder.AddIntegerColumn(new() { Key = "exp", Name = "经验值", HelpText = "完成此理符任务获得的经验值", Version = "14.0.3", ValueSelector = row => row.ExpReward.ToString() });
@@ -152,7 +151,7 @@ public class LeveCompendiumType : CompendiumType<LeveRow>
     public override void BuildViewFields(CompendiumViewBuilder viewBuilder, LeveRow row)
     {
         viewBuilder.Title = row.Base.Name.ToImGuiString();
-        viewBuilder.Subtitle = row.LeveType.ToString().Humanize() + "(" +
+        viewBuilder.Subtitle = GetLeveTypeName(row.LeveType) + "(" +
                                row.Base.LeveAssignmentType.Value.Name.ToImGuiString() + ")";
         viewBuilder.Icon = (uint)row.Base.LeveAssignmentType.Value.Icon;
         viewBuilder.Description = row.Base.Description.ToImGuiString();
@@ -261,19 +260,17 @@ public class LeveCompendiumType : CompendiumType<LeveRow>
                 Key = "type",
                 Name = "类型",
                 GroupFunc = row => row.LeveType,
-                GroupMapping = row =>
-                {
-                    var leveType = (LeveType)row;
-                    return leveType switch
-                    {
-                        LeveType.Battle => "战斗",
-                        LeveType.Gathering => "采集",
-                        LeveType.Craft => "制作",
-                        LeveType.Company => "军队",
-                        _ => "未知"
-                    };
-                },
+                GroupMapping = row => GetLeveTypeName((LeveType)row),
             }
         };
     }
+
+    private static string GetLeveTypeName(LeveType type) => type switch
+    {
+        LeveType.Battle => "战斗",
+        LeveType.Gathering => "采集",
+        LeveType.Craft => "制作",
+        LeveType.Company => "军队",
+        _ => "未知",
+    };
 }

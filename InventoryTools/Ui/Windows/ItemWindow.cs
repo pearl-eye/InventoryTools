@@ -26,7 +26,6 @@ using InventoryTools.Logic;
 using OtterGui;
 using Dalamud.Interface.Utility.Raii;
 using Dalamud.Plugin.Services;
-using Humanizer;
 using InventoryTools.Localizers;
 using InventoryTools.Logic.ItemRenderers;
 using InventoryTools.Logic.Settings;
@@ -425,7 +424,7 @@ namespace InventoryTools.Ui
                             {
                                 using (ImRaii.PushId(filter.Key))
                                 {
-                                    if (ImGui.Selectable("添加物品到制作清单 - " + filter.Name))
+                                    if (ImGui.Selectable("添加物品到制作清单 - " + filter.DisplayName + "###list_" + filter.Key))
                                     {
                                         _framework.RunOnFrameworkThread(() =>
                                         {
@@ -512,10 +511,10 @@ namespace InventoryTools.Ui
 
 
 #if DEBUG
-                if (ImGui.CollapsingHeader("Debug"))
+                if (ImGui.CollapsingHeader("调试###Debug"))
                 {
-                    ImGui.TextUnformatted("Item ID: " + _itemId);
-                    if (ImGui.Button("Copy"))
+                    ImGui.TextUnformatted("物品 ID：" + _itemId);
+                    if (ImGui.Button("复制###Copy"))
                     {
                         _clipboardService.CopyToClipboard(_itemId.ToString());
                     }
@@ -1031,7 +1030,10 @@ namespace InventoryTools.Ui
                 ImGui.TableNextColumn();
                 ImGui.TextWrapped(_worldSheet.GetRowOrDefault(obj.WorldId)?.Name.ExtractText() ?? "未知");
                 ImGui.TableNextColumn();
-                ImGui.TextWrapped((obj.LastUpdate - DateTime.Now).Humanize(minUnit: TimeUnit.Minute, maxUnit: TimeUnit.Hour, precision: 1) + " 前");
+                var elapsed = DateTime.Now - obj.LastUpdate;
+                ImGui.TextWrapped(elapsed.TotalHours >= 1
+                    ? $"{(int)elapsed.TotalHours} 小时前"
+                    : $"{Math.Max(0, (int)elapsed.TotalMinutes)} 分钟前");
                 ImGui.TableNextColumn();
                 ImGui.TextWrapped(obj.Available.ToString());
                 ImGui.TableNextColumn();

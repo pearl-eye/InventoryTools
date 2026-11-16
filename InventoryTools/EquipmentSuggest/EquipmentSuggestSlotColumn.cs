@@ -48,6 +48,8 @@ public class EquipmentSuggestSlotColumn : AllaganLib.Interface.Grid.StringColumn
                     return "身体";
                 case EquipSlot.Gloves:
                     return "手部";
+                case EquipSlot.Waist:
+                    return "腰部";
                 case EquipSlot.Legs:
                     return "腿部";
                 case EquipSlot.Feet:

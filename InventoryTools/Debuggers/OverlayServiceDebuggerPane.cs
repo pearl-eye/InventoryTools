@@ -26,43 +26,43 @@ public class OverlayServiceDebuggerPane : IDebugPane
         _overlayService = overlayService;
     }
 
-    public string Name => "Overlay System";
+    public string Name => "高亮覆盖层系统";
 
     public void Draw()
     {
-        ImGui.Text($"Current State: {(OverlayService.LastState == null ? "No State" : "Has State")}");
+        ImGui.Text($"当前状态：{(OverlayService.LastState == null ? "无状态" : "有状态")}");
         if (OverlayService.LastState != null)
         {
             ImGui.Text($"筛选: {OverlayService.LastState.FilterConfiguration.Name}");
-            ImGui.Text($"Should Highlight: {(OverlayService.LastState.ShouldHighlight ? "是" : "否")}");
-            ImGui.TextUnformatted($"Active Retainer ID: {_characterMonitor.ActiveRetainerId}");
-            ImGui.TextUnformatted($"Retainer List Open?: {_gameUiManager.IsWindowVisible(CriticalCommonLib.Services.Ui.WindowName.RetainerList)}");
-            ImGui.Text($"Should Highlight Destination: {(OverlayService.LastState.ShouldHighlightDestination ? "是" : "否")}");
-            ImGui.Text($"Invert Highlighting: {(OverlayService.LastState.InvertHighlighting ? "是" : "否")}");
-            ImGui.Text($"Has Filter Result: {(OverlayService.LastState.HasFilterResult ? "是" : "否")}");
+            ImGui.Text($"是否高亮：{(OverlayService.LastState.ShouldHighlight ? "是" : "否")}");
+            ImGui.TextUnformatted($"当前雇员 ID：{_characterMonitor.ActiveRetainerId}");
+            ImGui.TextUnformatted($"雇员列表是否打开：{_gameUiManager.IsWindowVisible(CriticalCommonLib.Services.Ui.WindowName.RetainerList)}");
+            ImGui.Text($"是否高亮目标：{(OverlayService.LastState.ShouldHighlightDestination ? "是" : "否")}");
+            ImGui.Text($"反向高亮：{(OverlayService.LastState.InvertHighlighting ? "是" : "否")}");
+            ImGui.Text($"是否有筛选结果：{(OverlayService.LastState.HasFilterResult ? "是" : "否")}");
 
             var retainerBags1 = OverlayService.LastState.GetBagHighlights(InventoryType.RetainerBag0);
             var retainerBags2 = OverlayService.LastState.GetBagHighlights(InventoryType.RetainerBag1);
             var tabHighlights = OverlayService.LastState.GetTabHighlights(new List<Dictionary<Vector2, Vector4?>>()
                 { retainerBags1, retainerBags2 });
-            ImGui.Text($"{(tabHighlights.HasValue ? "Will Highlight Tab 1" : "No Highlight")}");
+            ImGui.Text($"{(tabHighlights.HasValue ? "将高亮标签页1" : "不高亮")}");
 
             var retainerBags3 = OverlayService.LastState.GetBagHighlights(InventoryType.RetainerBag2);
             var retainerBags4 = OverlayService.LastState.GetBagHighlights(InventoryType.RetainerBag3);
             var tabHighlights2 = OverlayService.LastState.GetTabHighlights(new List<Dictionary<Vector2, Vector4?>>()
                 { retainerBags3, retainerBags4 });
-            ImGui.Text($"{(tabHighlights2.HasValue ? "Will Highlight Tab 2" : "No Highlight")}");
+            ImGui.Text($"{(tabHighlights2.HasValue ? "将高亮标签页2" : "不高亮")}");
         }
 
-        ImGui.Text("Overlays: ");
+        ImGui.Text("高亮覆盖层：");
         foreach (var overlay in OverlayService.Overlays)
         {
             ImGui.Text($"{overlay.GetType()}");
-            ImGui.Text($"Needs State Refresh: {(overlay.NeedsStateRefresh ? "是" : "否")}");
-            ImGui.Text($"Should Draw: {(overlay.ShouldDraw ? "是" : "否")}");
+            ImGui.Text($"是否需要刷新状态：{(overlay.NeedsStateRefresh ? "是" : "否")}");
+            ImGui.Text($"是否显示：{(overlay.ShouldDraw ? "是" : "否")}");
         }
 
-        if (ImGui.CollapsingHeader("Current State:") && OverlayService.LastState != null)
+        if (ImGui.CollapsingHeader("当前状态：") && OverlayService.LastState != null)
         {
             Utils.PrintOutObject(OverlayService.LastState, 0, new List<string>());
             if (OverlayService.LastState.FilterResult != null)

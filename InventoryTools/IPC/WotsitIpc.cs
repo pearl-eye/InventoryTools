@@ -159,8 +159,8 @@ namespace InventoryTools.IPC
                 {
                     try
                     {
-                        var guid = _wotsitRegister.InvokeFunc(IpcDisplayName, $"切换筛选 - {filter.Name}",
-                            $"启用或禁用筛选 {filter.Name} 作为后台筛选。", WotsitIconId);
+                        var guid = _wotsitRegister.InvokeFunc(IpcDisplayName, $"切换筛选 - {filter.DisplayName}",
+                            $"启用或禁用筛选 {filter.DisplayName} 作为后台筛选。", WotsitIconId);
                         _wotsitToggleFilterGuids.Add(guid, filter.Key);
                         _wotsitFilterNames.Add(filter.Key, filter.Name);
                     }

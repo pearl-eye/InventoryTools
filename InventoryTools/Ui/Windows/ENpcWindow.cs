@@ -72,7 +72,7 @@ namespace InventoryTools.Ui
         private uint _eNpcId;
         private ENpcResidentRow? ENpcResidentRow => _eNpcResidentSheet.GetRowOrDefault(_eNpcId);
         public List<IShop>? Shops;
-        public override string GenericName => "Npcs";
+        public override string GenericName => "NPC";
         public override bool DestroyOnClose => true;
         public override void DrawWindow()
         {
@@ -218,10 +218,10 @@ namespace InventoryTools.Ui
                 }
 
 #if DEBUG
-                if (ImGui.CollapsingHeader("Debug"))
+                if (ImGui.CollapsingHeader("调试###Debug"))
                 {
-                    ImGui.TextUnformatted("eNpc ID: " + _eNpcId);
-                    if (ImGui.Button("Copy"))
+                    ImGui.TextUnformatted("NPC ID：" + _eNpcId);
+                    if (ImGui.Button("复制###Copy"))
                     {
                         _clipboardService.CopyToClipboard(_eNpcId.ToString());
                     }
@@ -302,6 +302,25 @@ namespace InventoryTools.Ui
             }
         }
 
+        private static string GetEquipSlotName(EquipSlot slot) => slot switch
+        {
+            EquipSlot.MainHand => "主手",
+            EquipSlot.OffHand => "副手",
+            EquipSlot.Head => "头部",
+            EquipSlot.Body => "身体",
+            EquipSlot.Gloves => "手部",
+            EquipSlot.Waist => "腰部",
+            EquipSlot.Legs => "腿部",
+            EquipSlot.Feet => "脚部",
+            EquipSlot.Ears => "耳部",
+            EquipSlot.Neck => "颈部",
+            EquipSlot.Wrists => "腕部",
+            EquipSlot.FingerR => "右戒指",
+            EquipSlot.FingerL => "左戒指",
+            EquipSlot.SoulCrystal => "灵魂水晶",
+            _ => "未知",
+        };
+
         public void DrawSharedModels(EquipSlot slot)
         {
             if (ENpcResidentRow == null)
@@ -313,7 +332,7 @@ namespace InventoryTools.Ui
             {
                 return;
             }
-            if (ImGui.CollapsingHeader(slot.Humanize() + " (" + relatedItems.Count + ")", ImGuiTreeNodeFlags.DefaultOpen))
+            if (ImGui.CollapsingHeader(GetEquipSlotName(slot) + " (" + relatedItems.Count + ")###" + slot.Humanize() + " (" + relatedItems.Count + ")", ImGuiTreeNodeFlags.DefaultOpen))
             {
                 ImGuiStylePtr style = ImGui.GetStyle();
                 float windowVisibleX2 = ImGui.GetWindowPos().X + ImGui.GetWindowContentRegionMax().X;

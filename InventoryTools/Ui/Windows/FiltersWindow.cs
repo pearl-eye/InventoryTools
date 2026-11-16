@@ -679,7 +679,7 @@ namespace InventoryTools.Ui
                                             .ToList();
                                         foreach (var craft in craftLists)
                                         {
-                                            if (ImGui.MenuItem(craft.Name))
+                                            if (ImGui.MenuItem(craft.DisplayName))
                                             {
                                                 var searchResults = _tableService.GetListTable(SelectedConfiguration)
                                                     .SearchResults;
@@ -771,7 +771,7 @@ namespace InventoryTools.Ui
                                             .ToList();
                                         foreach (var curatedList in curatedLists)
                                         {
-                                            if (ImGui.MenuItem(curatedList.Name))
+                                            if (ImGui.MenuItem(curatedList.DisplayName))
                                             {
                                                 var searchResults = _tableService.GetListTable(SelectedConfiguration)
                                                     .SearchResults;
@@ -1260,7 +1260,7 @@ namespace InventoryTools.Ui
                             for (var index = 0; index < filterConfigurations.Count; index++)
                             {
                                 var filterConfiguration = filterConfigurations[index];
-                                if (ImGui.Selectable(filterConfiguration.Name + "###fl" + filterConfiguration.Key,
+                                if (ImGui.Selectable(filterConfiguration.DisplayName + "###fl" + filterConfiguration.Key,
                                         index == _selectedFilterTab))
                                 {
                                     _selectedFilterTab = index;
@@ -1370,7 +1370,7 @@ namespace InventoryTools.Ui
                                     {
                                         var filterConfiguration = filterConfigurations[index];
                                         if (ImGui.Selectable(
-                                                filterConfiguration.Name + "###fl" + filterConfiguration.Key,
+                                                filterConfiguration.DisplayName + "###fl" + filterConfiguration.Key,
                                                 index == _selectedFilterTab))
                                         {
                                             if (_configuration.SwitchFiltersAutomatically &&
@@ -1909,7 +1909,7 @@ namespace InventoryTools.Ui
 
                     if (this.Configuration.FiltersLayout == WindowLayout.Single)
                     {
-                        var currentList = this.SelectedConfiguration?.Name ?? "无清单";
+                        var currentList = this.SelectedConfiguration?.DisplayName ?? "无清单";
                         currentList += " | ";
                         totalItems = currentList + totalItems;
                     }

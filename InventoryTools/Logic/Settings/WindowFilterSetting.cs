@@ -46,7 +46,7 @@ namespace InventoryTools.Logic.Settings
                 var filterItems = new Dictionary<string, string> {{"", "无"}};
                 foreach (var config in _listService.Lists.Where(c => !c.CraftListDefault))
                 {
-                    filterItems.Add(config.Key, config.Name);
+                    filterItems.Add(config.Key, config.DisplayName);
                 }
                 return filterItems;
             }

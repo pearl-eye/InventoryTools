@@ -23,7 +23,7 @@ public class CharacterDebuggerPane : DebugLogPane
         _clientState = clientState;
         _configuration = configuration;
     }
-    public override string Name => "Character Monitor";
+    public override string Name => "角色监视器";
 
     public override void SubscribeToEvents()
     {
@@ -102,56 +102,56 @@ public class CharacterDebuggerPane : DebugLogPane
 
     public override unsafe void DrawInfo()
     {
-        if (ImGui.CollapsingHeader("Session / Active State"))
+        if (ImGui.CollapsingHeader("会话与当前状态"))
         {
-            ImGui.TextUnformatted($"Is Logged In: {_characterMonitor.IsLoggedIn}");
-            ImGui.TextUnformatted($"Local Content ID: {_characterMonitor.LocalContentId}");
-            ImGui.TextUnformatted($"Internal Character ID: {_characterMonitor.InternalCharacterId}");
+            ImGui.TextUnformatted($"是否已登录：{_characterMonitor.IsLoggedIn}");
+            ImGui.TextUnformatted($"本地角色 Content ID：{_characterMonitor.LocalContentId}");
+            ImGui.TextUnformatted($"内部角色 ID：{_characterMonitor.InternalCharacterId}");
 
             ImGui.Separator();
             ImGui.TextUnformatted("当前角色:");
             ImGui.TextUnformatted(_characterMonitor.ActiveCharacter != null
                 ? $"{_characterMonitor.ActiveCharacter.Name} ({_characterMonitor.ActiveCharacterId})"
-                : "<none>");
+                : "<无>");
 
-            ImGui.TextUnformatted("Active Retainer:");
+            ImGui.TextUnformatted("当前雇员：");
             ImGui.TextUnformatted(_characterMonitor.ActiveRetainer != null
                 ? $"{_characterMonitor.ActiveRetainer.Name} ({_characterMonitor.ActiveRetainerId})"
-                : "<none>");
+                : "<无>");
 
-            ImGui.TextUnformatted("Active Free Company:");
+            ImGui.TextUnformatted("当前部队：");
             ImGui.TextUnformatted(_characterMonitor.ActiveFreeCompany != null
                 ? $"{_characterMonitor.ActiveFreeCompany.Name} ({_characterMonitor.ActiveFreeCompanyId})"
-                : "<none>");
+                : "<无>");
         }
 
         if (ImGui.CollapsingHeader("房屋"))
         {
-            ImGui.TextUnformatted($"Active House ID: {_characterMonitor.ActiveHouseId}");
-            ImGui.TextUnformatted($"Cached Ward Id: {_characterMonitor.InternalWardId}");
-            ImGui.TextUnformatted($"Cached Plot Id: {_characterMonitor.InternalPlotId}");
-            ImGui.TextUnformatted($"Cached Division Id: {_characterMonitor.InternalDivisionId}");
-            ImGui.TextUnformatted($"Cached Room Id: {_characterMonitor.InternalRoomId}");
-            ImGui.TextUnformatted($"Cached House Id: {_characterMonitor.InternalHouseId}");
-            ImGui.TextUnformatted($"Territory Type Id: {_characterMonitor.CorrectedTerritoryTypeId}");
+            ImGui.TextUnformatted($"当前房屋 ID：{_characterMonitor.ActiveHouseId}");
+            ImGui.TextUnformatted($"缓存住宅区 ID：{_characterMonitor.InternalWardId}");
+            ImGui.TextUnformatted($"缓存房号 ID：{_characterMonitor.InternalPlotId}");
+            ImGui.TextUnformatted($"缓存分区 ID：{_characterMonitor.InternalDivisionId}");
+            ImGui.TextUnformatted($"缓存房间 ID：{_characterMonitor.InternalRoomId}");
+            ImGui.TextUnformatted($"缓存房屋 ID：{_characterMonitor.InternalHouseId}");
+            ImGui.TextUnformatted($"区域类型 ID：{_characterMonitor.CorrectedTerritoryTypeId}");
 
             var hm = HousingManager.Instance();
             if (hm != null)
             {
                 if (hm->OutdoorTerritory != null)
-                    ImGui.TextUnformatted($"Outdoor HouseId: {hm->OutdoorTerritory->HouseId.Id}");
+                    ImGui.TextUnformatted($"室外房屋 ID：{hm->OutdoorTerritory->HouseId.Id}");
                 if (hm->IndoorTerritory != null)
-                    ImGui.TextUnformatted($"Indoor HouseId: {hm->IndoorTerritory->HouseId.Id}");
+                    ImGui.TextUnformatted($"室内房屋 ID：{hm->IndoorTerritory->HouseId.Id}");
                 if (hm->CurrentTerritory != null)
-                    ImGui.TextUnformatted($"Current Territory: {(ulong)hm->CurrentTerritory:X}");
+                    ImGui.TextUnformatted($"当前区域：{(ulong)hm->CurrentTerritory:X}");
             }
 
             ImGui.Separator();
-            ImGui.TextUnformatted("Owned Houses:");
+            ImGui.TextUnformatted("拥有的房屋：");
             foreach (var id in _characterMonitor.GetOwnedHouseIds())
                 ImGui.BulletText(id.ToString());
 
-            ImGui.TextUnformatted("Has Housing Permission: " +
+            ImGui.TextUnformatted("拥有房屋权限：" +
                 (_characterMonitor.InternalHasHousePermission ||
                  _characterMonitor.GetOwnedHouseIds().Contains(_characterMonitor.InternalHouseId)
                     ? "是"
@@ -179,12 +179,12 @@ public class CharacterDebuggerPane : DebugLogPane
             {
                 if (table)
                 {
-                    ImGui.TableSetupColumn("Hire Order");
+                    ImGui.TableSetupColumn("雇用顺序");
                     ImGui.TableSetupColumn("名称");
                     ImGui.TableSetupColumn("类型");
                     ImGui.TableSetupColumn("金币");
                     ImGui.TableSetupColumn("ID");
-                    ImGui.TableSetupColumn("Owner ID");
+                    ImGui.TableSetupColumn("所属角色 ID");
                     ImGui.TableHeadersRow();
 
                     foreach (var retainer in _characterMonitor.GetRetainerCharacters())
@@ -216,7 +216,7 @@ public class CharacterDebuggerPane : DebugLogPane
             }
         }
 
-        if (ImGui.CollapsingHeader("Character Objects"))
+        if (ImGui.CollapsingHeader("角色对象"))
         {
             foreach (var kv in _characterMonitor.Characters)
             {
@@ -232,13 +232,13 @@ public class CharacterDebuggerPane : DebugLogPane
             }
         }
 
-        if (ImGui.CollapsingHeader("Acquired Items"))
+        if (ImGui.CollapsingHeader("已获取物品"))
         {
             foreach (var characterPair in _configuration.AcquiredItems)
             {
                 var character = _characterMonitor.GetCharacterById(characterPair.Key);
                 ImGui.TextUnformatted(character?.FormattedName ?? "未知角色");
-                ImGui.Text($"{characterPair.Value.Count} unlocked items");
+                ImGui.Text($"{characterPair.Value.Count} 个已解锁物品");
             }
         }
     }

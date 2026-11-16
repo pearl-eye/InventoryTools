@@ -169,6 +169,18 @@ public class ItemInfoRenderService : IDisposable
                 return "商店";
             case ItemInfoRenderCategory.House:
                 return "房屋";
+            case ItemInfoRenderCategory.FieldOperation:
+                return "特殊探索";
+            case ItemInfoRenderCategory.OccultCrescent:
+                return "新月岛";
+            case ItemInfoRenderCategory.Pagos:
+                return "恒冰地带";
+            case ItemInfoRenderCategory.Pyros:
+                return "涌火地带";
+            case ItemInfoRenderCategory.Hydatos:
+                return "丰水地带";
+            case ItemInfoRenderCategory.DeepDungeon:
+                return "深层迷宫";
             case ItemInfoRenderCategory.RelicWeapon:
                 return "古武";
             case ItemInfoRenderCategory.RelicTool:
@@ -1029,9 +1041,9 @@ public class ItemInfoRenderService : IDisposable
             _lastTooltipTime = _framework.LastUpdate;
             using (ImRaii.Tooltip())
             {
-                ImGui.Text("No tooltip configured for " + (rendererType == RendererType.Source
+                ImGui.Text("尚未为以下类型配置提示：" + (rendererType == RendererType.Source
                     ? this.GetSourceTypeName(firstItem.GetType())
-                    : this.GetUseTypeName(firstItem.GetType())).Singular + ", please report this!");
+                    : this.GetUseTypeName(firstItem.GetType())).Singular + "，请反馈此问题。");
             }
         }
     }

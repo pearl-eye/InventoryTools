@@ -71,7 +71,7 @@ namespace InventoryTools.Ui
             var result = _supportDumpService.GenerateDump(path);
             if (result.Success)
             {
-                var included = result.IncludedFiles.Any() ? string.Join(", ", result.IncludedFiles) : "no files";
+                var included = result.IncludedFiles.Any() ? string.Join(", ", result.IncludedFiles) : "无文件";
                 _chatUtilities.Print($"诊断文件已保存到 {result.ZipPath} ({included}).");
                 if (result.MissingFiles.Any())
                 {

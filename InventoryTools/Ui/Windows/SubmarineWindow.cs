@@ -70,7 +70,7 @@ namespace InventoryTools.Ui
             else
             {
                 ImGui.TextUnformatted(SubmarineExploration.Base.Destination.ExtractText());
-                ImGui.TextUnformatted("解锁条件: " + SubmarineExploration.Unlock?.Base.Destination.ExtractText() ?? "N/A");
+                ImGui.TextUnformatted("解锁条件: " + SubmarineExploration.Unlock?.Base.Destination.ExtractText() ?? "无");
                 ImGui.TextUnformatted("所需等级：" + SubmarineExploration.Base.RankReq);
                 ;
                 ImGui.Image(ImGuiService.GetIconTexture(Icons.AirshipIcon).Handle, new Vector2(100, 100) * ImGui.GetIO().FontGlobalScale);
@@ -121,9 +121,9 @@ namespace InventoryTools.Ui
                 }
 
                 #if DEBUG
-                if (ImGui.CollapsingHeader("Debug"))
+                if (ImGui.CollapsingHeader("调试###Debug"))
                 {
-                    ImGui.TextUnformatted("Duty ID: " + _submarineExplorationPointId);
+                    ImGui.TextUnformatted("探索点 ID：" + _submarineExplorationPointId);
                     Utils.PrintOutObject(SubmarineExploration, 0, new List<string>());
                 }
                 #endif

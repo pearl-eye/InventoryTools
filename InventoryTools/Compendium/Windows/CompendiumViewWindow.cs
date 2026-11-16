@@ -95,9 +95,9 @@ public class CompendiumViewWindow : CompendiumWindow
     public void DrawDebug()
     {
 #if DEBUG
-        if (ImGui.CollapsingHeader("Debug"))
+        if (ImGui.CollapsingHeader("调试###Debug"))
         {
-            ImGui.TextUnformatted("Entity ID: " + _entityId);
+            ImGui.TextUnformatted("实体 ID：" + _entityId);
             var relatedObject = _compendiumType.GetObject(_entityId);
             if (relatedObject != null)
             {

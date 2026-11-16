@@ -5,7 +5,6 @@ using AllaganLib.GameSheets.Caches;
 using AllaganLib.GameSheets.Model;
 using DalaMock.Host.Mediator;
 using Dalamud.Bindings.ImGui;
-using Humanizer;
 using InventoryTools.Compendium.Columns.Options;
 using InventoryTools.Compendium.Interfaces;
 using InventoryTools.Compendium.Models;
@@ -86,7 +85,7 @@ public class SharedModelCompendiumType : CompendiumType<SharedModelCache.SharedM
         });
         builder.AddStringColumn(new StringColumnOptions<SharedModelCache.SharedModelGroup>
         {
-            ValueSelector = row => string.Join(", ", row.Items.First().EquipSlotCategory?.PossibleSlots.Select(c => c.Humanize()) ?? []),
+            ValueSelector = row => string.Join(", ", row.Items.First().EquipSlotCategory?.PossibleSlots.Select(GetEquipSlotName) ?? []),
             Name = "装备部位",
             Key = "equip_slots",
             HelpText = "物品的装备部位",
@@ -121,4 +120,23 @@ public class SharedModelCompendiumType : CompendiumType<SharedModelCache.SharedM
     public override string Description => "共用同一模型的物品。";
     public override string Key => "shared_models";
     public override (string?, uint?) Icon => (null, Icons.CombinedClothingIcon);
+
+    private static string GetEquipSlotName(EquipSlot slot) => slot switch
+    {
+        EquipSlot.MainHand => "主手",
+        EquipSlot.OffHand => "副手",
+        EquipSlot.Head => "头部",
+        EquipSlot.Body => "身体",
+        EquipSlot.Gloves => "手部",
+        EquipSlot.Waist => "腰部",
+        EquipSlot.Legs => "腿部",
+        EquipSlot.Feet => "脚部",
+        EquipSlot.Ears => "耳部",
+        EquipSlot.Neck => "颈部",
+        EquipSlot.Wrists => "腕部",
+        EquipSlot.FingerR => "右戒指",
+        EquipSlot.FingerL => "左戒指",
+        EquipSlot.SoulCrystal => "灵魂水晶",
+        _ => "未知",
+    };
 }

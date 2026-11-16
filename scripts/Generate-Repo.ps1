@@ -39,8 +39,8 @@ if ($manifest.AssemblyVersion -cne $baseline.distributionVersion) {
 
 $expectedTag = "cn-v$($manifest.AssemblyVersion)"
 if (!$ReleaseTag) { $ReleaseTag = $expectedTag }
-if ($ReleaseTag -cne $expectedTag) {
-    throw "ReleaseTag must match the built assembly version: $expectedTag"
+if ($ReleaseTag -cnotin @($expectedTag, "$expectedTag-localization")) {
+    throw "ReleaseTag must use the unchanged assembly version: $expectedTag or $expectedTag-localization"
 }
 
 # A Dalamud package needs the main assembly and manifest at the archive root.

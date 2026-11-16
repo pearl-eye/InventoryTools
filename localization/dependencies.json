@@ -119,6 +119,24 @@
           "original": "Unknown Task",
           "translation": "未知探险",
           "count": 1
+        },
+        {
+          "fullMethodName": "System.Collections.Generic.IReadOnlyDictionary`2<AllaganLib.GameSheets.ItemSources.RelatedItemKey,System.Collections.Generic.IReadOnlyList`1<AllaganLib.GameSheets.Model.ItemInfo>> AllaganLib.GameSheets.ItemSources.ItemFolkloreTomeSource::CreateRelatedItems()",
+          "original": "Folklore Tome",
+          "translation": "传承录",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Collections.Generic.IReadOnlyDictionary`2<AllaganLib.GameSheets.ItemSources.RelatedItemKey,System.Collections.Generic.IReadOnlyList`1<AllaganLib.GameSheets.Model.ItemInfo>> AllaganLib.GameSheets.ItemSources.ItemSecretRecipeBookUse::CreateRelatedItems()",
+          "original": "Secret Recipe Book",
+          "translation": "秘籍",
+          "count": 1
+        },
+        {
+          "fullMethodName": "System.Collections.Generic.IReadOnlyDictionary`2<AllaganLib.GameSheets.ItemSources.RelatedItemKey,System.Collections.Generic.IReadOnlyList`1<AllaganLib.GameSheets.Model.ItemInfo>> AllaganLib.GameSheets.ItemSources.ItemGlamourReadySetSource::CreateRelatedItems()",
+          "original": "Set Items",
+          "translation": "套装物品",
+          "count": 1
         }
       ]
     },

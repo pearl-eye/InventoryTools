@@ -97,23 +97,24 @@ namespace CriticalCommonLib.Services
 
         public void PrintClipboardMessage(string objectType, string name, Exception? e = null)
         {
+            var displayName = name.Length > 0 ? name : "未命名";
             if (e != null)
             {
                 name = name.Length > 0 ? name : "<Unnamed>";
                 _pluginLog.Error($"Could not save {objectType}{name} to Clipboard:\n{e}");
-                PrintError($"Could not save {objectType}", name, SeColorNames, " to Clipboard.");
+                PrintError($"无法将{objectType}", displayName, SeColorNames, "复制到剪贴板。");
             }
             else
             {
-                Print(objectType, name.Length > 0 ? name : "<Unnamed>", SeColorNames,
-                    " saved to Clipboard.");
+                Print(objectType, displayName, SeColorNames,
+                    "已复制到剪贴板。");
             }
         }
 
         public void PrintGeneralMessage(string objectType, string name)
         {
 
-            Print(objectType, name.Length > 0 ? name : "<Unnamed>", SeColorAlarm,
+            Print(objectType, name.Length > 0 ? name : "未命名", SeColorAlarm,
                 "");
         }
 

@@ -681,7 +681,7 @@ namespace InventoryTools.Ui
 
                                         foreach (var craft in craftLists)
                                         {
-                                            using (var menu = ImRaii.Menu(craft.Name))
+                                            using (var menu = ImRaii.Menu(craft.DisplayName))
                                             {
                                                 if (menu)
                                                 {
@@ -1171,7 +1171,7 @@ namespace InventoryTools.Ui
 
                                         foreach (var curatedList in curatedLists)
                                         {
-                                            if (ImGui.MenuItem(curatedList.Name))
+                                            if (ImGui.MenuItem(curatedList.DisplayName))
                                             {
                                                 if (ImGui.MenuItem("制作清单（全部）"))
                                                 {
@@ -1905,7 +1905,7 @@ namespace InventoryTools.Ui
                         var filterConfiguration = filterConfigurations[index];
                         using var id = ImRaii.PushId(index);
                         var imGuiTabItemFlags = _newTab == index && SwitchNewTab ? ImGuiTabItemFlags.SetSelected : ImGuiTabItemFlags.None;
-                        using (var tabItem = ImRaii.TabItem(filterConfiguration.NameFormatted, imGuiTabItemFlags))
+                        using (var tabItem = ImRaii.TabItem(ListNameLocalizer.FormatImGuiLabel(filterConfiguration.NameFormatted, filterConfiguration.Key), imGuiTabItemFlags))
                         {
                             if (SwitchNewTab && _newTab != null && _newTab == index)
                             {
@@ -2396,7 +2396,7 @@ namespace InventoryTools.Ui
                             for (var index = 0; index < filterConfigurations.Count; index++)
                             {
                                 var filterConfiguration = filterConfigurations[index];
-                                var actualName = filterConfiguration.Name;
+                                var actualName = filterConfiguration.DisplayName;
                                 if (filterConfiguration.IsEphemeralCraftList)
                                 {
                                     actualName += " (*)";
@@ -2600,7 +2600,7 @@ namespace InventoryTools.Ui
                     ImGui.SetCursorPosX(width);
                     ImGui.SetNextItemWidth(150);
                     var activeCraftList = _listService.GetActiveCraftList();
-                    using (var combo = ImRaii.Combo("##ActiveCraftList",activeCraftList != null ? activeCraftList.Name : "无"))
+                    using (var combo = ImRaii.Combo("##ActiveCraftList",activeCraftList != null ? activeCraftList.DisplayName : "无"))
                     {
                         if (combo.Success)
                         {
@@ -2611,7 +2611,7 @@ namespace InventoryTools.Ui
                             foreach (var filter in _listService.Lists.Where(c =>
                                          c.FilterType == FilterType.CraftFilter && !c.CraftListDefault))
                             {
-                                if (ImGui.Selectable(filter.Name + "##" + filter.Key))
+                                if (ImGui.Selectable(filter.DisplayName + "##" + filter.Key))
                                 {
                                     _listService.SetActiveCraftList(filter);
                                 }
@@ -2881,7 +2881,7 @@ namespace InventoryTools.Ui
                                          .GameItemFilter)));
                                 if (hasValues)
                                 {
-                                    using (var tabItem = ImRaii.TabItem(group.Key.ToString().ToSentence(), ImGuiTabItemFlags.NoReorder))
+                                    using (var tabItem = ImRaii.TabItem(group.Key.FormattedName(), ImGuiTabItemFlags.NoReorder))
                                     {
                                         if (!tabItem.Success) continue;
                                         using (ImRaii.PushColor(ImGuiCol.Text, ImGuiColors.DalamudWhite))
@@ -3073,7 +3073,7 @@ namespace InventoryTools.Ui
                             var filterConfigurations = Filters.Where(c => c != SelectedConfiguration).ToList();
                             foreach (var filter in filterConfigurations)
                             {
-                                if (ImGui.Selectable("复制以下清单的设置：'" + filter.Name + "'"))
+                                if (ImGui.Selectable("复制以下清单的设置：'" + filter.DisplayName + "'"))
                                 {
                                     _listService.ResetFilter(_filterService.AvailableFilters, filterConfiguration, filter);
                                 }

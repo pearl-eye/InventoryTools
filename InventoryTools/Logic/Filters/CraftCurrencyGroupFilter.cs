@@ -58,7 +58,12 @@ public class CraftCurrencyGroupFilter : ChoiceFilter<CurrencyGroupSetting>
 
     public override string GetFormattedChoice(FilterConfiguration filterConfiguration, CurrencyGroupSetting choice)
     {
-        return choice.ToString();
+        return choice switch
+        {
+            CurrencyGroupSetting.Separate => "单独分组",
+            CurrencyGroupSetting.Together => "合并到采集/购买",
+            _ => choice.ToString()
+        };
     }
 
     public CraftCurrencyGroupFilter(ILogger<CraftCurrencyGroupFilter> logger, ImGuiService imGuiService) : base(logger, imGuiService)

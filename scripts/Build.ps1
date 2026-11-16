@@ -27,6 +27,10 @@ try {
     if ($projectVersion -ne $baseline.distributionVersion) {
         throw "The CN version must equal the original distribution version $($baseline.distributionVersion); found $projectVersion."
     }
+    & $DotnetCommand run --project (Join-Path $repositoryRoot 'tests/DependencyLocalizationRegression/DependencyLocalizationRegression.csproj') --configuration Release
+    if ($LASTEXITCODE -ne 0) { throw 'Dependency display localization checks failed; refusing to package an unsafe UI patch.' }
+    & $DotnetCommand run --project (Join-Path $repositoryRoot 'tests/LocalizationRegression/LocalizationRegression.csproj') --configuration Release
+    if ($LASTEXITCODE -ne 0) { throw 'Localization regression checks failed; refusing to package untranslated list captions.' }
     & $DotnetCommand run --project (Join-Path $repositoryRoot 'tests/ChangelogRegression/ChangelogRegression.csproj') --configuration Release
     if ($LASTEXITCODE -ne 0) { throw 'Release-note regression checks failed; refusing to package a broken UI dependency.' }
     & $DotnetCommand build $project --configuration Release -m:1 -nr:false '-clp:ErrorsOnly;Summary' '-p:EnableWindowsTargeting=true' "-p:DalamudLibPath=$frameworkRoot/" "-p:AllaganDotnetCommand=$DotnetCommand"

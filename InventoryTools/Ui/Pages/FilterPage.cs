@@ -52,7 +52,7 @@ namespace InventoryTools.Ui.Pages
         {
             get
             {
-                return FilterConfiguration.Name;
+                return FilterConfiguration.DisplayName;
             }
         }
         public FilterConfiguration FilterConfiguration;
