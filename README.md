@@ -11,10 +11,10 @@ Allagan Tools 的国服汉化分支。原插件由 [Critical_Impact](https://git
 需要支持 Dalamud API 15 的国服卫月。在卫月设置的自定义插件仓库中添加：
 
 ```text
-https://github.com/pearl-eye/Allagan-Tools-CN/releases/latest/download/repo.json
+https://raw.githubusercontent.com/pearl-eye/Dalamud-Plugins-CN/main/repo.json
 ```
 
-保存后，在插件安装器中搜索 **Allagan Tools**。安装包和更新索引可在 [Releases](https://github.com/pearl-eye/Allagan-Tools-CN/releases) 下载。
+保存后，在插件安装器中搜索 **Allagan Tools CN**。安装包和更新索引可在 [Releases](https://github.com/pearl-eye/Allagan-Tools-CN/releases) 下载。
 
 如果已经安装其他来源的 Allagan Tools，请先禁用旧实例，再切换安装来源；不要同时加载两个 `InventoryTools` 实例。更换版本前可备份卫月的 `pluginConfigs/InventoryTools` 目录及 `InventoryTools.json` 配置。
 
